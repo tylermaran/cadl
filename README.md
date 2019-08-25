@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## CADL - An open source CAD Library with 3D rendering
+
+Designed and built to host a variety of CAD files at NoiseBridge Hackerspace, CADL is an open source tool for anyone who wants to visualize and share a variety of CAD projects. 
+
+**Includes support for the following file types:**
+* STL
+* DXF
+* GCODE
 
 ## Available Scripts
 
