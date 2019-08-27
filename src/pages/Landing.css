@@ -1,3 +1,26 @@
+
 .landing {
-    color: blue;
+    color: black;
+}
+
+.sub_title {
+    text-align: left;
+    margin: 0 0 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .content {
+        width: 90%;
+        margin: 0 0 100px 5%;
+    }
+} 
+
+
+@media only screen and (min-width: 900px) {
+    
+    .content {
+        width: 80%;
+        margin: 0 0 100px 10%;
+    }
+
 }

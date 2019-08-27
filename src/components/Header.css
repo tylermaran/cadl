@@ -1,0 +1,28 @@
+
+
+
+@media only screen and (max-width: 8990px) {
+    .home_message_title {
+        text-align: left;
+    }
+
+    .home_message {
+        text-align: left;
+        width: 90%;
+        height: auto;
+        margin: 20px 2.5% 20px 2.5%;
+    }
+
+} 
+
+
+@media only screen and (min-width: 900px) {
+    
+    .home_message {
+        display: inline-block;
+        width: 25%;
+        height: 200px;
+        margin: 20px 2.5% 20px 2.5%;
+    }
+
+}

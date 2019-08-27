@@ -1,0 +1,27 @@
+.three_container {
+    display: inline-block;
+    overflow: hidden;
+    margin: 25px;
+    min-height: 300px;
+    height: auto;
+
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.canvas_outer_div {
+    overflow: hidden;
+    height: 250px;
+	width: 300px;
+    padding: 0;
+}
+
+.ThreeElement {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.element_name {
+    color: black;
+}

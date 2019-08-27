@@ -5,6 +5,7 @@ import React from 'react';
 
 
 // Importing Styles
+import './Testing.css';
 
 const Testing = (props) => {
 
