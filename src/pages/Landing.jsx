@@ -3,6 +3,7 @@ import React from 'react';
 
 // Importing Components
 import ThreeElement from '../components/ThreeElement';
+import STLLoaderComponent from '../components/STLLoader';
 import Header from '../components/Header';
 
 
@@ -20,7 +21,8 @@ const Landing = (props) => {
                 <h3 className="sub_title">
                     Featured Projects:
                 </h3> 
-                <ThreeElement color='#3deb34'  title='Green Cube' category='3D Printing'/>
+                <STLLoaderComponent  color='#eb344c'  title='Hand' category='3D Printing'/>
+                {/* <ThreeElement color='#3deb34'  title='Green Cube' category='3D Printing'/> */}
                 <ThreeElement color='#eb344c'  title='Pink Cube' category='CNC Mill'/>
                 <ThreeElement color='#8c34eb'  title='Purple Cube' category='3D Printing'/>
                 
