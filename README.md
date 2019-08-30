@@ -7,38 +7,36 @@ This is a monorepo structure using the 'concurrently' package to manage a Node A
 
 Downloading and running:
 `Clone the Repo`
-
 `Run 'npm i' to install dependencies`
-
 `Run 'npm run client' to start the client in dev mode`
-
 `Run 'npm run server' to start the server in dev mode`
-
 `Run 'npm start' to concurrently run the server and client`
+
+***
 
 # API
 This is a node/express API connected to a MongoDB Database. 
 This API relies on the AWS SDK to connect to an S3 Bucket for file storage
 
 From top level:
-> npm run server
+`npm run server`
 
 Dependencies
-> aws-sdk
-> body-parser
-> express
-> node-fetch
-> nodemon
+`aws-sdk`
+`body-parser`
+`express`
+`node-fetch`
+`nodemon`
+
+***
 
 # React UI
 React front end with extensive THREE.JS implementation for rendering and editing CAD files.
 
-[React-UI README](/react_ui/README.md)
-
 
 Dependencies
-> react
-> react-dom
-> react-router-dom
-> react-scripts
-> three
+`react`
+`react-dom`
+`react-router-dom`
+`react-scripts`
+`three`
