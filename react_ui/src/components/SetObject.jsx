@@ -5,14 +5,15 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 
 // Importing Styles
-import './STLLoader.css';
+import './SetObject.css';
 
-class STLLoaderComponent extends Component {
+class SetObject extends Component {
 	constructor (props) {
 		super();
 		this.state = {
 			Loaded: 0,
-			Total: 0.01
+            Total: 0.01,
+            units: props.mm
 		}
 	}
 
@@ -21,9 +22,10 @@ class STLLoaderComponent extends Component {
 		this.sceneSetup();
         this.addSTLFile();
 		this.startAnimationLoop();
-		window.addEventListener("resize", this.handleWindowResize);
-	}
-
+        window.addEventListener("resize", this.handleWindowResize);
+        window.addEventListener('click', this.handleUpdate);
+    }
+    
 	// Clean Unmount
 	componentWillUnmount() {
 		console.log('Component will UNMOUNT');
@@ -62,7 +64,9 @@ class STLLoaderComponent extends Component {
 		// Orbit Controls
 		// https://threejs.org/docs/#examples/controls/OrbitControls
 		this.controls = new OrbitControls(this.camera, this.el);
-		this.controls.enablePan = true;
+        this.controls.enablePan = false;
+        this.controls.enableZoom = true;
+        this.controls.enableRotate = false;
 		this.controls.maxDistance = 40;
 		this.controls.minDistance = 2;
 		
@@ -109,9 +113,13 @@ class STLLoaderComponent extends Component {
 			
 			// If MM, scale to inches. Grid will be in inches.
 			if (this.props.mm) {
-				this.mesh.scale.set( 0.0393701, 0.0393701, 0.0393701 );
+                console.log('MM true');
+                this.mesh.scale.set( 0.0393701, 0.0393701, 0.0393701 );
+                this.mesh.updateMatrix();
 			} else {
-				this.mesh.scale.set( 1, 1, 1);
+                console.log('Inch True');
+                this.mesh.scale.set( 1, 1, 1);
+                this.mesh.updateMatrix();
 			}
 			
 			// Change shadows
@@ -159,39 +167,54 @@ class STLLoaderComponent extends Component {
     }
 
 
+    // Rotate object: takes in axis and direction (+1 or -1)
+    handleRotate = (axis, direction) => {
+        switch (axis) {
+            case 'x':
+                this.mesh.rotateX(THREE.Math.degToRad(90 * direction));
+                break;
+            case 'y':
+                this.mesh.rotateY(THREE.Math.degToRad(90 * direction));
+                break;
+            case 'z':
+                this.mesh.rotateZ(THREE.Math.degToRad(90 * direction));
+                break;
+            default:
+                break;
+        }
+    }
 
-	// Add 3D model
-	addCustomSceneObjects = () => {
-		const geometry = new THREE.BoxGeometry(2, 2, 2);
-		const material = new THREE.MeshPhongMaterial({
-            color: this.color,
-            emissive: 0x072534,
-            side: THREE.DoubleSide,
-            flatShading: true
-		});
-		this.cube = new THREE.Mesh(geometry, material);
-		this.scene.add(this.cube);
+    // Pan object: takes in axis and direction (+1 or -1)
+    handlePan = (axis, direction) => {
+        switch (axis) {
+            case 'x':
+                this.mesh.translateX(direction);
+                break;
+            case 'y':
+                this.mesh.translateY(direction);
+                break;
+            case 'z':
+                this.mesh.translateZ(direction);
+                break;
+            default:
+                break;
+        }
+    }
 
-		const lights = [];
-		lights[0] = new THREE.PointLight(0xffffff, 1, 0);
-		lights[1] = new THREE.PointLight(0xffffff, 1, 0);
-		lights[2] = new THREE.PointLight(0xffffff, 1, 0);
+    handleUpdate = () => {
+            // If MM, scale to inches. Grid will be in inches.
+			if (this.props.mm) {
+                this.mesh.scale.set( 0.0393701, 0.0393701, 0.0393701 );
+                this.mesh.updateMatrix();
+			} else {
+                this.mesh.scale.set( 1, 1, 1);
+                this.mesh.updateMatrix();
+			}
+    }
 
-		lights[0].position.set(0, 200, 0);
-		lights[1].position.set(100, 200, 100);
-		lights[2].position.set(-100, -200, -100);
 
-		this.scene.add(lights[0]);
-		this.scene.add(lights[1]);
-		this.scene.add(lights[2]);
-	};
-
-	// 
+	// Play each Keyframe
 	startAnimationLoop = () => {
-		// Start spinning after a while
-		if (this.props.spin) {
-			this.mesh.rotation.x += .01;
-		}
 		
 		this.renderer.render(this.scene, this.camera);
 
@@ -215,16 +238,56 @@ class STLLoaderComponent extends Component {
 
 	render() {
 		return (
-			<div className='stl_container'>
-				<div className='stl_outer_div'>
-					<div className='STLLoader' ref={ref => (this.el = ref)} />
-				</div>
+            <div>
+                <div className='SetObject_container'>
+                    <div className='SetObject_outer_div'>
+                        <div className='SetObject' ref={ref => (this.el = ref)} />
+                    </div>
+                    {this.props.mm? 'Hello': "no hello"}
 
-				<div className='element_name'>{this.props.title} in {this.props.category}</div>
-				<div className="file_size">Loading {(this.state.Loaded / this.state.Total).toFixed(2)*100}%</div>
-			</div>
+                    <div className='SetObject_element_name'>{this.props.title} in {this.props.category}</div>
+                    <div className="SetObject_file_size">Loading {(this.state.Loaded / this.state.Total).toFixed(2)*100}%</div>
+                </div>
+
+                <div className="control_board">
+                    <div className="rotate">
+                        Rotate Object
+                        <div className="rotate_x">
+                            <button type="button" onClick={() => this.handleRotate('x', -1)}> - X </button>
+                            <button type="button" onClick={() => this.handleRotate('x', 1)}> + X </button>
+                        </div>
+                        <div className="rotate_y">
+                            <button type="button" onClick={() => this.handleRotate('y', -1)}> - Y </button>
+                            <button type="button" onClick={() => this.handleRotate('y', 1)}> + Y </button>
+                        </div>
+                        <div className="rotate_z">
+                            <button type="button" onClick={() => this.handleRotate('z', -1)}> - Z </button>
+                            <button type="button" onClick={() => this.handleRotate('z', 1)}> + Z </button>
+                        </div>
+                    </div>
+                    <div className="pan">
+                        Pan Object
+                        <div className="pan_x">
+                            <button type="button" onClick={() => this.handlePan('x', -1)}> - X </button>
+                            <button type="button" onClick={() => this.handlePan('x', 1)}> + X </button>
+                        </div>
+                        <div className="pan_y">
+                            <button type="button" onClick={() => this.handlePan('y', -1)}> - Y </button>
+                            <button type="button" onClick={() => this.handlePan('y', 1)}> + Y </button>
+                        </div>
+                        <div className="pan_z">
+                            <button type="button" onClick={() => this.handlePan('z', -1)}> - Z </button>
+                            <button type="button" onClick={() => this.handlePan('z', 1)}> + Z </button>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
 		);
 	}
 }
 
-export default STLLoaderComponent;
+export default SetObject;

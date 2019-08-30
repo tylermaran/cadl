@@ -50,6 +50,8 @@ const Header = (props) => {
                 </div>
 
             </div>
+
+            <hr className="horizontal_line"/>
         </div>
     );
 

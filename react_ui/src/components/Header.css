@@ -1,5 +1,8 @@
 
-
+.horizontal_line {
+    width: 90%;
+    margin: 0 0 0 5%;
+}
 
 @media only screen and (max-width: 8990px) {
     .home_message_title {
@@ -10,7 +13,7 @@
         text-align: left;
         width: 90%;
         height: auto;
-        margin: 20px 2.5% 20px 2.5%;
+        margin: 20px 2.5% 10px 2.5%;
     }
 
 } 
@@ -21,8 +24,12 @@
     .home_message {
         display: inline-block;
         width: 25%;
-        height: 200px;
-        margin: 20px 2.5% 20px 2.5%;
+        height: 180px;
+        margin: 20px 2.5% 10px 2.5%;
+    }
+
+    .header {
+        margin: 0 0 20px 0;
     }
 
 }

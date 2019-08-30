@@ -1,0 +1,49 @@
+button {
+    width: 80px;
+    height: 50px;
+    font-size: 16px;
+    background-color: rgb(81, 81, 255);
+    color: white;
+    border: none;
+    margin: 3px;
+}
+
+.SetObject_container {
+    display: inline-block;
+    overflow: hidden;
+    margin: 25px;
+    min-height: 300px;
+    height: auto;
+
+}
+
+.SetObject_outer_div {
+    overflow: hidden;
+    height: 500px;
+	width: 500px;
+    padding: 0;
+}
+
+.SetObject {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.SetObject_element_name {
+    float: left;
+}
+
+.SetObject_file_size {
+    float: right;
+}
+
+.rotate {
+    display: inline-block;
+    width: 30%;
+}
+
+.pan {
+    display: inline-block;
+    width: 30%;
+}
