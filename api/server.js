@@ -10,8 +10,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.post('/api/data', (req, res) => {
+app.get('/api/', (req, res) => {
     console.log('posting data');
+    res.status(200).json({
+		status: 'All good'
+    });
 });
 
 

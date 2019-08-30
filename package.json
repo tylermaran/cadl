@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/tylermaran/cadl#readme",
   "dependencies": {
-    "concurrently": "^4.1.2",
-    "express": "^4.17.1"
+    "concurrently": "^4.1.2"
   }
 }
