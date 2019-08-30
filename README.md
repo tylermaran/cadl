@@ -7,9 +7,13 @@ This is a monorepo structure using the 'concurrently' package to manage a Node A
 
 Downloading and running:
 `Clone the Repo`
+
 `Run 'npm i' to install dependencies`
+
 `Run 'npm run client' to start the client in dev mode`
+
 `Run 'npm run server' to start the server in dev mode`
+
 `Run 'npm start' to concurrently run the server and client`
 
 ***
@@ -23,9 +27,13 @@ From top level:
 
 Dependencies
 `aws-sdk`
+
 `body-parser`
+
 `express`
+
 `node-fetch`
+
 `nodemon`
 
 ***
@@ -36,7 +44,11 @@ React front end with extensive THREE.JS implementation for rendering and editing
 
 Dependencies
 `react`
+
 `react-dom`
+
 `react-router-dom`
+
 `react-scripts`
+
 `three`
