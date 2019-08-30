@@ -3,7 +3,12 @@ import React, { Component } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
+// Import Styling
 import './ThreeElement.css';
+
+
+// Import Textures and Models
+import loading from '../images/loading.png';
 
 class ThreeElement extends Component {
 
@@ -36,14 +41,16 @@ class ThreeElement extends Component {
 
 		this.scene = new THREE.Scene();
 		this.camera = new THREE.PerspectiveCamera(
-		75, // fov = field of view
-		width / height, // aspect ratio
-		.1, // near plane
-		1000 // far plane
+			75, // fov = field of view
+			width / height, // aspect ratio
+			.1, // near plane
+			1000 // far plane
 		);
 		this.camera.position.z = 5; 
 		this.camera.position.x = -3;
 		this.camera.position.y = 2;
+
+		this.scene.background = new THREE.Color( 0x646464 );
 
 		// OrbitControls allow a camera to orbit around the object
 		// pan disabled = makes rotate confusing when panned away from center point
@@ -64,12 +71,20 @@ class ThreeElement extends Component {
 	// Add 3D model
 	addCustomSceneObjects = () => {
 		const geometry = new THREE.BoxGeometry(2, 2, 2);
-		const material = new THREE.MeshPhongMaterial({
-		color: this.color,
-		emissive: 0x072534,
-		side: THREE.DoubleSide,
-		flatShading: true
+		const texture = new THREE.TextureLoader().load(loading);
+		const material = new THREE.MeshBasicMaterial({
+			map: texture,
+					emissive: 0x072534,
+			side: THREE.DoubleSide,
+			flatShading: true
 		});
+
+		// const material = new THREE.MeshPhongMaterial({
+		// 	color: this.color,
+		// 	emissive: 0x072534,
+		// 	side: THREE.DoubleSide,
+		// 	flatShading: true
+		// });
 		this.cube = new THREE.Mesh(geometry, material);
 		this.scene.add(this.cube);
 
@@ -88,11 +103,11 @@ class ThreeElement extends Component {
 	};
 
 	startAnimationLoop = () => {
-		if (this.animate) {
+		// if (this.animate) {
 			this.cube.rotation.x += (Math.random() * .01 - .02);
 			this.cube.rotation.y += (Math.random() * .01 - .02);
 
-		}
+		// }
 		
 		this.renderer.render(this.scene, this.camera);
 
