@@ -243,7 +243,6 @@ class SetObject extends Component {
                     <div className='SetObject_outer_div'>
                         <div className='SetObject' ref={ref => (this.el = ref)} />
                     </div>
-                    {this.props.mm? 'Hello': "no hello"}
 
                     <div className='SetObject_element_name'>{this.props.title} in {this.props.category}</div>
                     <div className="SetObject_file_size">Loading {(this.state.Loaded / this.state.Total).toFixed(2)*100}%</div>
