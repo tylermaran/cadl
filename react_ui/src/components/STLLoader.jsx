@@ -53,7 +53,6 @@ class STLLoaderComponent extends Component {
 		this.camera.position.x = -3;
 		this.camera.position.y = 2;
 		
-		
 		// Add a Grid (default to inches)
 		const size = 20;
 		const divisions = 20;
@@ -87,12 +86,12 @@ class STLLoaderComponent extends Component {
         loader.load(this.props.file, ( geometry ) => {
 			let finished = performance.now();
 
-			const sizeElement = async () => {
+			const calcElementSize = async () => {
 				await geometry.computeBoundingSphere();
 				console.log(geometry.boundingSphere.radius);
 
 			}
-			sizeElement();
+			calcElementSize();
 
 			// Add basic color and shine to material
             let material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
@@ -105,7 +104,7 @@ class STLLoaderComponent extends Component {
 
             this.mesh = new THREE.Mesh(geometry, material);
 			this.mesh.position.set( 0, 0, 0);
-			this.mesh.rotateZ(THREE.Math.degToRad(90));
+			// this.mesh.rotateZ(THREE.Math.degToRad(90));
 
 			
 			// If MM, scale to inches. Grid will be in inches.

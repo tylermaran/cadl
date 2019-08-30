@@ -18,11 +18,6 @@ class ThreeElement extends Component {
 		this.addCustomSceneObjects();
 		this.startAnimationLoop();
 		window.addEventListener("resize", this.handleWindowResize);
-
-		// They all start spinning if left alone for 10 seconds
-		window.addEventListener('mousemove', this.easter_egg);
-		window.addEventListener('touchstart', this.easter_egg);
-		window.addEventListener('keypress', this.easter_egg);
 	}
 
 	// Add a clean unmount - remove associated event listeners and animation frames
@@ -33,7 +28,7 @@ class ThreeElement extends Component {
 		this.controls.dispose();
 	}
 
-	//   Standard scene setup
+	// Standard THREE scene setup
 	sceneSetup = () => {
 		// get container dimensions and use them for scene sizing
 		const width = this.el.clientWidth;

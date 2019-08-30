@@ -1,33 +1,34 @@
 {
   "name": "cadl",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "three": "^0.107.0"
-  },
+  "version": "1.0.0",
+  "description": "A CAD Library using THREE.JS visualization",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "test",
+    "client": "cd react_ui && npm run start",
+    "server": "cd api && nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylermaran/cadl.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [
+    "cadl",
+    "threejs",
+    "stl",
+    "dxf",
+    "gcode",
+    "cad"
+  ],
+  "author": "themanmaran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylermaran/cadl/issues"
+  },
+  "homepage": "https://github.com/tylermaran/cadl#readme",
+  "dependencies": {
+    "concurrently": "^4.1.2",
+    "express": "^4.17.1"
   }
 }
