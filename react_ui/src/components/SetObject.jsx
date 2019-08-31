@@ -13,8 +13,10 @@ class SetObject extends Component {
 		this.state = {
 			Loaded: 0,
             Total: 0.01,
-            units: props.mm
-		}
+            units: props.mm,
+
+        }
+        console.log(props.object);
 	}
 
 	// Setup Component
@@ -23,7 +25,7 @@ class SetObject extends Component {
         this.addSTLFile();
 		this.startAnimationLoop();
         window.addEventListener("resize", this.handleWindowResize);
-        window.addEventListener('click', this.handleUpdate);
+        // window.addEventListener('click', this.handleUpdate);
     }
     
 	// Clean Unmount
@@ -32,7 +34,13 @@ class SetObject extends Component {
 		window.removeEventListener("resize", this.handleWindowResize);
 		window.cancelAnimationFrame(this.requestID);
 		this.controls.dispose();
-	}
+    }
+    
+    componentDidUpdate() {
+        if (this.state.complete) {
+            this.handleUpdate();
+        }
+    }
 
 	// THREEJS Scene Setup
 	sceneSetup = () => {
@@ -87,7 +95,7 @@ class SetObject extends Component {
 		let start = performance.now()
 
 		// Load the STL file and pass on the geometry
-        loader.load(this.props.file, ( geometry ) => {
+        loader.load(this.props.object.file, ( geometry ) => {
 			let finished = performance.now();
 
 			const calcElementSize = async () => {
@@ -112,7 +120,7 @@ class SetObject extends Component {
 
 			
 			// If MM, scale to inches. Grid will be in inches.
-			if (this.props.mm) {
+			if (this.props.object.config.mm) {
                 console.log('MM true');
                 this.mesh.scale.set( 0.0393701, 0.0393701, 0.0393701 );
                 this.mesh.updateMatrix();
@@ -149,7 +157,12 @@ class SetObject extends Component {
 			this.scene.add(lights[1]);
 			this.scene.add(lights[2]);
 
-			console.log('Load took ' + (finished - start)/1000 + ' seconds');
+            console.log('Load took ' + (finished - start)/1000 + ' seconds');
+
+            // Loading complete. Set ComponentDidUpdate to listen for prop changes
+            this.setState({
+                complete: true
+            });
 		}, 
 		// Loading Progress
         (progress) => {
@@ -166,50 +179,25 @@ class SetObject extends Component {
         });
     }
 
-
-    // Rotate object: takes in axis and direction (+1 or -1)
-    handleRotate = (axis, direction) => {
-        switch (axis) {
-            case 'x':
-                this.mesh.rotateX(THREE.Math.degToRad(90 * direction));
-                break;
-            case 'y':
-                this.mesh.rotateY(THREE.Math.degToRad(90 * direction));
-                break;
-            case 'z':
-                this.mesh.rotateZ(THREE.Math.degToRad(90 * direction));
-                break;
-            default:
-                break;
-        }
-    }
-
-    // Pan object: takes in axis and direction (+1 or -1)
-    handlePan = (axis, direction) => {
-        switch (axis) {
-            case 'x':
-                this.mesh.translateX(direction);
-                break;
-            case 'y':
-                this.mesh.translateY(direction);
-                break;
-            case 'z':
-                this.mesh.translateZ(direction);
-                break;
-            default:
-                break;
-        }
-    }
-
+    
     handleUpdate = () => {
-            // If MM, scale to inches. Grid will be in inches.
-			if (this.props.mm) {
-                this.mesh.scale.set( 0.0393701, 0.0393701, 0.0393701 );
-                this.mesh.updateMatrix();
-			} else {
-                this.mesh.scale.set( 1, 1, 1);
-                this.mesh.updateMatrix();
-			}
+        // If MM, scale to inches. Grid will be in inches.
+        if (this.props.object.config.mm) {
+            this.mesh.scale.set( 0.0393701, 0.0393701, 0.0393701 );
+        } else {
+            this.mesh.scale.set( 1, 1, 1);
+        }
+        
+        // Set translate
+        this.mesh.position.set( this.props.object.config.translate[0], this.props.object.config.translate[1], this.props.object.config.translate[2]);
+        
+        // Set Rotate
+        this.mesh.rotation.x = (THREE.Math.degToRad(this.props.object.config.rotate[0]));
+        this.mesh.rotation.y = (THREE.Math.degToRad(this.props.object.config.rotate[1]));
+        this.mesh.rotation.z = (THREE.Math.degToRad(this.props.object.config.rotate[2]));
+        
+        // Update the mesh Matrix
+        this.mesh.updateMatrix();
     }
 
 
@@ -235,7 +223,6 @@ class SetObject extends Component {
         this.camera.updateProjectionMatrix();
 	};
 
-
 	render() {
 		return (
             <div>
@@ -244,44 +231,8 @@ class SetObject extends Component {
                         <div className='SetObject' ref={ref => (this.el = ref)} />
                     </div>
 
-                    <div className='SetObject_element_name'>{this.props.title} in {this.props.category}</div>
+                    <div className='SetObject_element_name'>{this.props.object.name} in {this.props.object.category}</div>
                     <div className="SetObject_file_size">Loading {(this.state.Loaded / this.state.Total).toFixed(2)*100}%</div>
-                </div>
-
-                <div className="control_board">
-                    <div className="rotate">
-                        Rotate Object
-                        <div className="rotate_x">
-                            <button type="button" onClick={() => this.handleRotate('x', -1)}> - X </button>
-                            <button type="button" onClick={() => this.handleRotate('x', 1)}> + X </button>
-                        </div>
-                        <div className="rotate_y">
-                            <button type="button" onClick={() => this.handleRotate('y', -1)}> - Y </button>
-                            <button type="button" onClick={() => this.handleRotate('y', 1)}> + Y </button>
-                        </div>
-                        <div className="rotate_z">
-                            <button type="button" onClick={() => this.handleRotate('z', -1)}> - Z </button>
-                            <button type="button" onClick={() => this.handleRotate('z', 1)}> + Z </button>
-                        </div>
-                    </div>
-                    <div className="pan">
-                        Pan Object
-                        <div className="pan_x">
-                            <button type="button" onClick={() => this.handlePan('x', -1)}> - X </button>
-                            <button type="button" onClick={() => this.handlePan('x', 1)}> + X </button>
-                        </div>
-                        <div className="pan_y">
-                            <button type="button" onClick={() => this.handlePan('y', -1)}> - Y </button>
-                            <button type="button" onClick={() => this.handlePan('y', 1)}> + Y </button>
-                        </div>
-                        <div className="pan_z">
-                            <button type="button" onClick={() => this.handlePan('z', -1)}> - Z </button>
-                            <button type="button" onClick={() => this.handlePan('z', 1)}> + Z </button>
-                        </div>
-
-                    </div>
-                    
-
                 </div>
 
             </div>

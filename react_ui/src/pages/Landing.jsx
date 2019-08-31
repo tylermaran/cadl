@@ -16,17 +16,19 @@ import barbot from '../models/barbot.stl';
 // Importing Styles
 import './Landing.css'
 
+// const testing = {
+//     file: demo1,
+//     name: 'Demo',
+//     category: 'Example',
+//     config: {
+//         rotate: [0, 0, 0],
+//         mm: true,
+//         translate: [0, 0, 0],
+//         center: [0, 0]
+//     }
+// }
+
 const Landing = (props) => {
-
-    // const [spin, setSpin] = useState(false);
-    // // They all start spinning if left alone for 60 seconds
-    // window.addEventListener('mousemove', () => easter_egg());
-    // window.addEventListener('touchstart', () => easter_egg());
-    // window.addEventListener('keypress', () => easter_egg());
-
-    // const easter_egg = () => {
-	// 	setSpin(false);
-    // }
 
     return (
         <div className='landing'>

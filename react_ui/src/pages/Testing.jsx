@@ -1,31 +1,33 @@
 // Importing Dependencies
-import React, {useState} from 'react';
+import React from 'react';
 
 // Importing Components
-import SetObject from '../components/SetObject';
+import Editor from '../components/Editor';
 
 // Importing Models
-import demo from '../models/demo2.stl'
+import demo from '../models/demo.stl'
 
 // Importing Styles
 import './Testing.css';
 
-
 const Testing = (props) => {
-    const [MM, setMM] = useState(true);
-
-    const handleUnits = (boolean) => {
-        setMM(boolean)
+    
+    const testing = {
+        file: demo,
+        name: 'Demo',
+        category: 'Example',
+        config: {
+            rotate: [0, 0, 0],
+            mm: true,
+            translate: [0, 0, 0],
+            center: [0, 0]
+        }
     }
 
     return (
         <div className='testing'>
             <h2>Testing janky code</h2>
-            <button onClick={() => handleUnits(true)}>MM</button>
-            <button onClick={() => handleUnits(false)}>Inch</button>
-            
-            
-            <SetObject color='#eb344c'  title='nerf' category='3D Printing' mm={MM} file={demo} spin={false}/>
+            <Editor object={testing}/>
         </div>
     );
 

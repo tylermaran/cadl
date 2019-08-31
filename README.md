@@ -6,6 +6,7 @@ Designed and built to host a variety of CAD files at NoiseBridge Hackerspace, CA
 This is a monorepo structure using the 'concurrently' package to manage a Node API and React front end. 
 
 Downloading and running:
+
 `Clone the Repo`
 
 `Run 'npm i' to install dependencies`
@@ -22,10 +23,12 @@ Downloading and running:
 This is a node/express API connected to a MongoDB Database. 
 This API relies on the AWS SDK to connect to an S3 Bucket for file storage
 
-From top level:
+Running from top level:
+
 `npm run server`
 
 Dependencies
+
 `aws-sdk`
 
 `body-parser`
@@ -41,8 +44,12 @@ Dependencies
 # React UI
 React front end with extensive THREE.JS implementation for rendering and editing CAD files.
 
+Running from top level:
+
+`npm run client`
 
 Dependencies
+
 `react`
 
 `react-dom`
