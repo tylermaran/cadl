@@ -3,6 +3,14 @@
     color: black;
 }
 
+.object_container {
+    display: inline-block;
+    height: 250px;
+    width: 250px;
+    margin: 10px;
+}
+
+
 .sub_title {
     text-align: left;
     margin: 0 0 0 20px;

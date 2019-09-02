@@ -1,18 +1,18 @@
-.SetObject_container {
+/* .SetObject_container {
     display: inline-block;
     overflow: hidden;
     margin: 25px;
     min-height: 300px;
     height: auto;
 
-}
-
+} */
+/* 
 .SetObject_outer_div {
     overflow: hidden;
     height: 500px;
 	width: 500px;
     padding: 0;
-}
+} */
 
 .SetObject {
     height: 100%;
@@ -20,20 +20,11 @@
     margin: 0;
 }
 
+/* 
 .SetObject_element_name {
     float: left;
 }
 
 .SetObject_file_size {
     float: right;
-}
-
-.rotate {
-    display: inline-block;
-    width: 30%;
-}
-
-.pan {
-    display: inline-block;
-    width: 30%;
-}
+} */

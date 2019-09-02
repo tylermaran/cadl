@@ -5,19 +5,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 
 // Importing Styles
-import './SetObject.css';
+import './ObjectLoader.css';
 
-class SetObject extends Component {
-	constructor (props) {
-		super();
-		this.state = {
-			Loaded: 0,
-            Total: 0.01,
-            units: props.mm,
-
-        }
-        console.log(props.object);
-	}
+class ObjectLoader extends Component {
 
 	// Setup Component
 	componentDidMount() {
@@ -71,10 +61,12 @@ class SetObject extends Component {
 
 		// Orbit Controls
 		// https://threejs.org/docs/#examples/controls/OrbitControls
-		this.controls = new OrbitControls(this.camera, this.el);
-        this.controls.enablePan = false;
-        this.controls.enableZoom = true;
-        this.controls.enableRotate = false;
+        this.controls = new OrbitControls(this.camera, this.el);
+		// Configurable from props
+		console.log(this.props.control);
+        this.controls.enableZoom = this.props.control.zoom;
+        this.controls.enableRotate = this.props.control.rotate;
+        this.controls.enablePan = this.props.control.pan;
 		this.controls.maxDistance = 40;
 		this.controls.minDistance = 2;
 		
@@ -203,9 +195,8 @@ class SetObject extends Component {
 
 	// Play each Keyframe
 	startAnimationLoop = () => {
-		
-		this.renderer.render(this.scene, this.camera);
-
+        this.renderer.render(this.scene, this.camera);
+        
 		// Run the animation at screen refrash rate (will cancel if tab is not active)
 		this.requestID = window.requestAnimationFrame(this.startAnimationLoop);
 	};
@@ -225,19 +216,19 @@ class SetObject extends Component {
 
 	render() {
 		return (
-            <div>
-                <div className='SetObject_container'>
-                    <div className='SetObject_outer_div'>
+            <>
+                {/* <div className='SetObject_container'> */}
+                    {/* <div className='SetObject_outer_div'> */}
                         <div className='SetObject' ref={ref => (this.el = ref)} />
-                    </div>
+                    {/* </div> */}
 
-                    <div className='SetObject_element_name'>{this.props.object.name} in {this.props.object.category}</div>
+                    {/* <div className='SetObject_element_name'>{this.props.object.name} in {this.props.object.category}</div>
                     <div className="SetObject_file_size">Loading {(this.state.Loaded / this.state.Total).toFixed(2)*100}%</div>
-                </div>
+                </div> */}
 
-            </div>
+            </>
 		);
 	}
 }
 
-export default SetObject;
+export default ObjectLoader;

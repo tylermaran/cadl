@@ -11,9 +11,6 @@ const Header = (props) => {
 
     return (
         <div className='header'>
-            <div className="navbar">
-                Navbar
-            </div>
             
             <h1 className="sub_header">
                 NoiseBridge CAD Library
@@ -28,7 +25,7 @@ const Header = (props) => {
                         FREE TO DOWNLOAD
                     </h3>
                     <p>
-                        We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.
+                        Check out all the awesome projects that are shared with the NoiseBridge community. Feel free to download, customize, and improve on anything here.  
                     </p>
                 </div>
 
@@ -37,7 +34,7 @@ const Header = (props) => {
                         SHARE-YOUR-CREATION
                     </h3>
                     <p>
-                        We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.
+                        Want to contribute your own designs? Create a project here!
                     </p>
                 </div>
                 <div className="home_message">
@@ -45,7 +42,7 @@ const Header = (props) => {
                         LEARN-TO-DESIGN
                     </h3>
                     <p>
-                        We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.
+                        3D Printers, Laser Cutters, CNC and more! Follow guides here. Check out community suggestions. Or check out some of the introductory material here!
                     </p>
                 </div>
 

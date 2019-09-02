@@ -5,16 +5,13 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Editor from '../components/Editor';
 
-// Importing Models
-import demo from '../models/demo.stl'
-
 // Importing Styles
-import './Testing.css';
+import './Upload.css';
 
-const Testing = (props) => {
+const Upload = (props) => {
     
     const testing = {
-        file: demo,
+        file: 'https://cadltesting.s3.us-east-2.amazonaws.com/3DBenchy.stl',
         name: 'Demo',
         category: 'Example',
         config: {
@@ -24,15 +21,16 @@ const Testing = (props) => {
             center: [0, 0]
         }
     }
-
+  
+    
     return (
-        <div className='testing'>
+        <div className='upload'>
             <NavBar/>
-            <h2>Testing janky code</h2>
+            <h2>Upload below</h2>
             <Editor object={testing}/>
         </div>
     );
 
 }
 
-export default Testing;
+export default Upload;

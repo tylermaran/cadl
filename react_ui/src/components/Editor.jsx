@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Importing Components
-import SetObject from '../components/SetObject';
+import ObjectLoader from './ObjectLoader';
 
 // Importing Styles
 import './Editor.css';
@@ -16,7 +16,15 @@ class Editor extends Component {
         }
     }
 
+    
     render = () => {
+        // Disable pan and rotate for editor
+        const control = {
+            zoom: true,
+            rotate: false,
+            pan: false
+        }
+
         let temp;
         
         // Switch between MM and Inch
@@ -72,42 +80,49 @@ class Editor extends Component {
             <div className='Editor'>
 
                 {/* Object Loader */}
-                <SetObject object = { this.state.object }/>
+                <div className="editor_container">
+                    <ObjectLoader object = { this.state.object } control= { control }/>
+                </div>
             
                 {/* Control Panel */}
                 <div className="control_board">
+                    <hr/>
                     <div className="units">
-                        <button onClick={() => handleUnits(true)}>MM</button>
-                        <button onClick={() => handleUnits(false)}>Inch</button>
+                        <div className="unit_text">Set Scale</div>
+                        <div className="unit_button">
+                            <button className="edit_button" onClick={() => handleUnits(true)}>MM</button>
+                            <button className="edit_button" onClick={() => handleUnits(false)}>Inch</button>
+                        </div>
                     </div>
+                    <hr/>
                     <div className="rotate">
                         Rotate Object
                         <div className="rotate_x">
-                            <button type="button" onClick={() => handleRotate('x', -1)}> - X </button>
-                            <button type="button" onClick={() => handleRotate('x', 1)}> + X </button>
+                            <button type="button" className="edit_button" onClick={() => handleRotate('x', -1)}> - X </button>
+                            <button type="button" className="edit_button" onClick={() => handleRotate('x', 1)}> + X </button>
                         </div>
                         <div className="rotate_y">
-                            <button type="button" onClick={() => handleRotate('y', -1)}> - Y </button>
-                            <button type="button" onClick={() => handleRotate('y', 1)}> + Y </button>
+                            <button type="button" className="edit_button" onClick={() => handleRotate('y', -1)}> - Y </button>
+                            <button type="button" className="edit_button" onClick={() => handleRotate('y', 1)}> + Y </button>
                         </div>
                         <div className="rotate_z">
-                            <button type="button" onClick={() => handleRotate('z', -1)}> - Z </button>
-                            <button type="button" onClick={() => handleRotate('z', 1)}> + Z </button>
+                            <button type="button" className="edit_button" onClick={() => handleRotate('z', -1)}> - Z </button>
+                            <button type="button" className="edit_button" onClick={() => handleRotate('z', 1)}> + Z </button>
                         </div>
                     </div>
                     <div className="pan">
                         Pan Object
                         <div className="pan_x">
-                            <button type="button" onClick={() => handlePan('x', -1)}> - X </button>
-                            <button type="button" onClick={() => handlePan('x', 1)}> + X </button>
+                            <button type="button" className="edit_button" onClick={() => handlePan('x', -1)}> - X </button>
+                            <button type="button" className="edit_button" onClick={() => handlePan('x', 1)}> + X </button>
                         </div>
                         <div className="pan_y">
-                            <button type="button" onClick={() => handlePan('y', -1)}> - Y </button>
-                            <button type="button" onClick={() => handlePan('y', 1)}> + Y </button>
+                            <button type="button" className="edit_button" onClick={() => handlePan('y', -1)}> - Y </button>
+                            <button type="button" className="edit_button" onClick={() => handlePan('y', 1)}> + Y </button>
                         </div>
                         <div className="pan_z">
-                            <button type="button" onClick={() => handlePan('z', -1)}> - Z </button>
-                            <button type="button" onClick={() => handlePan('z', 1)}> + Z </button>
+                            <button type="button" className="edit_button" onClick={() => handlePan('z', -1)}> - Z </button>
+                            <button type="button" className="edit_button" onClick={() => handlePan('z', 1)}> + Z </button>
                         </div>
                     </div>
                 </div>

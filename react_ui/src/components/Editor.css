@@ -1,4 +1,4 @@
-button {
+.edit_button {
     width: 80px;
     height: 50px;
     font-size: 16px;
@@ -8,7 +8,63 @@ button {
     margin: 3px;
 }
 
-button:active {
+.edit_button:active {
     background-color: rgb(32, 32, 129);
 
+}
+
+
+.rotate {
+    display: inline-block;
+    width: 30%;
+}
+
+.pan {
+    display: inline-block;
+    width: 30%;
+}
+
+
+@media only screen and (max-width: 600px) {
+        
+    .editor_container {
+        display: inline-block;
+        height: 300px;
+        width: 100%;
+        margin: 0px;
+    }
+
+
+    .rotate {
+        display: inline-block;
+        width: 50%;
+    }
+    
+    .pan {
+        display: inline-block;
+        width: 50%;
+    }
+
+    .unit_text {
+        display: inline-block;
+        width: 50%;
+    }
+    .unit_button {
+        display: inline-block;
+        width: 50%;
+    }
+
+
+} 
+
+
+@media only screen and (min-width: 601px) {
+        
+    .editor_container {
+        display: inline-block;
+        height: 250px;
+        width: 250px;
+        margin: 10px;
+    }
+    
 }
