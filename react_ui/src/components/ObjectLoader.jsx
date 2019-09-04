@@ -115,17 +115,6 @@ class ObjectLoader extends Component {
 		}
 	} 
 
-	loadGcode = () => {
-		this.state.loader.load( this.props.object.file, (geometry) =>{
-			geometry.position.set( 0, 0, 0 );
-			this.scene.add( geometry );
-
-			this.setState({
-                complete: true
-            });
-		} );
-	}
-
 	// Render file using loaded
     loadSTL = () => {
 		// Set STL File Loader
@@ -134,12 +123,12 @@ class ObjectLoader extends Component {
 
 		// Load the STL file and pass on the geometry
         this.state.loader.load(this.props.object.file, ( geometry ) => {
+			console.log(geometry);
 			let finished = performance.now();
 
 			const calcElementSize = async () => {
 				await geometry.computeBoundingSphere();
 				console.log(geometry.boundingSphere.radius);
-
 			}
 			calcElementSize();
 
@@ -154,8 +143,6 @@ class ObjectLoader extends Component {
 
             this.mesh = new THREE.Mesh(geometry, material);
 			this.mesh.position.set( 0, 0, 0);
-			// this.mesh.rotateZ(THREE.Math.degToRad(90));
-
 			
 			// If MM, scale to inches. Grid will be in inches.
 			if (this.props.object.config.mm) {
@@ -176,10 +163,8 @@ class ObjectLoader extends Component {
 			this.axesHelper = new THREE.AxesHelper( 5 );
 			this.mesh.add(this.axesHelper);
 
-
 			// Add mesh to scene
 			this.scene.add(this.mesh);
-			
 
 			// Add Lighting
 			const lights = [];

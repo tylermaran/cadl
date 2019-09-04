@@ -3,22 +3,35 @@
     color: black;
 }
 
+.content {
+    border: 1px solid rgb(180, 180, 180);
+    background-color: white;
+}
+
 .object_container {
     display: inline-block;
-    height: 250px;
-    width: 250px;
+    height: auto;
+    width: auto;
     margin: 10px;
 }
 
 .sub_title {
     text-align: left;
-    margin: 0 0 0 20px;
+    font-size: 18px;
+    margin: 10px 0 5px 10px;
+}
+
+.landing_link {
+    text-align: right;
+    margin: -10px 15px 10px 0px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 600px) {
     .content {
-        width: 90%;
-        margin: 0 0 100px 5%;
+        width: 95%;
+        margin: 20px 0 50px 2.5%;
+
     }
     
 } 
@@ -27,8 +40,9 @@
 @media only screen and (min-width: 900px) {
     
     .content {
-        width: 80%;
-        margin: 0 0 100px 10%;
+        width: 95%;
+        margin: 20px 0 50px 2.5%;
+        padding: 20px 0 20px 0;
     }
 
 }

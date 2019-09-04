@@ -1,0 +1,15 @@
+.display_tile {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.display_object_holder {
+    height: 250px;
+    width: 300px;
+}
+
+.display_content {
+    height: 40px;
+}

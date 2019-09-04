@@ -4,8 +4,20 @@
     margin: 0 0 0 5%;
 }
 
+.home_content_box {
+    margin: 0;
+    background-color: white;
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+
 
 @media only screen and (max-width: 799px) {
+    .home_content_box {
+        width: 100%;
+        margin: 0;
+        padding: 5px 0 20px 10px;
+    }
+
     .home_message_title {
         text-align: left;
         font-size: 20px;
@@ -23,13 +35,22 @@
 
 
 @media only screen and (min-width: 800px) {
-    
+    .home_content_box {
+        width: 100%;
+        margin: 0;
+        padding: 20px 0 20px 0;
+    }
+
+    .home_message_title {
+        font-size: 20px;
+    }
+
     .home_message {
         display: inline-block;
         vertical-align: top;
         width: 25%;
         height: 180px;
-        margin: 20px 2.5% 10px 2.5%;
+        margin: 0 2.5% 10px 2.5%;
     }
 
     .header {

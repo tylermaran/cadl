@@ -3,6 +3,10 @@ html {
   touch-action: manipulation;
 }
 
+body {
+  background-color: rgb(230, 230, 230);
+}
+
 .App {
   text-align: center;
 }
