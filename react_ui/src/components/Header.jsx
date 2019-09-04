@@ -24,7 +24,7 @@ const Header = (props) => {
                     <h3 className='home_message_title'>
                         FREE TO DOWNLOAD
                     </h3>
-                    <p>
+                    <p className='home_message_body'>
                         Check out all the awesome projects that are shared with the NoiseBridge community. Feel free to download, customize, and improve on anything here.  
                     </p>
                 </div>
@@ -33,7 +33,7 @@ const Header = (props) => {
                     <h3 className='home_message_title'>
                         SHARE-YOUR-CREATION
                     </h3>
-                    <p>
+                    <p className='home_message_body'>
                         Want to contribute your own designs? Create a project here!
                     </p>
                 </div>
@@ -41,7 +41,7 @@ const Header = (props) => {
                     <h3 className='home_message_title'> 
                         LEARN-TO-DESIGN
                     </h3>
-                    <p>
+                    <p className='home_message_body'>
                         3D Printers, Laser Cutters, CNC and more! Follow guides here. Check out community suggestions. Or check out some of the introductory material here!
                     </p>
                 </div>

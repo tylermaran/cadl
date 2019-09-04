@@ -12,6 +12,7 @@ const Upload = (props) => {
     
     const testing = {
         file: 'https://cadltesting.s3.us-east-2.amazonaws.com/3DBenchy.stl',
+        ext: 'stl',
         name: 'Demo',
         category: 'Example',
         config: {
@@ -19,14 +20,14 @@ const Upload = (props) => {
             mm: true,
             translate: [0, 0, 0],
             center: [0, 0]
-        }
+        },
+        color: 0x5eeb34
     }
   
     
     return (
         <div className='upload'>
             <NavBar/>
-            <h2>Upload below</h2>
             <Editor object={testing}/>
         </div>
     );

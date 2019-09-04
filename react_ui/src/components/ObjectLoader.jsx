@@ -3,19 +3,29 @@ import React, { Component } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
+import { GCodeLoader } from 'three/examples/jsm/loaders/GCodeLoader';
 
 // Importing Styles
 import './ObjectLoader.css';
 
 class ObjectLoader extends Component {
+	constructor(){
+		super();
+		this.state =({
+			Loaded: 1,
+			Total: 100,
+			size: 0,
+			complete: false,
+			loader: null
+		})
+	}
 
 	// Setup Component
 	componentDidMount() {
 		this.sceneSetup();
-        this.addSTLFile();
+        this.loaderSelect();
 		this.startAnimationLoop();
         window.addEventListener("resize", this.handleWindowResize);
-        // window.addEventListener('click', this.handleUpdate);
     }
     
 	// Clean Unmount
@@ -78,16 +88,52 @@ class ObjectLoader extends Component {
 		
 		// Append renderer to dom using React Ref
 		this.el.appendChild(this.renderer.domElement);
-    };
+	};
 	
-	// Load STL File
-    addSTLFile = () => {
+	// switch based on file type
+	loaderSelect = () => {
+		let temp_loader;
+		switch(this.props.object.ext) {
+			case 'stl':
+				temp_loader = new STLLoader();
+				this.setState({
+					loader: temp_loader
+				}, () => {
+					this.loadSTL();
+				});
+				break;
+			case 'gcode': 
+				temp_loader = new GCodeLoader();
+				this.setState({
+					loader: temp_loader
+				}, () => {
+					this.loadGcode();
+				});
+				break;
+			default:
+				break;
+		}
+	} 
+
+	loadGcode = () => {
+		this.state.loader.load( this.props.object.file, (geometry) =>{
+			geometry.position.set( 0, 0, 0 );
+			this.scene.add( geometry );
+
+			this.setState({
+                complete: true
+            });
+		} );
+	}
+
+	// Render file using loaded
+    loadSTL = () => {
 		// Set STL File Loader
-        let loader = new STLLoader();
+        // let loader = new STLLoader();
 		let start = performance.now()
 
 		// Load the STL file and pass on the geometry
-        loader.load(this.props.object.file, ( geometry ) => {
+        this.state.loader.load(this.props.object.file, ( geometry ) => {
 			let finished = performance.now();
 
 			const calcElementSize = async () => {
@@ -98,7 +144,7 @@ class ObjectLoader extends Component {
 			calcElementSize();
 
 			// Add basic color and shine to material
-            let material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
+			let material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
 
 			// If Material has it's own properties, apply those
             if ( geometry.hasColors ) {
@@ -158,6 +204,7 @@ class ObjectLoader extends Component {
 		}, 
 		// Loading Progress
         (progress) => {
+			console.log(progress);
 			this.setState({
 				Loaded: progress.loaded,
 				Total: progress.total
@@ -186,12 +233,14 @@ class ObjectLoader extends Component {
         // Set Rotate
         this.mesh.rotation.x = (THREE.Math.degToRad(this.props.object.config.rotate[0]));
         this.mesh.rotation.y = (THREE.Math.degToRad(this.props.object.config.rotate[1]));
-        this.mesh.rotation.z = (THREE.Math.degToRad(this.props.object.config.rotate[2]));
+		this.mesh.rotation.z = (THREE.Math.degToRad(this.props.object.config.rotate[2]));
+		
+		// Take in Mesh Color
+		this.mesh.material.color.setHex(this.props.object.color);
         
         // Update the mesh Matrix
         this.mesh.updateMatrix();
     }
-
 
 	// Play each Keyframe
 	startAnimationLoop = () => {
@@ -215,17 +264,19 @@ class ObjectLoader extends Component {
 	};
 
 	render() {
+		let loaded;
+		if (this.state.complete) {
+			loaded = ( (this.state.Total / 1000000).toFixed(1) + 'mb');
+			
+		} else {
+			loaded = ((this.state.Loaded / this.state.Total).toFixed(2)*100 + '%')
+		}
+
 		return (
             <>
-                {/* <div className='SetObject_container'> */}
-                    {/* <div className='SetObject_outer_div'> */}
-                        <div className='SetObject' ref={ref => (this.el = ref)} />
-                    {/* </div> */}
-
-                    {/* <div className='SetObject_element_name'>{this.props.object.name} in {this.props.object.category}</div>
-                    <div className="SetObject_file_size">Loading {(this.state.Loaded / this.state.Total).toFixed(2)*100}%</div>
-                </div> */}
-
+				<div className='SetObject' ref={ref => (this.el = ref)}>
+					<div className="SetObject_loader">{loaded}</div>
+				</div>
             </>
 		);
 	}

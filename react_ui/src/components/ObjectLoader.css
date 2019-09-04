@@ -1,30 +1,15 @@
-/* .SetObject_container {
-    display: inline-block;
-    overflow: hidden;
-    margin: 25px;
-    min-height: 300px;
-    height: auto;
-
-} */
-/* 
-.SetObject_outer_div {
-    overflow: hidden;
-    height: 500px;
-	width: 500px;
-    padding: 0;
-} */
-
 .SetObject {
+    position: relative;
     height: 100%;
     width: 100%;
     margin: 0;
 }
 
-/* 
-.SetObject_element_name {
-    float: left;
+.SetObject_loader {
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
 }
-
-.SetObject_file_size {
-    float: right;
-} */

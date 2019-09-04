@@ -6,6 +6,7 @@
     color: white;
     border: none;
     margin: 3px;
+    user-select: none;
 }
 
 .edit_button:active {
