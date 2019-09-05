@@ -1,4 +1,9 @@
 
+.main_title {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
 .horizontal_line {
     width: 90%;
     margin: 0 0 0 5%;
@@ -8,6 +13,11 @@
     margin: 0;
     background-color: white;
     border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+.home_message_title {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 
@@ -33,7 +43,6 @@
 
 } 
 
-
 @media only screen and (min-width: 800px) {
     .home_content_box {
         width: 100%;
@@ -42,14 +51,14 @@
     }
 
     .home_message_title {
-        font-size: 20px;
+        font-size: 23px;
     }
 
     .home_message {
         display: inline-block;
         vertical-align: top;
         width: 25%;
-        height: 180px;
+        height: auto;
         margin: 0 2.5% 10px 2.5%;
     }
 

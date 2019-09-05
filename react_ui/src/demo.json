@@ -1,0 +1,39 @@
+[{
+    "file": "https://cadltesting.s3.us-east-2.amazonaws.com/3DBenchy.stl",
+    "ext": "stl",
+    "name": "Boaty",
+    "category": "3D Printing",
+    "config": {
+        "rotate": [0, 0, 0],
+        "mm": true,
+        "translate": [0, 0, 0],
+        "center": [0, 0]
+    },
+    "object_color": "0x5eeb34"
+},
+{
+    "file": "https://cadltesting.s3.us-east-2.amazonaws.com/barbot.stl",
+    "ext": "stl",
+    "name": "Barbot",
+    "category": "CNC",
+    "config": {
+        "rotate": [0, 0, 0],
+        "mm": true,
+        "translate": [0, 0, 0],
+        "center": [0, 0]
+    },
+    "object_color": "0x5eeb34"
+},
+{
+    "file": "https://cadltesting.s3.us-east-2.amazonaws.com/demo2.stl",
+    "ext": "stl",
+    "name": "Hand",
+    "category": "3D Printing",
+    "config": {
+        "rotate": [0, 0, 0],
+        "mm": true,
+        "translate": [0, 0, 0],
+        "center": [0, 0]
+    },
+    "object_color": "0x111111"
+}]

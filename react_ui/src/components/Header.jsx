@@ -12,7 +12,7 @@ const Header = (props) => {
     return (
         <div className='header'>
             
-            <h1 className="sub_header">
+            <h1 className="main_title">
                 NoiseBridge CAD Library
             </h1>
             
@@ -22,7 +22,7 @@ const Header = (props) => {
             <div className="home_content_box">
                 <div className="home_message">
                     <h3 className='home_message_title'>
-                        FREE TO DOWNLOAD
+                        FREE-TO-DOWNLOAD
                     </h3>
                     <p className='home_message_body'>
                         Check out all the awesome projects that are shared with the NoiseBridge community. Feel free to download, customize, and improve on anything here.  
