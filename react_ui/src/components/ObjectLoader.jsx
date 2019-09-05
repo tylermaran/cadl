@@ -126,14 +126,17 @@ class ObjectLoader extends Component {
 			// console.log(geometry);
 			let finished = performance.now();
 
+			// 
 			const calcElementSize = async () => {
 				await geometry.computeBoundingSphere();
+				await geometry.computeFaceNormals();
+				await geometry.computeVertexNormals();
 				// console.log(geometry.boundingSphere.radius);
 			}
 			calcElementSize();
-
+			console.log('color', this.props.object.object_color);
 			// Add basic color and shine to material
-			let material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
+			let material = new THREE.MeshPhongMaterial( { color: this.props.object.object_color, specular: 0x111111, shininess: 200 } );
 
 			// If Material has it's own properties, apply those
             if ( geometry.hasColors ) {

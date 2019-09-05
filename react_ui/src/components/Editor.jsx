@@ -105,7 +105,7 @@ class Editor extends Component {
 
         const handleColor = (color) => {
             temp = this.state.object;
-            temp.color = color;
+            temp.object_color = color;
 
             this.setState({
                 object: temp

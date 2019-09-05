@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 
 // Importing Components
 import NavBar from '../components/NavBar';
-import ObjectLoader from '../components/ObjectLoader';
+// import ObjectLoader from '../components/ObjectLoader';
+import Editor from '../components/Editor';
 
 // Importing Styles
 import './Testing.css';
@@ -28,13 +29,13 @@ class Testing extends Component {
             translate: [0, 0, 0],
             center: [0, 0]
         },
-        color: 0x5eeb34
+        object_color: '0x5eeb34'
     }
 
     control = {
         zoom: true,
-        rotate: false,
-        pan: false
+        rotate: true,
+        pan: true
     }
 
     handleInput = (e) => {
@@ -47,7 +48,7 @@ class Testing extends Component {
                 }, () => {
                     this.testing.file = this.state.source;
                     this.setState({
-                        loader: (<ObjectLoader object = { this.testing } control= { this.control }/>)
+                        loader: (<Editor object = { this.testing } control= { this.control }/>)
                     });
                 });
             }
