@@ -92,7 +92,7 @@ const Landing = (props) => {
             <div className="content">
                 <div className="about">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti provident doloremque architecto voluptatibus ratione ea reiciendis suscipit harum consequuntur, quasi dolore laudantium, necessitatibus soluta eum? Debitis dolorem rem repellendus excepturi!</p>
-                    <p>Check it out on gitub I guess</p>
+                    <p><a href="https://github.com/tylermaran/cadl" target='blank'>Check it out on gitub I guess</a></p>
                 </div>
             </div>
 

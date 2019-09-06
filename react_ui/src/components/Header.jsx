@@ -11,11 +11,7 @@ const Header = (props) => {
 
     return (
         <div className='header'>
-            
-            <h1 className="main_title">
-                NoiseBridge CAD Library
-            </h1>
-            
+                       
             <Jumbotron/>
             
 

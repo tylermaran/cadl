@@ -23,6 +23,7 @@ class Testing extends Component {
         ext: 'stl',
         name: 'Demo',
         category: 'Example',
+        file_size: 0,
         config: {
             rotate: [0, 0, 0],
             mm: true,
@@ -39,25 +40,35 @@ class Testing extends Component {
     }
 
     handleInput = (e) => {
+        if (e.target.files.length > 1) {
+            // TODO - add multiplle file input
+            alert("Hold up, we're not doing multiple files yet");
+            return;
+        }
+        // TODO - figure out why this FileReader thing works
         let reader = new FileReader();
-            reader.onload = (result) => {
-                console.log(result);
+        
+        reader.onload = (result) => {
+            console.log(result);
 
+            this.testing.file_size = result.total;
+            console.log(this.testing.file_size);
+
+            this.setState({
+                source: result.target.result
+            }, () => {
+                this.testing.file = this.state.source;
                 this.setState({
-                    source: result.target.result
-                }, () => {
-                    this.testing.file = this.state.source;
-                    this.setState({
-                        loader: (<Editor object = { this.testing } control= { this.control }/>)
-                    });
+                    loader: (<Editor object = { this.testing } control= { this.control }/>)
                 });
-            }
-        reader.readAsDataURL(e.target.files[0]);
+            });
+        }
 
+        // Read as data url apparently works
+        reader.readAsDataURL(e.target.files[0]);
     }
 
-    render() {
-
+    render() {  
         return (
             <div className='testing'>
                 <NavBar/>
@@ -66,6 +77,9 @@ class Testing extends Component {
 
                 <div className="testing_object">
                     {this.state.loader}
+                </div>
+                <div className="confirm_upload">
+                    <button type="button">Confirm Upload</button>
                 </div>
             </div>
         );

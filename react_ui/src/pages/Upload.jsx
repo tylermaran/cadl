@@ -11,7 +11,7 @@ import './Upload.css';
 const Upload = (props) => {
     
     const testing = {
-        file: 'https://cadltesting.s3.us-east-2.amazonaws.com/3DBenchy.stl',
+        file: 'https://cadltesting.s3.us-east-2.amazonaws.com/demo2.stl',
         ext: 'stl',
         name: 'Demo',
         category: 'Example',
@@ -21,7 +21,7 @@ const Upload = (props) => {
             translate: [0, 0, 0],
             center: [0, 0]
         },
-        color: 0x5eeb34
+        object_color: 0x5eeb34
     }
   
     

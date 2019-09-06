@@ -1,0 +1,53 @@
+.create_content {
+    width: 70%;
+    min-width: 600px;
+    height: auto;
+    min-height: 80vh;
+    background-color: white;
+    margin: 20px 0 0 15%;
+    border: 1px solid rgb(180, 180, 180);
+}
+
+.create_title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.create_button {
+    width: 200px;
+    font-size: 22px; 
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+/* Left Div */
+.create_form {
+    width: 45%;
+    height: 100%;
+    margin: 20px 1.5% 0 0;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+
+/* Right Div */
+.upload_files {
+    width: 45%;
+    height: 100%;
+    margin: 20px 0 0 1.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.file_output {
+    height: auto;
+    min-height: 40px;
+    text-align: center;
+    padding: 2% 0 0 0;
+    width: 90%;
+    margin: 10px 0 5px 5%;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+}

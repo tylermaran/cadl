@@ -10,3 +10,9 @@ body {
 .App {
   text-align: center;
 }
+
+h1 {
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}

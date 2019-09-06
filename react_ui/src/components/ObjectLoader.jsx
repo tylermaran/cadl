@@ -22,6 +22,10 @@ class ObjectLoader extends Component {
 
 	// Setup Component
 	componentDidMount() {
+		console.log(this.props.object.file_size);
+		this.setState({
+			size: this.props.object.file_size
+		});
 		this.sceneSetup();
         this.loaderSelect();
 		this.startAnimationLoop();
@@ -188,14 +192,16 @@ class ObjectLoader extends Component {
             // Loading complete. Set ComponentDidUpdate to listen for prop changes
             this.setState({
                 complete: true
-            });
+            }, () => {
+				console.log('Complete = true');
+			});
 		}, 
 		// Loading Progress
         (progress) => {
 			// console.log(progress);
 			this.setState({
 				Loaded: progress.loaded,
-				Total: progress.total
+				size: progress.total
 			});
 		},
 		// Catch Errors
@@ -254,7 +260,7 @@ class ObjectLoader extends Component {
 	render() {
 		let loaded;
 		if (this.state.complete) {
-			loaded = ( (this.state.Total / 1000000).toFixed(1) + 'mb');
+			loaded = ( (this.state.size / 1000000).toFixed(1) + 'mb');
 			
 		} else {
 			loaded = ((this.state.Loaded / this.state.Total).toFixed(2)*100 + '%')

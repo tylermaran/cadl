@@ -7,7 +7,9 @@ import './Jumbotron.css'
 const Jumbotron = (props) => {
 
     return (
-        <div className='jumbotron'></div>
+        <div className='jumbotron'>
+            <h1 className="main_title">NoiseBridge CAD Library</h1>
+        </div>
     );
 
 }

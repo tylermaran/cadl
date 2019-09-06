@@ -1,3 +1,7 @@
 .testing_object {
-    height: 500px;
+    height: 100%;
+}
+
+.confirm_upload {
+    margin: 20px 0 0 0;
 }

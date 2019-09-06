@@ -11,6 +11,7 @@ import NoMatch from './pages/NoMatch';
 
 // Importing Styling
 import './App.css';
+import Create from './pages/Create';
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path='/' component = { Landing } />
+					<Route exact path='/create' component = { Create } />
 					<Route exact path='/upload' component = { Upload } />
 					<Route exact path='/testing' component = { Testing } />
 					<Route component = {NoMatch} />

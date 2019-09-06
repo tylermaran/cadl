@@ -16,7 +16,7 @@ const DisplayTile = (props) => {
                 <ObjectLoader object = { props.object } control= { props.control }/>
             </div>
             <div className="display_content">
-                TItle and other stuff
+                <b>{props.object.name}</b> in <b>{props.object.category}</b>
             </div>
         </div>
     );

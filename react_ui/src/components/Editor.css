@@ -14,7 +14,6 @@
 
 }
 
-
 .rotate {
     display: inline-block;
     width: 30%;
@@ -25,6 +24,18 @@
     width: 30%;
 }
 
+.control_board {
+    background-color: white;
+    min-height: 300px;
+}
+
+
+@media only screen and (max-width: 599px) {
+    .edit_button {
+        width: 60px;
+        height: 40px;
+    }
+}
 
 @media only screen and (max-width: 600px) {
         
@@ -34,7 +45,6 @@
         width: 100%;
         margin: 0px;
     }
-
 
     .rotate {
         display: inline-block;
@@ -63,9 +73,14 @@
         
     .editor_container {
         display: inline-block;
-        height: 250px;
-        width: 250px;
+        height: 350px;
+        width: 60%;
         margin: 10px;
+    }
+
+    .control_board {
+        width: 60%;
+        margin: 0 0 0 20%;
     }
     
 }

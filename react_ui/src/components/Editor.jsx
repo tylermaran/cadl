@@ -149,8 +149,8 @@ class Editor extends Component {
                                     {button('y', 1, 'Y')}
                                 </div>
                                 <div className="rotate_z">
-                                    {button('x', -1, '-Z')}
-                                    {button('x', 1, 'Z')}
+                                    {button('z', -1, '-Z')}
+                                    {button('z', 1, 'Z')}
                                 </div>
                             </div>
 
