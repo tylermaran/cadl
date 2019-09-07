@@ -1,70 +1,109 @@
 // Importing Dependencies
-import React, {useState} from 'react';
+import React, { Component } from 'react';
 
 // Importing Components
 import NavBar from '../components/NavBar';
 import CreateProject from '../components/CreateProject';
+import FileUpload from '../components/FileUpload';
+import Footer from '../components/Footer';
 
 // Importing Styling
 import './Create.css';
 
-const Create = () => {
+class Create extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            page: 'project', //project -> files -> confirm
+            files: '',
+            project: {
+                name: '',
+                desc: '',
+                category: ''
+            }
+        }
+    }
 
-    const [Files, setFiles] = useState('');
+    // Project details
+    handleSubmit = (e) => {
+        let temp = this.state.project;
+        e.preventDefault();
+        console.log(e.target.name.value);
+          
+        // Add project to state. 
+        temp.name = e.target.name.value; 
+        temp.desc = e.target.desc.value;
+        temp.category = e.target.category.value;
+        temp.author = e.target.author.value;
 
-    const handleUpload = (e) => {
-        console.log(e.target.files);
+        this.setState({
+            project: temp,
+            page: 'upload'
+        }, () => {
+            console.log(this.state);
+        })
+    }
 
+    // Add files to state
+    handleUpload = (e) => {
         let fileObj = e.target.files;
         let fileArray = [];
 
+        // File loader returns an object >.< make it into an array
         Object.keys(fileObj).forEach(key => {
-            console.log(fileObj[key]);
             fileArray.push(fileObj[key]);
+        });
+        console.log(fileArray);
+
+        this.setState({
+            files: fileArray.map(this.createFileDiv)
         })
-
-        setFiles(fileArray.map(createFileDiv));
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e.target.name.value);
-        console.log('heeeeey');
-    }
-
-    const createFileDiv = (file) => {
+    // Append files to page
+    createFileDiv = (file) => {
         return (
-            <div className="file_output">
+            <div className="file_output" key={file.name}>
                 {file.name}
             </div>
         )
     }
 
-    return(
-        <div>
-            <NavBar/>
-            <div className="create_content">
-
-                <CreateProject handleSubmit = {handleSubmit}/>
-
-                {/* Right Div - file upload */}
-                {/* <div className="upload_files">
-                    <div className="create_title">
-                        Upload Files
-                    </div>
-                    <div className="output">
-                        {Files}
-                    </div>
-
-                    <input type="file" multiple name="Upload" id="" onInput={(e) => handleUpload(e)}/>
+    render() {
+        const switch_view = () => {
+            switch (this.state.page) {
+                case 'project':
+                    // Project Details
+                    return( <CreateProject handleSubmit = {this.handleSubmit}/>)
                     
-                </div> */}
-               
-            </div>
-            
-        </div>
-    );
+                case 'upload':
+                    // File Upload
+                    return( <FileUpload handleUpload = {this.handleUpload} files = { this.state.files }/>)
+                
+                case 'confirm':
+                    // Confirm upload
+                    // return( <FileUpload handleUpload = {handleUpload} files = { this.state.files }/>)
+                    break;
+                default:
+                    return( <CreateProject handleSubmit = {this.handleSubmit}/>)
+            }
+        }
 
+        let current_view = switch_view();
+
+        return(
+            <div>
+                <NavBar/>
+                <div className="create_content">
+                    {/* Switch between project name / file upload / confirm */}
+                    {current_view}
+                   
+                </div>
+                <Footer/>
+            </div>
+        );
+    
+    }
 }
 
 export default Create;

@@ -19,23 +19,28 @@ const CreateProject = (props) => {
             <Form onSubmit={(e) => props.handleSubmit(e)}>
                 <Form.Group controlId="project_name">
                     <Form.Label>Project Name:</Form.Label>
-                    <Form.Control type="text" placeholder="name" name="name" />
+                    <Form.Control type="text" placeholder="Name" name="name" required />
                 </Form.Group>
 
                 <Form.Group controlId="project_desc">
-                    <Form.Label>Project Description:</Form.Label>
-                    <Form.Control as="textarea" placeholder="Brief Description" />
+                    <Form.Label>Brief Description:</Form.Label>
+                    <Form.Control as="textarea" placeholder="Brief Description" name="desc" required/>
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group controlId="cat_select">
                     <Form.Label>Project Category</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" name="category" required>
                         <option>Laser Cutter</option>
                         <option>3D Printing</option>
                         <option>Maslow CNC</option>
                         <option>Aluminum CNC</option>
                         <option>PCB Mill</option>
                     </Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId="project_name">
+                    <Form.Label>Name:</Form.Label>
+                    <Form.Control type="text" placeholder="Hacker123" name="author" required />
                 </Form.Group>
 
                 <Button variant="primary" type="submit" className="create_button">

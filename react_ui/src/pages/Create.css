@@ -1,24 +1,4 @@
 
-/* Right Div */
-.upload_files {
-    width: 45%;
-    height: 100%;
-    margin: 20px 0 0 1.5%;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.file_output {
-    height: auto;
-    min-height: 40px;
-    text-align: center;
-    padding: 2% 0 0 0;
-    width: 90%;
-    margin: 10px 0 5px 5%;
-    border-radius: 5px;
-    border: 1px solid rgb(180, 180, 180);
-}
-
 @media only screen and (max-width: 600px) {
     .create_content {
         width: 95%;
