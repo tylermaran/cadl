@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
 // Importing Components
-import ObjectLoader from './ObjectLoader';
+import ObjectLoader from './Loaders/ObjectLoader';
 
 // Importing Styles
 import './Editor.css';

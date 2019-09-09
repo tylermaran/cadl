@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "client": "cd react_ui && npm run start",
-    "server": "cd api && nodemon server.js",
+    "server": "cd server && nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {

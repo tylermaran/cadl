@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Importing Components
-import ObjectLoader from '../components/ObjectLoader';
+import ObjectLoader from '../components/Loaders/ObjectLoader';
 
 // Importing Styles
 import './DisplayTile.css';

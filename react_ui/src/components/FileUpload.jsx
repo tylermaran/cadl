@@ -20,7 +20,10 @@ const FileUpload = (props) => {
             </div>
 
             <input type="file" multiple name="Upload" id="" onInput={(e) => props.handleUpload(e)}/>
-      
+        
+            <div className="disclaimer">
+                Currently accepting STL files only. Want more file types?<a href="https://github.com/tylermaran/cadl/issues" target='new'> Let me know!</a>
+            </div>
         </div>
     );
 } 

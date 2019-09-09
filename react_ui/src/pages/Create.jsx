@@ -15,16 +15,19 @@ class Create extends Component {
     constructor(props){
         super(props);
         this.state = {
-            page: 'upload', //project -> files -> confirm
+            page: 'project', //project -> files -> confirm
             files: '',
             project: {
                 name: '',
                 desc: '',
                 category: ''
             },
-            show_modal: true
+            show_modal: false,
+            modal_file: 0
         }
     }
+
+    
 
     // Project details
     handleSubmit = (e) => {
@@ -45,6 +48,20 @@ class Create extends Component {
         })
     }
 
+    // File upload constructor
+    Design (name, file, ext, category) {
+        this.name = name; //string
+        this.file = file;
+        this.ext = ext; // string (toLowerCase)
+        this.category = category // string
+        this.config.mm = true; // boolean
+        this.config.rotate = [0, 0, 0]; // [x, y, z]
+        this.config.translate = [0, 0, 0]; // [x, y, z]
+        this.config.center = [0, 0]; // [x,y]
+        this.config.object_color = "0x4287f5";  // Hex code value
+        this.note = ""
+    }
+
     // Add files to state
     handleUpload = (e) => {
         let fileObj = e.target.files;
@@ -59,17 +76,21 @@ class Create extends Component {
         for (let i = 0; i < fileArray.length; i++) {
             // let ext = fileArray[i].name
             let ext = fileArray[i].name.split('.');
-            ext = (ext[ext.length - 1]).toUpperCase();
-            fileArray[i].ext = ext;
-        }
+            ext = (ext[ext.length - 1]).toLowerCase();
+            // fileArray[i].ext = ext;
 
+            // Create new file_array object
+            fileArray[i] = new this.Design(fileArray[i].name, 'file_path', ext, this.state.category);
+        }
         this.setState({
             files: fileArray.map(this.createFileDiv)
         })
     }
 
+    
     // Append files to page
     createFileDiv = (file) => {
+        console.log(file);
         return (
             <div className="file_output" key={file.name}>
                 <div className="file_detail">
@@ -113,10 +134,11 @@ class Create extends Component {
                     {current_view}
                     {this.state.show_modal? <EditModal/>:    'no'}
                 </div>
+                <button onClick={()=>this.handleClick2}>Click me {this.state.clicks}</button>
+
                 <Footer/>
             </div>
         );
-    
     }
 }
 
