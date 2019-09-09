@@ -138,9 +138,8 @@ class ObjectLoader extends Component {
 				// console.log(geometry.boundingSphere.radius);
 			}
 			calcElementSize();
-			console.log('color', this.props.object.object_color);
 			// Add basic color and shine to material
-			let material = new THREE.MeshPhongMaterial( { color: this.props.object.object_color, specular: 0x111111, shininess: 200 } );
+			let material = new THREE.MeshPhongMaterial( { color: 0x4287f5, specular: 0x111111, shininess: 200 } );
 
 			// If Material has it's own properties, apply those
             if ( geometry.hasColors ) {
@@ -230,7 +229,7 @@ class ObjectLoader extends Component {
 		this.mesh.rotation.z = (THREE.Math.degToRad(this.props.object.config.rotate[2]));
 		
 		// Take in Mesh Color
-		this.mesh.material.color.setHex(this.props.object.object_color);
+		this.mesh.material.color.setHex(this.props.object.config.object_color);
         
         // Update the mesh Matrix
         this.mesh.updateMatrix();

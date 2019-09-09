@@ -8,21 +8,69 @@
     text-align: left;
 }
 
-.file_output {
-    height: auto;
-    min-height: 40px;
-    text-align: center;
-    padding: 2% 0 0 0;
-    width: 90%;
-    margin: 10px 0 5px 5%;
-    border-radius: 5px;
-    border: 1px solid rgb(180, 180, 180);
-}
-
 .upload_title {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 22px;
     font-weight: bold;
     margin: 0 0 20px 0;
+}
+
+.file_output {
+    height: 50px;
+    width: 90%;
+    overflow: hidden;
+    padding: 0;
+    margin: 10px 0 5px 5%;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+}
+
+.file_detail {
+    float: left;
+    width: 70%;
+    height: 100%;
+    text-align: left;
+    margin: 0 0 0 0;
+}
+
+.file_name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    margin: 0 0 0 5%; 
+    white-space: nowrap;
+}
+
+.file_size {
+    font-style: italic;
+    font-size: 14px;
+    color: rgb(109, 109, 109);
+    margin: 0 0 0 5%;
+}
+
+.edit_file {
+    float: right;
+    width: 20%;
+    height: 50px;
+}
+
+.edit_file_button {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0 0 0;
+    background-color: rgb(53, 53, 255);
+
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.edit_file_button:hover {
+    background-color: rgb(77, 77, 255);
+}
+
+.edit_file_button:active {
+    background-color: rgb(151, 151, 255);
 }

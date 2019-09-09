@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 import CreateProject from '../components/CreateProject';
 import FileUpload from '../components/FileUpload';
+import EditModal from '../components/EditModal';
 import Footer from '../components/Footer';
 
 // Importing Styling
@@ -14,13 +15,14 @@ class Create extends Component {
     constructor(props){
         super(props);
         this.state = {
-            page: 'project', //project -> files -> confirm
+            page: 'upload', //project -> files -> confirm
             files: '',
             project: {
                 name: '',
                 desc: '',
                 category: ''
-            }
+            },
+            show_modal: true
         }
     }
 
@@ -28,8 +30,7 @@ class Create extends Component {
     handleSubmit = (e) => {
         let temp = this.state.project;
         e.preventDefault();
-        console.log(e.target.name.value);
-          
+
         // Add project to state. 
         temp.name = e.target.name.value; 
         temp.desc = e.target.desc.value;
@@ -55,6 +56,13 @@ class Create extends Component {
         });
         console.log(fileArray);
 
+        for (let i = 0; i < fileArray.length; i++) {
+            // let ext = fileArray[i].name
+            let ext = fileArray[i].name.split('.');
+            ext = (ext[ext.length - 1]).toUpperCase();
+            fileArray[i].ext = ext;
+        }
+
         this.setState({
             files: fileArray.map(this.createFileDiv)
         })
@@ -64,7 +72,13 @@ class Create extends Component {
     createFileDiv = (file) => {
         return (
             <div className="file_output" key={file.name}>
-                {file.name}
+                <div className="file_detail">
+                    <div className="file_name">{file.name}</div>
+                    <div className="file_size">{(file.size / 1000000).toFixed(2)}mb</div>
+                </div>
+                <div className="edit_file">
+                    <div className="edit_file_button">Edit</div>
+                </div>
             </div>
         )
     }
@@ -97,7 +111,7 @@ class Create extends Component {
                 <div className="create_content">
                     {/* Switch between project name / file upload / confirm */}
                     {current_view}
-                   
+                    {this.state.show_modal? <EditModal/>:    'no'}
                 </div>
                 <Footer/>
             </div>
