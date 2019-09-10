@@ -1,5 +1,6 @@
 const Design = require('../models/design');
 const mongoose = require('mongoose');
+const upload = require('../middleware/imageconfig');
 
 // G1: GET All
 exports.get_all_designs = (req, res, next) => {
@@ -19,6 +20,7 @@ exports.get_all_designs = (req, res, next) => {
 
 // P1: POST New Design
 exports.post_new_design = (req, res, next) => {
+    console.log(req.body);
     // Preventing Duplicate Clubs - search by name
     Design.findOne({
         name: req.body.name
@@ -30,13 +32,7 @@ exports.post_new_design = (req, res, next) => {
                 detail: 'Already design named: ' + result.name
             });
         } else {
-
-            // TODO: use slug for project name (don't bother for file name)
-            // let slug = req.body.name;
-            // slug = slug.replace(/ /g, '-');
-            // slug = slug.replace(/&/g, 'and');
-            // console.log(slug);
-
+            
             // Create new club object from body data
             const design = new Design({
                 _id: new mongoose.Types.ObjectId(),

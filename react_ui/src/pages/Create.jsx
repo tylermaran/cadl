@@ -27,7 +27,6 @@ class Create extends Component {
         }
     }
 
-    
 
     // Project details
     handleSubmit = (e) => {
@@ -143,4 +142,3 @@ class Create extends Component {
 }
 
 export default Create;
-
