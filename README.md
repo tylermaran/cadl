@@ -19,7 +19,7 @@ Downloading and running:
 
 ***
 
-# API
+# Server
 This is a node/express API connected to a MongoDB Database. 
 This API relies on the AWS SDK to connect to an S3 Bucket for file storage
 
@@ -59,3 +59,18 @@ Dependencies
 `react-scripts`
 
 `three`
+
+# API Documentation
+
+Routes: 
+GET all Projects:
+> /projects
+
+GET all Designs:
+> /designs
+
+GET Specific Project:
+> /project/project_name
+
+GET Specific Design:
+> /designs/design_name
