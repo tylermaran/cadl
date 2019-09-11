@@ -9,13 +9,13 @@ Downloading and running:
 
 `Clone the Repo`
 
-`Run 'npm i' to install dependencies`
+Run `npm i` from parent level to install dependencies
 
-`Run 'npm run client' to start the client in dev mode`
+Run `npm run client` to start the react front-end in dev mode (react dev server)
 
-`Run 'npm run server' to start the server in dev mode`
+Run `npm run server` to start the server in dev mode (nodemon)
 
-`Run 'npm start' to concurrently run the server and client`
+Run `npm run dev` to concurrently run the server and client
 
 ***
 
@@ -29,15 +29,16 @@ Running from top level:
 
 Dependencies
 
-`aws-sdk`
-
-`body-parser`
-
-`express`
-
-`node-fetch`
-
-`nodemon`
+* `"aws-sdk": "^2.520.0"`
+* `"body-parser": "^1.19.0"`
+* `"cors": "^2.8.5"`
+* `"dotenv": "^8.1.0"`
+* `"express": "^4.17.1"`
+* `"mongoose": "^5.6.13"`
+* `"multer": "^1.4.2"`
+* `"multer-s3": "^2.9.0"`
+* `"node-fetch": "^2.6.0"`
+* `"nodemon": "^1.19.1"`
 
 ***
 
@@ -50,27 +51,21 @@ Running from top level:
 
 Dependencies
 
-`react`
-
-`react-dom`
-
-`react-router-dom`
-
-`react-scripts`
-
-`three`
+* `"bootstrap": "^4.3.1"`
+* `"react": "^16.9.0"`
+* `"react-bootstrap": "^1.0.0-beta.12"`
+* `"react-dom": "^16.9.0"`
+* `"react-router-dom": "^5.0.1"`
+* `"react-scripts": "3.1.1"`
+* `"three": "^0.107.0"`
 
 # API Documentation
 
 Routes: 
-GET all Projects:
-> /projects
+GET all Projects: `api/projects`
 
-GET all Designs:
-> /designs
+GET all Designs: `api/designs`
 
-GET Specific Project:
-> /project/project_name
+GET Specific Project: `api/project/project_name`
 
-GET Specific Design:
-> /designs/design_name
+GET Specific Design: `api/designs/design_name`
