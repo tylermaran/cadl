@@ -1,5 +1,6 @@
 // Importing Dependencies
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Importing Components
 import Jumbotron from './Jumbotron';
@@ -30,7 +31,7 @@ const Header = (props) => {
                         SHARE-YOUR-CREATION
                     </h3>
                     <p className='home_message_body'>
-                        Want to contribute your own designs? Create a project here!
+                        Want to contribute your own designs? <Link to='/create'>Create a project here!</Link>
                     </p>
                 </div>
                 <div className="home_message">
@@ -38,7 +39,7 @@ const Header = (props) => {
                         LEARN-TO-DESIGN
                     </h3>
                     <p className='home_message_body'>
-                        3D Printers, Laser Cutters, CNC and more! Download a model. Try out community suggestions. Or check out some of the introductory material here!
+                        3D Printers, Laser Cutters, CNC and more! Download a model. Try out community suggestions. Or check out some of the <Link to='/learn'>introductory material here!</Link>
                     </p>
                 </div>
 

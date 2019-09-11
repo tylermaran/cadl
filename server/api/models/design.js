@@ -43,6 +43,9 @@ const designSchema = mongoose.Schema({
     },
     note: {
         type: String
+    }, 
+    author: {
+        type: String
     }
 });
 

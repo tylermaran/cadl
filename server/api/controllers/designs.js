@@ -36,7 +36,6 @@ exports.post_new_design = (req, res, next) => {
             // Create new club object from body data
             const design = new Design({
                 _id: new mongoose.Types.ObjectId(),
-                // slug: slug,
                 name: req.body.name,
                 file: req.body.file,
                 ext: req.body.ext,
@@ -47,7 +46,9 @@ exports.post_new_design = (req, res, next) => {
                     translate: req.body.translate,
                     center: req.body.center,
                     object_color: req.body.object_color
-                }
+                },
+                note: req.body.note,
+                author: req.body.author
             });
 
             // Save new club to DB

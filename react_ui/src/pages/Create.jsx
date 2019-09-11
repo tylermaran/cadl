@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 import CreateProject from '../components/CreateProject';
 import FileUpload from '../components/FileUpload';
-import EditModal from '../components/EditModal';
+// import EditModal from '../components/EditModal';
 import Footer from '../components/Footer';
 
 // Importing Styling
@@ -20,10 +20,10 @@ class Create extends Component {
             project: {
                 name: '',
                 desc: '',
-                category: ''
+                category: '',
+                author: ''
             },
             show_modal: false,
-            modal_file: 0
         }
     }
 
@@ -47,40 +47,49 @@ class Create extends Component {
         })
     }
 
-    // File upload constructor
-    Design (name, file, ext, category) {
-        this.name = name; //string
-        this.file = file;
-        this.ext = ext; // string (toLowerCase)
-        this.category = category // string
-        this.config.mm = true; // boolean
-        this.config.rotate = [0, 0, 0]; // [x, y, z]
-        this.config.translate = [0, 0, 0]; // [x, y, z]
-        this.config.center = [0, 0]; // [x,y]
-        this.config.object_color = "0x4287f5";  // Hex code value
-        this.note = ""
-    }
 
     // Add files to state
     handleUpload = (e) => {
         let fileObj = e.target.files;
+        console.log(fileObj);
         let fileArray = [];
+
+        // File upload constructor
+        function Design(name, file, ext, category) {
+            this.name = name; //string
+            this.file = file;
+            this.ext = ext; // string (toLowerCase)
+            this.category = category; // string
+            this.config = {
+                mm: true, // boolean
+                rotate: [0, 0, 0],  // [x, y, z]
+                translate: [0, 0, 0],  // [x, y, z]
+                center: [0, 0], // [x, y]
+                object_color: "0x4287f5" // Hex code value
+            };
+            this.note = ""; // String
+        }
 
         // File loader returns an object >.< make it into an array
         Object.keys(fileObj).forEach(key => {
             fileArray.push(fileObj[key]);
         });
+
         console.log(fileArray);
 
+
         for (let i = 0; i < fileArray.length; i++) {
-            // let ext = fileArray[i].name
+
             let ext = fileArray[i].name.split('.');
             ext = (ext[ext.length - 1]).toLowerCase();
-            // fileArray[i].ext = ext;
-
-            // Create new file_array object
-            fileArray[i] = new this.Design(fileArray[i].name, 'file_path', ext, this.state.category);
+            
+            let file_data = fileArray[i];
+            
+            // Create object
+            fileArray[i] = new Design(fileArray[i].name, file_data, ext, this.state.project.category);
         }
+
+        // Add File array to state
         this.setState({
             files: fileArray.map(this.createFileDiv)
         })
@@ -90,15 +99,23 @@ class Create extends Component {
     // Append files to page
     createFileDiv = (file) => {
         console.log(file);
+        let edit_button = <></>;
+
+        if (file.ext === 'stl') {
+            edit_button = (
+                <div className="edit_file">
+                    <div className="edit_file_button">Edit</div>
+                </div>
+            )
+        }
+
         return (
             <div className="file_output" key={file.name}>
                 <div className="file_detail">
                     <div className="file_name">{file.name}</div>
-                    <div className="file_size">{(file.size / 1000000).toFixed(2)}mb</div>
+                    <div className="file_size">{(file.file.size / 1000000).toFixed(2)}mb</div>
                 </div>
-                <div className="edit_file">
-                    <div className="edit_file_button">Edit</div>
-                </div>
+                {edit_button}
             </div>
         )
     }
@@ -131,10 +148,8 @@ class Create extends Component {
                 <div className="create_content">
                     {/* Switch between project name / file upload / confirm */}
                     {current_view}
-                    {this.state.show_modal? <EditModal/>:    'no'}
+                    {/* {this.state.show_modal? <EditModal/>:    'no'} */}
                 </div>
-                <button onClick={()=>this.handleClick2}>Click me {this.state.clicks}</button>
-
                 <Footer/>
             </div>
         );
