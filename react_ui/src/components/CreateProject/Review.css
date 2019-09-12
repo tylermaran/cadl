@@ -13,25 +13,28 @@
     font-size: 18px;
     text-decoration: underline;
     font-weight: bold;
+    margin: 0 0 0 5%;
 }
 
 .project_author {
     display: inline-block;
     text-align: left;
     font-style: italic;
-    width: 70%;
+    width: 65%;
+    margin: 0 0 0 5%;
 }
 
 .project_category {
     display: inline-block;
     text-align: right;
-    width: 30%;
+    width: 25%;
+    margin: 0 5% 0 0;
     font-weight: 300;
 }
 
 .project_description {
     text-align: left;
-    margin: 20px 8% 20px 8%;
+    margin: 20px 10% 20px 10%;
 }
 
 .no_files {

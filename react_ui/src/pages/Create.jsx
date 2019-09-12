@@ -87,6 +87,7 @@ class Create extends Component {
         // Add File array to state
         this.setState({
             files: fileArray.map(this.createFileDiv),
+            file_array: fileArray,
             file_label: message,
             show_next: true
         })
@@ -127,10 +128,11 @@ class Create extends Component {
                 
                 case 'review':
                     // Confirm upload
+                    console.log(this.state);
                     return( <Review
                             setPage = {this.setPage} 
                             project = {this.state.project}
-                            files = {this.state.files}/> )
+                            files = {this.state.file_array}/> )
                 default:
                     break;
             }

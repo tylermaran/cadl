@@ -19,7 +19,7 @@ const CreateProject = (props) => {
             <Form onSubmit={() => props.setPage('upload')}>
                 <Form.Group controlId="project_name">
                     <Form.Label>Project Name:</Form.Label>
-                    <Form.Control type="text" placeholder="Name" name="name" value={props.project.name} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required />
+                    <Form.Control type="text" placeholder="Project Name" name="name" value={props.project.name} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required />
                 </Form.Group>
 
                 <Form.Group controlId="project_desc">
