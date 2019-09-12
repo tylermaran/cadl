@@ -1,16 +1,31 @@
 // Importing Dependencies
-import React from 'react';
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
 // Importing Components
 import ObjectLoader from '../Loaders/ObjectLoader';
+// import DisplayTile from '../../components/DisplayTile';
+
 
 // Importing Styling
 import './Review.css'
 
-const Review = (props) => {
+class Review extends Component {
+    constructor(props) {
+        super(props);
 
-    const handleInput = (file) => {
+        this.state = {
+            model: null
+        }
+    }
+    
+    componentDidMount() {
+        console.log(this.props.files[0].file);
+
+        this.handleInput(this.props.files[0].file);
+    }
+
+     handleInput = (file) => {
         let testing = {
             file: '',
             ext: 'stl',
@@ -28,8 +43,8 @@ const Review = (props) => {
 
         const control = {
             zoom: true,
-            rotate: false,
-            pan: false
+            rotate: true,
+            pan: true
         }
 
         // TODO - figure out why this FileReader thing works
@@ -39,68 +54,69 @@ const Review = (props) => {
             console.log(result);
 
             testing.file_size = result.total;
+            testing.file = result.target.result;
 
-            console.log(result.target.result);
-            return (<ObjectLoader object = { result.target.result } control= { control }/> )
+
+            // console.log(result.target.result);
+            this.setState({
+                model:  <ObjectLoader object={ testing } control= { control } />
+            })
 
         }
 
         // Read as data url apparently works
         reader.readAsDataURL(file);
     }
-
-
-    let file_div = (
-        <div className="no_files">
-            No files uploaded
-        </div>
-    );
-
-    console.log(props.files[0].file);
-
     
-    let load_objects = handleInput(props.files[0].file);
-    console.log(load_objects);
 
-    return (
-        <div className="review">
-            <div className="navigation">
-                <div className="nav_left" onClick={() => props.setPage('upload')}>
-                    <div className="arrow left_arrow"></div>
-                    <div className="arrow_label">Upload</div>
-                </div>
-            </div>
+    render(props) {
 
-            <div className="review_title">
-                Review Project
-            </div>
-            <hr/>
-            <div className="project_review">
-                <div className="project_name">
-                    {props.project.name}
+        // let file_div = (
+        //     <div className="no_files">
+        //         No files uploaded
+        //     </div>
+        // );
+
+        return (
+            <div className="review">
+                <div className="navigation">
+                    <div className="nav_left" onClick={() => this.props.setPage('upload')}>
+                        <div className="arrow left_arrow"></div>
+                        <div className="arrow_label">Upload</div>
+                    </div>
                 </div>
-                <div className="project_author">
-                    by {props.project.author}
+
+                <div className="review_title">
+                    Review Project
                 </div>
-                <div className="project_category">
-                    {props.project.category}
+                <hr/>
+                <div className="project_review">
+                    <div className="project_name">
+                        {this.props.project.name}
+                    </div>
+                    <div className="project_author">
+                        by {this.props.project.author}
+                    </div>
+                    <div className="project_category">
+                        {this.props.project.category}
+                    </div>
+                    <div className="project_description">
+                        {this.props.project.desc}
+                    </div>
                 </div>
-                <div className="project_description">
-                    {props.project.desc}
+                <hr/>
+                <div className="file_review">
+                    {this.state.model}
+                </div>
+                <hr/>
+                <div className="submit_project">
+                    <Button type="button">
+                        Create Project
+                    </Button>
                 </div>
             </div>
-            <hr/>
-            <div className="file_review">
-                {load_objects}
-            </div>
-            <hr/>
-            <div className="submit_project">
-                <Button type="button">
-                    Create Project
-                </Button>
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Review
