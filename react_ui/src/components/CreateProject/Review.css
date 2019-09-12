@@ -1,0 +1,40 @@
+.review_title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+    clear: both;
+}
+
+.project_name {
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.project_author {
+    display: inline-block;
+    text-align: left;
+    font-style: italic;
+    width: 70%;
+}
+
+.project_category {
+    display: inline-block;
+    text-align: right;
+    width: 30%;
+    font-weight: 300;
+}
+
+.project_description {
+    text-align: left;
+    margin: 20px 8% 20px 8%;
+}
+
+.no_files {
+    text-align: center;
+    font-style: italic;
+}

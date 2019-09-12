@@ -18,8 +18,7 @@
 
 .create_button {
     font-size: 18px; 
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    /* font-family: 'Courier New', Courier, monospace; */
     margin: 10px 0 0 50%;
     transform: translate(-50%, 0);
 }

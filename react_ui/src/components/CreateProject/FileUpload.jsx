@@ -8,8 +8,8 @@ import './FileUpload.css';
 const FileUpload = (props) => {
 
     let next_button = (
-        <Button variant="primary" type="button" className="create_button" onClick={() => props.setPage('review')}>
-            Review!
+        <Button variant="primary" type="button" className="review_button" onClick={() => props.setPage('review')}>
+            Review Project!
         </Button>
     )
 
@@ -34,11 +34,12 @@ const FileUpload = (props) => {
             <div className="output">
                 {props.files}
                 <input type="file" name="Upload" id="input_files" multiple onInput={(e) => props.handleUpload(e)}/>
-                <label htmlFor="input_files" id="input_files_button">Choose a file...</label>
+                <label htmlFor="input_files" id="input_files_button"><div className="file_icon"></div>{props.file_label}</label>
 
-                {props.show_next? next_button: <></>}
+              
 
             </div>
+            {props.show_next? next_button: <></>}
             <div className="disclaimer">
                 Acceptable Files: .STL, .PNG, .JPG, .GIF. Want more file types?<a href="https://github.com/tylermaran/cadl/issues" target='new'> Let me know!</a>
             </div>

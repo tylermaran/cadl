@@ -23,11 +23,12 @@ class Create extends Component {
             project: {
                 name: '',
                 desc: '',
-                category: '',
+                category: 'Laser Cutter',
                 author: ''
             },
             show_next: false,
             show_modal: false,
+            file_label: 'Choose a file...'
         }
     }
 
@@ -45,6 +46,7 @@ class Create extends Component {
         let fileObj = e.target.files;
         console.log(fileObj);
         let fileArray = [];
+        let message = 'Choose a file...';
 
         // File upload constructor
         function Design(name, file, ext, category) {
@@ -78,9 +80,14 @@ class Create extends Component {
             fileArray[i] = new Design(fileArray[i].name, file_data, ext, this.state.project.category);
         }
 
+        if (fileArray.length > 0) {
+            message = 'Upload additional'
+        }
+
         // Add File array to state
         this.setState({
             files: fileArray.map(this.createFileDiv),
+            file_label: message,
             show_next: true
         })
     }
@@ -115,13 +122,15 @@ class Create extends Component {
                                 handleUpload = {this.handleUpload} 
                                 files = { this.state.files } 
                                 setPage = {this.setPage}
-                                show_next = {this.state.show_next} />)
+                                show_next = {this.state.show_next} 
+                                file_label = {this.state.file_label}/>)
                 
                 case 'review':
                     // Confirm upload
                     return( <Review
-                            setPage = {this.setPage} /> )
-                    
+                            setPage = {this.setPage} 
+                            project = {this.state.project}
+                            files = {this.state.files}/> )
                 default:
                     break;
             }

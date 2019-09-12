@@ -1,13 +1,13 @@
 .display_tile {
     height: 300px;
-    width: 300px;
+    width: 350px;
     overflow: hidden;
     vertical-align: top;
 }
 
 .display_object_holder {
     height: 250px;
-    width: 300px;
+    width: 350px;
   
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
