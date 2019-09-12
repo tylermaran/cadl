@@ -1,0 +1,103 @@
+.arrow {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-position: center;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.left_arrow {  
+    background-image: url('../../images/left-arrow.png');
+}
+
+.right_arrow {
+    background-image: url('../../images/right-arrow.png');
+}
+
+.arrow_label {
+    display: inline-block;
+    vertical-align: middle;
+    color: rgb(0, 127, 255);
+}
+
+.nav_left {
+    float: left;
+}
+
+.nav_right {
+    float: right;
+}
+
+.nav_left:hover {
+    outline: 2px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+.nav_right:hover {
+    outline: 2px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.upload_files {
+    width: 100%;
+    height: 100%;
+    margin: 0 1.5% 0 0;
+    display: inline-block;
+    /* vertical-align: top; */
+    text-align: left;
+}
+
+.upload_title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+    clear: both;
+}
+
+.output {
+    height: auto;
+    min-height: 50vh;
+}
+
+.disclaimer {
+    margin: 25px 0 20px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+#input_files {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#input_files_button {
+    background-color: rgb(0, 123, 255);
+    height: 40px;
+    margin: 10px 0 100px 50%;
+    transform: translate(-50%, 0);
+    padding: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -1px;
+    white-space: nowrap;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+#input_files_button:hover {
+    outline: 2px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+#input_files_button:active {
+    background-color: rgb(45, 45, 255);
+    outline: 2px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}

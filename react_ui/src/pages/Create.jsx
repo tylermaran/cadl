@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 
 // Importing Components
 import NavBar from '../components/NavBar';
-import CreateProject from '../components/CreateProject';
-import FileUpload from '../components/FileUpload';
-// import EditModal from '../components/EditModal';
+import CreateProject from '../components/CreateProject/CreateProject';
+import FileUpload from '../components/CreateProject/FileUpload';
+import FileOutput from '../components/CreateProject/FileOutput';
+import Review from '../components/CreateProject/Review';
+// import EditModal from '../components/CreateProject/EditModal';
 import Footer from '../components/Footer';
+
 
 // Importing Styling
 import './Create.css';
@@ -23,28 +26,17 @@ class Create extends Component {
                 category: '',
                 author: ''
             },
+            show_next: false,
             show_modal: false,
         }
     }
 
 
-    // Project details
-    handleSubmit = (e) => {
+    // Update form in state
+    handleFormChange = (field, value) => {
         let temp = this.state.project;
-        e.preventDefault();
-
-        // Add project to state. 
-        temp.name = e.target.name.value; 
-        temp.desc = e.target.desc.value;
-        temp.category = e.target.category.value;
-        temp.author = e.target.author.value;
-
-        this.setState({
-            project: temp,
-            page: 'upload'
-        }, () => {
-            console.log(this.state);
-        })
+        temp[field] = value;
+        this.setState({project: temp})
     }
 
 
@@ -75,9 +67,6 @@ class Create extends Component {
             fileArray.push(fileObj[key]);
         });
 
-        console.log(fileArray);
-
-
         for (let i = 0; i < fileArray.length; i++) {
 
             let ext = fileArray[i].name.split('.');
@@ -85,61 +74,58 @@ class Create extends Component {
             
             let file_data = fileArray[i];
             
-            // Create object
+            // Create file object
             fileArray[i] = new Design(fileArray[i].name, file_data, ext, this.state.project.category);
         }
 
         // Add File array to state
         this.setState({
-            files: fileArray.map(this.createFileDiv)
+            files: fileArray.map(this.createFileDiv),
+            show_next: true
         })
     }
 
-    
-    // Append files to page
+
+    // Append uploaded files to page
     createFileDiv = (file) => {
-        console.log(file);
-        let edit_button = <></>;
-
-        if (file.ext === 'stl') {
-            edit_button = (
-                <div className="edit_file">
-                    <div className="edit_file_button">Edit</div>
-                </div>
-            )
-        }
-
-        return (
-            <div className="file_output" key={file.name}>
-                <div className="file_detail">
-                    <div className="file_name">{file.name}</div>
-                    <div className="file_size">{(file.file.size / 1000000).toFixed(2)}mb</div>
-                </div>
-                {edit_button}
-            </div>
-        )
+        return <FileOutput file={file} key={file.name}/>
     }
+
+
+    // Switch pages
+    setPage = (page) => {
+        this.setState({
+            page: page
+        });
+    }
+
 
     render() {
         const switch_view = () => {
             switch (this.state.page) {
                 case 'project':
                     // Project Details
-                    return( <CreateProject handleSubmit = {this.handleSubmit}/>)
-                    
+                    return( <CreateProject 
+                                setPage = {this.setPage} 
+                                project={this.state.project}
+                                handleFormChange={this.handleFormChange} />)
                 case 'upload':
                     // File Upload
-                    return( <FileUpload handleUpload = {this.handleUpload} files = { this.state.files }/>)
+                    return( <FileUpload 
+                                handleUpload = {this.handleUpload} 
+                                files = { this.state.files } 
+                                setPage = {this.setPage}
+                                show_next = {this.state.show_next} />)
                 
-                case 'confirm':
+                case 'review':
                     // Confirm upload
-                    // return( <FileUpload handleUpload = {handleUpload} files = { this.state.files }/>)
-                    break;
+                    return( <Review
+                            setPage = {this.setPage} /> )
+                    
                 default:
-                    return( <CreateProject handleSubmit = {this.handleSubmit}/>)
+                    break;
             }
         }
-
         let current_view = switch_view();
 
         return(
@@ -148,7 +134,6 @@ class Create extends Component {
                 <div className="create_content">
                     {/* Switch between project name / file upload / confirm */}
                     {current_view}
-                    {/* {this.state.show_modal? <EditModal/>:    'no'} */}
                 </div>
                 <Footer/>
             </div>

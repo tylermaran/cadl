@@ -16,20 +16,20 @@ const CreateProject = (props) => {
                 Create a new project
             </div>
 
-            <Form onSubmit={(e) => props.handleSubmit(e)}>
+            <Form onSubmit={() => props.setPage('upload')}>
                 <Form.Group controlId="project_name">
                     <Form.Label>Project Name:</Form.Label>
-                    <Form.Control type="text" placeholder="Name" name="name" required />
+                    <Form.Control type="text" placeholder="Name" name="name" value={props.project.name} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required />
                 </Form.Group>
 
                 <Form.Group controlId="project_desc">
                     <Form.Label>Brief Description:</Form.Label>
-                    <Form.Control as="textarea" placeholder="Brief Description" name="desc" required/>
+                    <Form.Control as="textarea" placeholder="Brief Description" name="desc" value={props.project.desc} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required/>
                 </Form.Group>
 
                 <Form.Group controlId="cat_select">
                     <Form.Label>Project Category</Form.Label>
-                    <Form.Control as="select" name="category" required>
+                    <Form.Control as="select" name="category" value={props.project.category} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required>
                         <option>Laser Cutter</option>
                         <option>3D Printing</option>
                         <option>Maslow CNC</option>
@@ -39,12 +39,12 @@ const CreateProject = (props) => {
                 </Form.Group>
 
                 <Form.Group controlId="project_name">
-                    <Form.Label>Name:</Form.Label>
-                    <Form.Control type="text" placeholder="Hacker123" name="author" required />
+                    <Form.Label>Author:</Form.Label>
+                    <Form.Control type="text" placeholder="Hacker123" name="author" value={props.project.author} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required />
                 </Form.Group>
 
                 <Button variant="primary" type="submit" className="create_button">
-                    Create!
+                    Add files!
                 </Button>
             </Form>
         </div>

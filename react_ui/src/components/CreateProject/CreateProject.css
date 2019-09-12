@@ -17,12 +17,12 @@
 }
 
 .create_button {
-    width: 200px;
-    font-size: 22px; 
+    font-size: 18px; 
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    margin: 10px 0 0 50%;
+    transform: translate(-50%, 0);
 }
-
 
 @media only screen and (max-width: 600px) {
     .create_title {
