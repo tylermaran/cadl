@@ -56,10 +56,15 @@ class Review extends Component {
             testing.file_size = result.total;
             testing.file = result.target.result;
 
+            let model = (
+                <div className="review_object">
+                    <ObjectLoader object={ testing } control= { control } />
+                </div>
+            )
 
             // console.log(result.target.result);
             this.setState({
-                model:  <ObjectLoader object={ testing } control= { control } />
+                model: model
             })
 
         }

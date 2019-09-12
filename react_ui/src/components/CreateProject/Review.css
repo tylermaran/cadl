@@ -37,6 +37,11 @@
     margin: 20px 10% 20px 10%;
 }
 
+.review_object {
+    height: 300px;
+    width: 300px;
+}
+
 .no_files {
     text-align: center;
     font-style: italic;
