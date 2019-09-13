@@ -17,7 +17,7 @@ exports.get_all_projects = (req, res, next) => {
         });
 }
 
-// P1: POST New Design
+// P1: POST New Project
 exports.post_new_project = (req, res, next) => {
     // Preventing Duplicate Clubs - search by name
     Project.findOne({
@@ -42,8 +42,10 @@ exports.post_new_project = (req, res, next) => {
                 _id: new mongoose.Types.ObjectId(),
                 // slug: slug,
                 name: req.body.name,
-                file: req.body.file,
-                ext: req.body.ext
+                author: req.body.author,
+                description: req.body.desc,
+                category: req.body.category,
+                designs: req.body.designs
             });
 
             // Save new club to DB

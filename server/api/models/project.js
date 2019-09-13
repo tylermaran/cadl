@@ -7,17 +7,20 @@ const projectSchema = mongoose.Schema({
         required: true,
         timestamps: true
     },
+    author: {
+        type: String
+    },
     category: {
         type: String
     },
     description: {
         type: String
     },
-    files: {
+    designs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Design',
         unique: true
-    }
+    }]
 });
 
 module.exports = mongoose.model('Project', projectSchema);

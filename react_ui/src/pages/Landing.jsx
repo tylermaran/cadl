@@ -54,12 +54,11 @@ const Landing = (props) => {
             <Header/>
 
             {/* Featured Projects */}
-            <div className="content">
+            {/* <div className="content">
                 <h3 className="sub_title">
                     Featured Projects:
                 </h3> 
 
-                {/* Objects mapped from file */}
                 {object_container}                
 
                 <div className="landing_link">
@@ -67,7 +66,7 @@ const Landing = (props) => {
                         All Featured...
                     </Link>
                 </div>
-            </div>
+            </div> */}
 
             {/* Recent Uploads */}
             <div className="content">
@@ -77,10 +76,24 @@ const Landing = (props) => {
 
                 {object_container}
 
-                {/* <div className="object_container hide_on_shrink">
-                    <DisplayTile object={ testing } control= { control } />
-                </div> */}
+                <div className="landing_link">
+                    <Link to='/featured'>
+                        All Recent...                    
+                    </Link>
+                </div>
+            </div>
 
+            {/* Recent Uploads */}
+            <div className="content">
+                <h3 className="sub_title">
+                    Catagories:
+                </h3> 
+
+                <p>CNC</p>
+                <p>3D Printing</p>
+                <p>Laser Cutting</p>
+                <p>Gaming</p>
+            
                 <div className="landing_link">
                     <Link to='/featured'>
                         All Recent...                    

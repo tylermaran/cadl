@@ -174,6 +174,7 @@ class Editor extends Component {
                         <Tab eventKey='texture' title='Texture'>
                             COLORSSS
                             <div className="color">
+                                <input type="color" name="color" id="color_picker"/>
                                 <button type="button" className="edit_button" onClick={() => handleColor(0xd99802)}> Orange </button>
                                 <button type="button" className="edit_button" onClick={() => handleColor(0x2cbf08)}> Green </button>
                                 <button type="button" className="edit_button" onClick={() => handleColor(0x1529ad)}> Blue </button>

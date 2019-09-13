@@ -19,15 +19,18 @@ class Create extends Component {
         super(props);
         this.state = {
             page: 'project', //project -> files -> confirm
-            files: '',
+            file_div: '',
+            file_array: '',
             project: {
                 name: '',
+                author: '', 
                 desc: '',
                 category: 'Laser Cutter',
-                author: ''
+                designs: []
             },
             show_next: false,
             show_modal: false,
+            file_upload: 0,
             file_label: 'Choose a file...'
         }
     }
@@ -86,7 +89,7 @@ class Create extends Component {
 
         // Add File array to state
         this.setState({
-            files: fileArray.map(this.createFileDiv),
+            file_div: fileArray.map(this.createFileDiv),
             file_array: fileArray,
             file_label: message,
             show_next: true
@@ -113,9 +116,13 @@ class Create extends Component {
         // Create Design objecct for each file
         // Append Design ID to Project and create project 
     handleConfirm = () => {
-        console.log('Upload to AWS');
+        console.log('Upload files to AWS');
+
+        // upload files
         this.state.file_array.map(this.aws_upload);
     }
+
+
 
 
     // Upload file to AWS
@@ -136,41 +143,78 @@ class Create extends Component {
         .then((aws_data) => {
             console.log(aws_data);
             file.file = aws_data.file.location;
+
             this.upload_design(file);
         });
     }
 
+    // POST to create design in DB
     upload_design = (file) => {
         console.log(file);
-         
-        // let body = {
-        //     name: file
-        //     file: file_data.file.location,
-        //     ext: 'stl',
-        //     category: '3D Printing',
+        
+        // { Package body structure
+        //     name: String,
+        //     file: AWS Link,
+        //     ext: string (to lowercase),
+        //     category: String,
         //     config: {
-        //         mm: true,
+        //         mm: boolean,
         //         rotate: [0, 0, 0],
         //         translate: [0, 0, 0],
-        //         center: [0, 0]
-        //     }
+        //         center: [0, 0],
+        //         object_color: string (hexidecimal)
+        //     },
+        //     note: string
         // }
     
-        // fetch('http://localhost:5000/designs', {
-        //     method: 'POST',
-        //     body: JSON.stringify(body),
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         // 'Content-Type': 'application/x-www-form-urlencoded',
-        //     }
-        // })
-        // .then((response)=>{
-        //     return response.json();
-        // })
-        // .then((json) => {
-        //     console.log(json);
-        // });
-        // }
+        fetch('http://localhost:5000/designs', {
+            method: 'POST',
+            body: JSON.stringify(file),
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json) => {
+            console.log(json);
+            let temp = this.state;
+
+            // Add Mongo FileID to project and increment uploaded files
+            temp.project.designs.push(json.result._id);
+            temp.file_upload++;
+
+            this.setState({temp}, () => {
+                if (this.state.file_upload === this.state.file_array.length) {
+                    console.log('Create Project');
+                    this.upload_project();
+                }
+            });
+        });
+    }
+
+    // Files are uploaded - now create Project and assign files
+    upload_project = () => {
+        let body = this.state.project;
+        console.log('body:', body);
+
+        fetch('http://localhost:5000/projects', {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json) => {
+            console.log(json);
+            alert('Done!');
+        });
     }
 
 
@@ -187,7 +231,7 @@ class Create extends Component {
                     // File Upload
                     return( <FileUpload 
                                 handleUpload = {this.handleUpload} 
-                                files = { this.state.files } 
+                                files = { this.state.file_div } 
                                 setPage = {this.setPage}
                                 show_next = {this.state.show_next} 
                                 file_label = {this.state.file_label}/>)

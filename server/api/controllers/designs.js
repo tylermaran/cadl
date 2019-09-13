@@ -25,8 +25,8 @@ exports.post_new_design = (req, res, next) => {
     Design.findOne({
         name: req.body.name
     }).exec().then(result => {
-        // Add in name and file validation (since people may have similar file names) 
-        if (result && result.name === req.body.name) {
+        // Add in name and file validation (since people may have similar file names)
+        if (result && result.name === req.body.name && result.file === req.body.file) {
             console.log('Error Duplication: ' + req.body.name);
             res.status(500).json({
                 error: 'Error: Design name is a duplication',

@@ -28,9 +28,9 @@ class Testing extends Component {
             rotate: [0, 0, 0],
             mm: true,
             translate: [0, 0, 0],
-            center: [0, 0]
-        },
-        object_color: '0x5eeb34'
+            center: [0, 0],
+            object_color: '0x5eeb34'
+        }
     }
 
     control = {
