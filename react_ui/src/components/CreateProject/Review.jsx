@@ -35,11 +35,11 @@ class Review extends Component {
      handleInput = (file) => {
         console.log(file);
 
-        let testing = {
+        let temp_file = {
             file: '',
             ext: 'stl',
-            name: 'Demo',
-            category: 'Example',
+            name: file.name,
+            category: file.category,
             file_size: 0,
             config: {
                 rotate: [0, 0, 0],
@@ -59,11 +59,12 @@ class Review extends Component {
         }
 
         let model = (
-            <div className="object_tile" key={testing.name}>
+            <div className="object_tile" key={temp_file.name}>
+                <div className="object_name">{temp_file.name}</div>
                 <div className="review_object">
-                    <ObjectLoader object={ testing } control= { control } />
+                    <ObjectLoader object={ temp_file } control= { control } />
                 </div>
-                <div className="object_note">{testing.note}</div>
+                <div className="object_note">{temp_file.note}</div>
             </div>
         )
 
@@ -73,8 +74,8 @@ class Review extends Component {
         reader.onload = (result) => {
             console.log(result);
 
-            testing.file_size = result.total;
-            testing.file = result.target.result;
+            temp_file.file_size = result.total;
+            temp_file.file = result.target.result;
             let temp = this.state.model;
             temp.push(model);
             

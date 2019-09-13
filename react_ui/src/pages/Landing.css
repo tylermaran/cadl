@@ -19,7 +19,7 @@
 .sub_title {
     text-align: left;
     font-size: 18px;
-    margin: 10px 0 5px 10px;
+    margin: 0 0 5px 0;
 }
 
 .landing_link {
@@ -54,7 +54,7 @@
     .content {
         width: auto;
         margin: 20px 2.5% 20px 2.5%;
-        padding: 10px 0 0 0;
+        padding: 10px 10px 0 10px;
     }
 } 
 
@@ -66,12 +66,11 @@
     .content {
         width: 90%;
         margin: 20px 0 20px 5%;
-        padding: 10px 0 0 0;
+        padding: 10px 10px 0 10px;
     }
 
     .object_container {
         margin: 10px 20px;    
         width: 45%;
     }
-
 }

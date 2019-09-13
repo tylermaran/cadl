@@ -18,8 +18,7 @@ const projectSchema = mongoose.Schema({
     },
     designs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Design',
-        unique: true
+        ref: 'Design'
     }]
 });
 

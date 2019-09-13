@@ -8,6 +8,7 @@ import FileUpload from '../components/CreateProject/FileUpload';
 import FileOutput from '../components/CreateProject/FileOutput';
 import Review from '../components/CreateProject/Review';
 // import EditModal from '../components/CreateProject/EditModal';
+import UploadModal from '../components/CreateProject/UploadModal';
 import Footer from '../components/Footer';
 
 
@@ -30,7 +31,9 @@ class Create extends Component {
             },
             show_next: false,
             show_modal: false,
-            file_upload: 0,
+            upload_count: 0,
+            upload_progress: [],
+            upload_complete: false,
             file_label: 'Choose a file...'
         }
     }
@@ -48,7 +51,7 @@ class Create extends Component {
     handleUpload = (e) => {
         let fileObj = e.target.files;
         console.log(fileObj);
-        let fileArray = [];
+        let upload_array = [];
         let message = 'Choose a file...';
 
         // File upload constructor
@@ -69,28 +72,28 @@ class Create extends Component {
 
         // File loader returns an object >.< make it into an array
         Object.keys(fileObj).forEach(key => {
-            fileArray.push(fileObj[key]);
+            upload_array.push(fileObj[key]);
         });
 
-        for (let i = 0; i < fileArray.length; i++) {
+        for (let i = 0; i < upload_array.length; i++) {
 
-            let ext = fileArray[i].name.split('.');
+            let ext = upload_array[i].name.split('.');
             ext = (ext[ext.length - 1]).toLowerCase();
             
-            let file_data = fileArray[i];
+            let file_data = upload_array[i];
             
             // Create file object
-            fileArray[i] = new Design(fileArray[i].name, file_data, ext, this.state.project.category);
+            upload_array[i] = new Design(upload_array[i].name, file_data, ext, this.state.project.category);
         }
 
-        if (fileArray.length > 0) {
+        if (upload_array.length > 0) {
             message = 'Upload additional'
         }
 
         // Add File array to state
         this.setState({
-            file_div: fileArray.map(this.createFileDiv),
-            file_array: fileArray,
+            file_div: upload_array.map(this.createFileDiv),
+            file_array: upload_array,
             file_label: message,
             show_next: true
         })
@@ -117,7 +120,9 @@ class Create extends Component {
         // Append Design ID to Project and create project 
     handleConfirm = () => {
         console.log('Upload files to AWS');
-
+        this.setState({
+            page: 'loading'
+        })
         // upload files
         this.state.file_array.map(this.aws_upload);
     }
@@ -127,7 +132,6 @@ class Create extends Component {
 
     // Upload file to AWS
     aws_upload = (file) => {
-        console.log(file);
         const formData = new FormData();
         formData.append('file', file.file);
 
@@ -142,6 +146,9 @@ class Create extends Component {
         })
         .then((aws_data) => {
             console.log(aws_data);
+
+            this.updateProgress(aws_data.message, aws_data.file.originalname);
+
             file.file = aws_data.file.location;
 
             this.upload_design(file);
@@ -180,14 +187,18 @@ class Create extends Component {
         })
         .then((json) => {
             console.log(json);
+            this.updateProgress(json.message, json.result.name);
+
             let temp = this.state;
 
             // Add Mongo FileID to project and increment uploaded files
             temp.project.designs.push(json.result._id);
-            temp.file_upload++;
+            temp.upload_count++;
 
             this.setState({temp}, () => {
-                if (this.state.file_upload === this.state.file_array.length) {
+                console.log('state: ', this.state);
+
+                if (this.state.upload_count === this.state.file_array.length) {
                     console.log('Create Project');
                     this.upload_project();
                 }
@@ -213,8 +224,24 @@ class Create extends Component {
         })
         .then((json) => {
             console.log(json);
-            alert('Done!');
+            this.updateProgress(json.message, json.result.name);
+            this.setState({
+                upload_complete: true
+            })
+            // Settimeout then redirect to new page
         });
+    }
+
+    updateProgress = (data, detail) => {
+        let temp = this.state.upload_progress;
+
+        temp.push(
+            <p className="loading_message">{data} ({detail})</p>
+        )
+       
+        this.setState({
+            upload_progress: temp
+        })
     }
 
 
@@ -244,6 +271,13 @@ class Create extends Component {
                             project = {this.state.project}
                             files = {this.state.file_array}
                             handleConfirm = {this.handleConfirm}/> )
+                case 'loading':
+                    // Confirm upload
+                    console.log(this.state);
+                    return( <UploadModal
+                            files = {this.state.file_array}
+                            upload_progress = {this.state.upload_progress}
+                            upload_complete = {this.state.upload_complete}/> )
                 default:
                     break;
             }

@@ -1,28 +1,42 @@
 // Importing Dependencies
-import React, { Component } from 'react';
+import React from 'react';
 
 // Importing Styling
 import './UploadModal.css'
 
-class UploadModal extends Component {
-    constructor(props) {
-        super(props);
+const UploadModal  = (props) => {
+    console.log(props);
 
-        this.state = {
-            model: null,
-        }
-    }
-    
-    
-    render(props) {
+    let loading = 'Spinner';
 
-        return (
-            <div className="upload_modal">
-
-                Uploading Files!
-            </div>
+    if (props.upload_complete) {
+        loading = (
+            <div className="loading_complete">Upload Complete!</div>
         )
     }
+
+    setTimeout(() => {
+        loading = (
+            <div>Hmm, either big file, or something isnt working..</div>
+        )
+
+    }, 20000)
+
+    return (
+        <div className="upload_modal">
+            <div className="loading_title">
+                Creating Project!
+            </div>
+            
+            <div className="loading_progress">
+                {props.upload_progress}
+            </div>
+            <div className="status_container">
+                {loading}
+            </div>
+        </div>
+    )
+
 }
 
 export default UploadModal

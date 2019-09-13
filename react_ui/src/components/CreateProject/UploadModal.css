@@ -1,0 +1,21 @@
+.loading_title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+}
+
+.loading_message {
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+}
+
+.loading_complete {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+}

@@ -77,8 +77,8 @@ const Landing = (props) => {
                 {object_container}
 
                 <div className="landing_link">
-                    <Link to='/featured'>
-                        All Recent...                    
+                    <Link to='/recent'>
+                        Browse all recent                   
                     </Link>
                 </div>
             </div>
@@ -86,7 +86,7 @@ const Landing = (props) => {
             {/* Recent Uploads */}
             <div className="content">
                 <h3 className="sub_title">
-                    Catagories:
+                    Categories:
                 </h3> 
 
                 <p>CNC</p>
@@ -95,8 +95,8 @@ const Landing = (props) => {
                 <p>Gaming</p>
             
                 <div className="landing_link">
-                    <Link to='/featured'>
-                        All Recent...                    
+                    <Link to='/categories'>
+                        Browse all categories                    
                     </Link>
                 </div>
             </div>
