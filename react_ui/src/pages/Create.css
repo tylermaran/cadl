@@ -6,7 +6,7 @@
         min-height: 80vh;
         background-color: white;
         margin: 20px 0 70px 2.5%;
-        padding: 2.5% 5% 0 5%;
+        padding: 2.5% 5% 40px 5%;
         border: 1px solid rgb(180, 180, 180);
     }
 }
@@ -18,7 +18,7 @@
         min-height: 80vh;
         background-color: white;
         margin: 20px 0 70px 20%;
-        padding: 2.5% 5% 0 5%;
+        padding: 2.5% 5% 40px 5%;
         border: 1px solid rgb(180, 180, 180);
     }
 }

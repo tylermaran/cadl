@@ -4,8 +4,6 @@ import { Button } from 'react-bootstrap';
 
 // Importing Components
 import ObjectLoader from '../Loaders/ObjectLoader';
-// import DisplayTile from '../../components/DisplayTile';
-
 
 // Importing Styling
 import './Review.css'
@@ -15,17 +13,28 @@ class Review extends Component {
         super(props);
 
         this.state = {
-            model: null
+            model: null,
+            display_files: false
         }
     }
     
     componentDidMount() {
-        console.log(this.props.files[0].file);
-
-        this.handleInput(this.props.files[0].file);
+        if (this.props.files) {
+            console.log(this.props.files);
+            let temp = this.props.files.map(this.handleInput)
+            // this.handleInput(this.props.files[0].file);
+            console.log(temp);
+            this.setState({
+                display_files: true,
+                model: temp
+            })
+        }
+      
     }
 
      handleInput = (file) => {
+        console.log(file);
+
         let testing = {
             file: '',
             ext: 'stl',
@@ -38,7 +47,9 @@ class Review extends Component {
                 translate: [0, 0, 0],
                 center: [0, 0],
                 object_color: '0x5eeb34'
-            }
+            },
+            note: 'This is a cool model',
+            author: 'TheManMaran'
         }
 
         const control = {
@@ -46,6 +57,15 @@ class Review extends Component {
             rotate: true,
             pan: true
         }
+
+        let model = (
+            <div className="object_tile" key={testing.name}>
+                <div className="review_object">
+                    <ObjectLoader object={ testing } control= { control } />
+                </div>
+                <div className="object_note">{testing.note}</div>
+            </div>
+        )
 
         // TODO - figure out why this FileReader thing works
         let reader = new FileReader();
@@ -55,32 +75,29 @@ class Review extends Component {
 
             testing.file_size = result.total;
             testing.file = result.target.result;
-
-            let model = (
-                <div className="review_object">
-                    <ObjectLoader object={ testing } control= { control } />
-                </div>
-            )
-
+            let temp = this.state.model;
+            temp.push(model);
+            
+            // return model;
             // console.log(result.target.result);
             this.setState({
-                model: model
+                model: temp
             })
-
         }
 
         // Read as data url apparently works
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file.file);
+        
     }
     
 
     render(props) {
 
-        // let file_div = (
-        //     <div className="no_files">
-        //         No files uploaded
-        //     </div>
-        // );
+        let file_div = (
+            <div className="no_files">
+                No files uploaded
+            </div>
+        );
 
         return (
             <div className="review">
@@ -111,14 +128,12 @@ class Review extends Component {
                 </div>
                 <hr/>
                 <div className="file_review">
-                    {this.state.model}
+                    {this.state.display_files? this.state.model: file_div}
                 </div>
                 <hr/>
-                <div className="submit_project">
-                    <Button type="button">
-                        Create Project
-                    </Button>
-                </div>
+                <Button type="button" className="submit_project" onClick={() => this.props.handleConfirm()}>
+                    Create Project
+                </Button>
             </div>
         )
     }

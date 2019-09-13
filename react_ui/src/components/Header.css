@@ -25,7 +25,11 @@
 
     .home_message_title {
         text-align: left;
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .home_message_body {
+        font-size: 15px;
     }
 
     .home_message {
@@ -42,7 +46,7 @@
     .home_content_box {
         width: 100%;
         margin: 0;
-        padding: 20px 0 20px 0;
+        padding: 20px 0 0 0;
     }
 
     .home_message_title {

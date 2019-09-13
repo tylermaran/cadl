@@ -108,6 +108,72 @@ class Create extends Component {
     }
 
 
+    // For each file in state:
+        // Upload File to AWS and return file path
+        // Create Design objecct for each file
+        // Append Design ID to Project and create project 
+    handleConfirm = () => {
+        console.log('Upload to AWS');
+        this.state.file_array.map(this.aws_upload);
+    }
+
+
+    // Upload file to AWS
+    aws_upload = (file) => {
+        console.log(file);
+        const formData = new FormData();
+        formData.append('file', file.file);
+
+        let options = {
+            method: 'POST',
+            body: formData
+        };
+
+        fetch('http://localhost:5000/files', options)
+        .then((response)=>{
+            return response.json();
+        })
+        .then((aws_data) => {
+            console.log(aws_data);
+            file.file = aws_data.file.location;
+            this.upload_design(file);
+        });
+    }
+
+    upload_design = (file) => {
+        console.log(file);
+         
+        // let body = {
+        //     name: file
+        //     file: file_data.file.location,
+        //     ext: 'stl',
+        //     category: '3D Printing',
+        //     config: {
+        //         mm: true,
+        //         rotate: [0, 0, 0],
+        //         translate: [0, 0, 0],
+        //         center: [0, 0]
+        //     }
+        // }
+    
+        // fetch('http://localhost:5000/designs', {
+        //     method: 'POST',
+        //     body: JSON.stringify(body),
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         // 'Content-Type': 'application/x-www-form-urlencoded',
+        //     }
+        // })
+        // .then((response)=>{
+        //     return response.json();
+        // })
+        // .then((json) => {
+        //     console.log(json);
+        // });
+        // }
+    }
+
+
     render() {
         const switch_view = () => {
             switch (this.state.page) {
@@ -132,7 +198,8 @@ class Create extends Component {
                     return( <Review
                             setPage = {this.setPage} 
                             project = {this.state.project}
-                            files = {this.state.file_array}/> )
+                            files = {this.state.file_array}
+                            handleConfirm = {this.handleConfirm}/> )
                 default:
                     break;
             }
