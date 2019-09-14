@@ -89,10 +89,10 @@ const Landing = (props) => {
                     Categories:
                 </h3> 
 
-                <p>CNC</p>
-                <p>3D Printing</p>
-                <p>Laser Cutting</p>
-                <p>Gaming</p>
+                <div className="cat cnc">CNC</div>
+                <div className="cat 3dprint">3D Printing</div>
+                <div className="cat laser">Laser</div>
+                <div className="cat gaming">Gaming</div>
             
                 <div className="landing_link">
                     <Link to='/categories'>

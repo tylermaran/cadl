@@ -1,13 +1,16 @@
 // Importing Dependencies
 import React from 'react';
 
+// Importing Components
+import Spinner from '../animation/Spinner';
+
 // Importing Styling
 import './UploadModal.css'
 
 const UploadModal  = (props) => {
     console.log(props);
 
-    let loading = 'Spinner';
+    let loading = <Spinner/>;
 
     if (props.upload_complete) {
         loading = (
