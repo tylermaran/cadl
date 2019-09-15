@@ -83,7 +83,7 @@ class Landing extends Component {
                     <div className="cat cnc">CNC</div>
                     <div className="cat tdprint">3D Printing</div>
                     <div className="cat laser">Laser</div>
-                    <div className="cat gaming">Gaming</div>
+                    <div className="cat maslow">Maslow</div>
                 
                     <div className="landing_link">
                         <Link to='/categories'>
