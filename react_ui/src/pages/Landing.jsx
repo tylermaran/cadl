@@ -1,5 +1,5 @@
 // Importing Dependencies
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // Importing Components
@@ -8,112 +8,103 @@ import NavBar from '../components/NavBar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
 // Importing Styles
 import './Landing.css'
 
-import demo from '../demo.json';
+// import demo from '../demo.json';
 
-// const testing = {
-//     file: 'https://cadltesting.s3.us-east-2.amazonaws.com/3DBenchy.stl',
-//     ext: 'stl',
-//     name: 'Demo',
-//     category: 'Example',
-//     config: {
-//         rotate: [0, 0, 0],
-//         mm: true,
-//         translate: [0, 0, 0],
-//         center: [0, 0]
-//     },
-//     color: 0x5eeb34
-// }
+class Landing extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            control: {
+                zoom: true,
+                rotate: true,
+                pan: true
+            }
+        }
+    }
 
-const control = {
-    zoom: true,
-    rotate: true,
-    pan: false
-}
+    componentDidMount() {
+        fetch('http://localhost:5000/designs')
+        .then((response) => {
+            return response.json();
+        }).then((data) => {
+            // take last 4 recent files
+            let recent = data.slice(0,4);
+            console.log(recent);
+            this.setState({
+                data: recent
+            });
+        });
+    }
 
-const Landing = (props) => {
-
-    const render_model = (object) => {
-        console.log(object);
-        return(
+    render_model = (object) => {
+        return (
             <div className="object_container" key={object.file}>
-                <DisplayTile object={ object } control= { control } />
+                <DisplayTile object={ object } control= { this.state.control } />
             </div>
         )
     }
 
-    let object_container = demo.map(render_model)
-    console.log(object_container);
+    render() {
+        let objectContainer;
 
-    return (
-        <div className='landing'>
-            <NavBar/>
-            <Header/>
+        if (this.state.data) {
+            objectContainer = this.state.data.map(this.render_model);    
+        }
 
-            {/* Featured Projects */}
-            {/* <div className="content">
-                <h3 className="sub_title">
-                    Featured Projects:
-                </h3> 
+        return (
+            <div className='landing'>
+                <NavBar/>
+                <Header/>
 
-                {object_container}                
+                {/* Recent Uploads */}
+                <div className="content">
+                    <h3 className="sub_title">
+                        Most Recent:
+                    </h3> 
 
-                <div className="landing_link">
-                    <Link to='/featured'>
-                        All Featured...
-                    </Link>
+                    {objectContainer}
+
+                    <div className="landing_link">
+                        <Link to='/recent'>
+                            Browse all recent                   
+                        </Link>
+                    </div>
                 </div>
-            </div> */}
 
-            {/* Recent Uploads */}
-            <div className="content">
-                <h3 className="sub_title">
-                    Most Recent:
-                </h3> 
+                {/* Categories */}
+                <div className="content">
+                    <h3 className="sub_title">
+                        Categories:
+                    </h3> 
 
-                {object_container}
-
-                <div className="landing_link">
-                    <Link to='/recent'>
-                        Browse all recent                   
-                    </Link>
+                    <div className="cat cnc">CNC</div>
+                    <div className="cat tdprint">3D Printing</div>
+                    <div className="cat laser">Laser</div>
+                    <div className="cat gaming">Gaming</div>
+                
+                    <div className="landing_link">
+                        <Link to='/categories'>
+                            Browse all categories                    
+                        </Link>
+                    </div>
                 </div>
+
+                {/* Site Details */}
+                <div className="content">
+                    <div className="about">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti provident doloremque architecto voluptatibus ratione ea reiciendis suscipit harum consequuntur, quasi dolore laudantium, necessitatibus soluta eum? Debitis dolorem rem repellendus excepturi!</p>
+                        <p><a href="https://github.com/tylermaran/cadl" target='blank'>Check it out on gitub I guess</a></p>
+                    </div>
+                </div>
+
+                <Footer/>
+                
             </div>
-
-            {/* Recent Uploads */}
-            <div className="content">
-                <h3 className="sub_title">
-                    Categories:
-                </h3> 
-
-                <div className="cat cnc">CNC</div>
-                <div className="cat 3dprint">3D Printing</div>
-                <div className="cat laser">Laser</div>
-                <div className="cat gaming">Gaming</div>
-            
-                <div className="landing_link">
-                    <Link to='/categories'>
-                        Browse all categories                    
-                    </Link>
-                </div>
-            </div>
-
-            {/* Site Details */}
-            <div className="content">
-                <div className="about">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti provident doloremque architecto voluptatibus ratione ea reiciendis suscipit harum consequuntur, quasi dolore laudantium, necessitatibus soluta eum? Debitis dolorem rem repellendus excepturi!</p>
-                    <p><a href="https://github.com/tylermaran/cadl" target='blank'>Check it out on gitub I guess</a></p>
-                </div>
-            </div>
-
-            <Footer/>
-            
-        </div>
-    );
-
+        );
+    }
 }
 
 export default Landing;

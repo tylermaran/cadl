@@ -38,6 +38,13 @@
     border: 1px solid black;
     vertical-align: top;
     overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+}
+
+.tdprint {
+    background-image: url('../images/3dprint.png');
 }
 
 @media only screen and (max-width: 699px) {
@@ -46,7 +53,14 @@
         margin: 20px 2.5% 20px 2.5%;
     }  
     .object_container {
-        width: 90%;
+        width: 80%;
+    }
+    
+    .cat {
+        width: 40vw;
+        min-width: 0;
+        min-height: 0;
+        height: 40vw;
     }
 } 
 
