@@ -56,6 +56,12 @@
      user-select: none;        /* Likely future           */
 }
 
+.cat:hover {
+    border: 2px dotted rgb(123, 123, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .tdprint {
     background-image: url('../images/3dprint.png');
 }

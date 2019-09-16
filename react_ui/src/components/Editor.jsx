@@ -104,8 +104,19 @@ class Editor extends Component {
         }
 
         const handleColor = (color) => {
+            console.log(color);
             temp = this.state.object;
-            temp.object_color = color;
+            temp.config.object_color = '0x' + color.substr(1, color.length);
+
+            this.setState({
+                object: temp
+            });
+        }
+
+        const handleBackgroundColor = (color) => {
+            console.log(color);
+            temp = this.state.object;
+            temp.config.background_color = color;
 
             this.setState({
                 object: temp
@@ -174,19 +185,14 @@ class Editor extends Component {
                         <Tab eventKey='texture' title='Texture'>
                             COLORSSS
                             <div className="color">
-                                <input type="color" name="color" id="color_picker"/>
-                                <button type="button" className="edit_button" onClick={() => handleColor(0xd99802)}> Orange </button>
-                                <button type="button" className="edit_button" onClick={() => handleColor(0x2cbf08)}> Green </button>
-                                <button type="button" className="edit_button" onClick={() => handleColor(0x1529ad)}> Blue </button>
-
+                                <input type="color" name="color" id="color_picker" onInput={(e) => handleColor(e.target.value)}/>
+                            </div>
+                            Background
+                            <div className="color">
+                                <input type="color" name="color" id="color_picker" onInput={(e) => handleBackgroundColor(e.target.value)}/>
                             </div>
                         </Tab>
-
-
-
-
                     </Tabs>
-                    
                  </div>   
             </div>
         )

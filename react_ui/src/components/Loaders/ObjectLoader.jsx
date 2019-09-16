@@ -53,7 +53,7 @@ class ObjectLoader extends Component {
 		const height = this.el.clientHeight;
 
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color( 0x646464 );
+        this.scene.background = new THREE.Color( 0x404040 );
 
 		this.camera = new THREE.PerspectiveCamera(
             75, // FOV
@@ -230,6 +230,9 @@ class ObjectLoader extends Component {
 		
 		// Take in Mesh Color
 		this.mesh.material.color.setHex(this.props.object.config.object_color);
+
+		// Set different background color
+		this.scene.background = new THREE.Color(this.props.object.config.background_color);
         
         // Update the mesh Matrix
         this.mesh.updateMatrix();
