@@ -80,7 +80,7 @@ class Landing extends Component {
                         Categories:
                     </h3> 
 
-                    <div className="cat cnc">CNC</div>
+                    <Link to="/categories/cnc"><div className="cat cnc">CNC</div></Link>
                     <div className="cat tdprint">3D Printing</div>
                     <div className="cat laser">Laser</div>
                     <div className="cat maslow">Maslow</div>
