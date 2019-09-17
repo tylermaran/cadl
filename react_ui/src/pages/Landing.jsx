@@ -81,9 +81,9 @@ class Landing extends Component {
                     </h3> 
 
                     <Link to="/categories/cnc"><div className="cat cnc">CNC</div></Link>
-                    <div className="cat tdprint">3D Printing</div>
-                    <div className="cat laser">Laser</div>
-                    <div className="cat maslow">Maslow</div>
+                    <Link to="/categories/3dprinting"><div className="cat tdprint">3D Printing</div></Link>
+                    <Link to="/categories/cnc"><div className="cat laser">Laser</div></Link>
+                    <Link to="/categories/cnc"><div className="cat maslow">Maslow</div></Link>
                 
                     <div className="landing_link">
                         <Link to='/categories'>
