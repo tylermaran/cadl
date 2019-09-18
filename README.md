@@ -68,6 +68,10 @@ GET all Projects: `api/projects`
 
 GET all Designs: `api/designs`
 
+Get all Categories: `api/category`
+
 GET Specific Project: `api/project/project_name`
 
 GET Specific Design: `api/designs/design_name`
+
+GET Specific Category: `api/category/category_name`

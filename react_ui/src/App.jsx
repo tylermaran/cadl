@@ -7,6 +7,7 @@ import Landing from './pages/Landing';
 import Upload from './pages/Upload';
 import Testing from './pages/Testing';
 import NoMatch from './pages/NoMatch';
+import Browse from './pages/Browse';
 
 
 // Importing Styling
@@ -22,6 +23,8 @@ function App() {
 					<Route exact path='/create' component = { Create } />
 					<Route exact path='/upload' component = { Upload } />
 					<Route exact path='/testing' component = { Testing } />
+					<Route path='/projects/:category' component = { Browse }/>
+
 					<Route component = {NoMatch} />
 				</Switch>
 			</Router>

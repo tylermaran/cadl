@@ -17,6 +17,28 @@ exports.get_all_projects = (req, res, next) => {
         });
 }
 
+// G2: GET Project Category
+exports.get_project_category = (req, res, next) => {
+    const category = req.params.category;
+    console.log(category);
+
+    Project.find({
+        category: {$regex: category, $options: 'i'}
+    })
+    .select()
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+}
+
+
 // P1: POST New Project
 exports.post_new_project = (req, res, next) => {
     // Preventing Duplicate Clubs - search by name
