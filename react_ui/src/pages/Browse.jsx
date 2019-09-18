@@ -23,8 +23,14 @@ class Browse extends Component {
         }
     }
 
+
     componentDidMount() {
-        fetch('http://localhost:5000/designs')
+        const handle = this.props.match.params
+        const category = handle.category;
+        console.log("Category", category);
+
+
+        fetch('http://localhost:5000/projects/category/' + category)
         .then((response) => {
             return response.json();
         }).then((data) => {
