@@ -46,7 +46,8 @@ class Review extends Component {
                 mm: true,
                 translate: [0, 0, 0],
                 center: [0, 0],
-                object_color: '0x5eeb34'
+                object_color: '0x5eeb34',
+                background_color: "#404040"
             },
             note: 'This is a cool model',
             author: 'TheManMaran'

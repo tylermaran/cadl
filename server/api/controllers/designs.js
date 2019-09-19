@@ -46,7 +46,8 @@ exports.post_new_design = (req, res, next) => {
                     rotate: req.body.rotate,
                     translate: req.body.translate,
                     center: req.body.center,
-                    object_color: req.body.object_color
+                    object_color: req.body.object_color,
+                    background_color: req.body.background_color
                 },
                 note: req.body.note,
                 author: req.body.author

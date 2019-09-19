@@ -48,6 +48,7 @@
     color: white;
     font-size: 17px;
     font-weight: bold;
+    user-select: none;
 }
 
 .edit_file_button:hover {

@@ -39,6 +39,10 @@ const designSchema = mongoose.Schema({
         object_color: {
             type: String,
             default: "0x4287f5"
+        },
+        background_color: {
+            type: String,
+            default:'#404040'
         }
     },
     note: {

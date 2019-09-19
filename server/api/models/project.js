@@ -19,7 +19,15 @@ const projectSchema = mongoose.Schema({
     designs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Design'
-    }]
+    }],
+    profile_image: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Design'
+    },
+    profile_file: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Design'
+    }
 });
 
 module.exports = mongoose.model('Project', projectSchema);

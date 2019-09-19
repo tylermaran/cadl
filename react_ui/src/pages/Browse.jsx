@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
 // Importing Styles
-import './Landing.css'
+import './Browse.css'
 
 // import demo from '../demo.json';
 
@@ -27,10 +27,14 @@ class Browse extends Component {
     componentDidMount() {
         const handle = this.props.match.params
         const category = handle.category;
-        console.log("Category", category);
 
+        let url = 'http://localhost:5000/projects/category/' + category;
 
-        fetch('http://localhost:5000/projects/category/' + category)
+        if (category === 'recent') {
+            url = 'http://localhost:5000/projects/';
+        }
+
+        fetch(url)
         .then((response) => {
             return response.json();
         }).then((data) => {
@@ -45,8 +49,8 @@ class Browse extends Component {
 
     render_model = (object) => {
         return (
-            <div className="object_container" key={object.file}>
-                <DisplayTile object={ object } control= { this.state.control } />
+            <div className="object_container" key={object.designs[0].file}>
+                <DisplayTile object={ object.designs[0] } control= { this.state.control } />
             </div>
         )
     }
@@ -61,12 +65,13 @@ class Browse extends Component {
         return (
             <div className='Browse'>
                 <NavBar/>
-           
 
-
-                    {objectContainer}
-
-             
+                    <div className="browse_content">
+                        <div className="browse_title">
+                            Browse:
+                        </div>
+                        {objectContainer}
+                    </div>
 
                 <Footer/>
                 

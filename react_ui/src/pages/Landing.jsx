@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 // Importing Components
 import DisplayTile from '../components/DisplayTile';
+import CategoryTile from '../components/Containers/CategoryTile';
 import NavBar from '../components/NavBar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -68,7 +69,7 @@ class Landing extends Component {
                     {objectContainer}
 
                     <div className="landing_link">
-                        <Link to='/recent'>
+                        <Link to='/projects/recent'>
                             Browse all recent                   
                         </Link>
                     </div>
@@ -79,11 +80,11 @@ class Landing extends Component {
                     <h3 className="sub_title">
                         Categories:
                     </h3> 
-
-                    <Link to="/categories/cnc"><div className="cat cnc">CNC</div></Link>
-                    <Link to="/categories/3dprinting"><div className="cat tdprint">3D Printing</div></Link>
-                    <Link to="/categories/cnc"><div className="cat laser">Laser</div></Link>
-                    <Link to="/categories/cnc"><div className="cat maslow">Maslow</div></Link>
+                    <CategoryTile url="Aluminum CNC" name='Laser' image='https://via.placeholder.com/150'/>
+                    <Link to="/projects/Aluminum CNC"><div className="cat cnc">CNC</div></Link>
+                    <Link to="/projects/3D Printing"><div className="cat tdprint">3D Printing</div></Link>
+                    <Link to="/projects/Laser Cutter"><div className="cat laser">Laser</div></Link>
+                    <Link to="/projects/Maslow CNC"><div className="cat maslow">Maslow</div></Link>
                 
                     <div className="landing_link">
                         <Link to='/categories'>

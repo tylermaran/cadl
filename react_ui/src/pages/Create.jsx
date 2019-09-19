@@ -65,7 +65,8 @@ class Create extends Component {
                 rotate: [0, 0, 0],  // [x, y, z]
                 translate: [0, 0, 0],  // [x, y, z]
                 center: [0, 0], // [x, y]
-                object_color: "0x4287f5" // Hex code value
+                object_color: "0x4287f5", // Hex code value
+                background_color: "#404040"
             };
             this.note = ""; // String
         }

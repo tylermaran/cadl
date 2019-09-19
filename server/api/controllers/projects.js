@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 exports.get_all_projects = (req, res, next) => {
     Project.find()
         .select()
+        .populate('designs')
         .exec()
         .then(result => {
             console.log(result);
@@ -26,6 +27,7 @@ exports.get_project_category = (req, res, next) => {
         category: {$regex: category, $options: 'i'}
     })
     .select()
+    .populate('designs')
     .exec()
     .then(result => {
         console.log(result);
@@ -67,7 +69,9 @@ exports.post_new_project = (req, res, next) => {
                 author: req.body.author,
                 description: req.body.desc,
                 category: req.body.category,
-                designs: req.body.designs
+                designs: req.body.designs,
+                profile_image: req.body.profile_image,
+                profile_file: req.body.profile_file
             });
 
             // Save new club to DB

@@ -1,0 +1,24 @@
+
+@media only screen and (max-width: 600px) {
+    .browse_content {
+        width: 95%;
+        height: auto;
+        min-height: 80vh;
+        background-color: white;
+        margin: 20px 0 70px 2.5%;
+        padding: 2.5% 5% 40px 5%;
+        border: 1px solid rgb(180, 180, 180);
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .browse_content {
+        width: 90%;
+        height: auto;
+        min-height: 80vh;
+        background-color: white;
+        margin: 20px 0 70px 5%;
+        padding: 2.5% 20px 40px 20px;
+        border: 1px solid rgb(180, 180, 180);
+    }
+}
