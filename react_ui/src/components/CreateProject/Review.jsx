@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 
 // Importing Components
 import ObjectLoader from '../Loaders/ObjectLoader';
+import ImageLoader from '../Loaders/ImageLoader';
 
 // Importing Styling
 import './Review.css'
@@ -29,7 +30,6 @@ class Review extends Component {
                 model: temp
             })
         }
-      
     }
 
      handleInput = (file) => {
@@ -37,7 +37,7 @@ class Review extends Component {
 
         let temp_file = {
             file: '',
-            ext: 'stl',
+            ext: file.ext,
             name: file.name,
             category: file.category,
             file_size: 0,
@@ -59,17 +59,35 @@ class Review extends Component {
             pan: true
         }
 
-        let model = (
-            <div className="object_tile" key={temp_file.name}>
-                <div className="object_name">{temp_file.name}</div>
-                <div className="review_object">
-                    <ObjectLoader object={ temp_file } control= { control } />
-                </div>
-                <div className="object_note">{temp_file.note}</div>
-            </div>
-        )
+        let preview;
 
-        // TODO - figure out why this FileReader thing works
+        if (temp_file.ext === 'stl') {
+            preview = (
+                <div className="object_tile" key={temp_file.name}>
+                    <div className="object_name">{temp_file.name}</div>
+                    <div className="review_object">
+                        <ObjectLoader object={ temp_file } control= { control } />
+                    </div>
+                    <div className="object_note">{temp_file.note}</div>
+                </div>
+            )
+        } 
+        else {
+            // temp_file.file = URL.createObjectURL(file.file)
+            
+            preview = (
+                <div className="object_tile" key={temp_file.name}>
+                    <div className="object_name">{temp_file.name}</div>
+                    <div className="review_object">
+                        <ImageLoader object={temp_file}/>
+                        {/* <ObjectLoader object={ temp_file } control= { control } /> */}
+                    </div>
+                    <div className="object_note">{temp_file.note}</div>
+                </div>
+            )
+
+        }
+
         let reader = new FileReader();
         
         reader.onload = (result) => {
@@ -78,7 +96,7 @@ class Review extends Component {
             temp_file.file_size = result.total;
             temp_file.file = result.target.result;
             let temp = this.state.model;
-            temp.push(model);
+            temp.push(preview);
             
             // return model;
             // console.log(result.target.result);
@@ -89,6 +107,9 @@ class Review extends Component {
 
         // Read as data url apparently works
         reader.readAsDataURL(file.file);
+
+        // TODO - figure out why this FileReader thing works
+        
         
     }
     

@@ -65,12 +65,12 @@ class Browse extends Component {
             <div className='Browse'>
                 <NavBar/>
 
-                    <div className="browse_content">
-                        <div className="browse_title">
-                            Browse:
-                        </div>
-                        {objectContainer}
+                <div className="browse_content">
+                    <div className="browse_title">
+                        Browse:
                     </div>
+                    {objectContainer}
+                </div>
 
                 <Footer/>
                 

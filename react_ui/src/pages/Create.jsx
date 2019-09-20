@@ -20,13 +20,14 @@ class Create extends Component {
         super(props);
         this.state = {
             page: 'project', //project -> files -> confirm
+            categories: [],
             file_div: '',
             file_array: '',
             project: {
                 name: '',
                 author: '', 
                 desc: '',
-                category: 'Laser Cutter',
+                category: 'Laser-Cutter',
                 designs: []
             },
             show_next: false,
@@ -38,6 +39,17 @@ class Create extends Component {
         }
     }
 
+    componentDidMount() {
+        let url = 'http://localhost:5000/categories/99';
+        fetch(url)
+        .then((response) => {
+            return response.json();
+        }).then((data) => {
+            this.setState({
+                categories: data
+            });
+        });
+    }
 
     // Update form in state
     handleFormChange = (field, value) => {
@@ -254,6 +266,7 @@ class Create extends Component {
                     return( <CreateProject 
                                 setPage = {this.setPage} 
                                 project={this.state.project}
+                                categories={this.state.categories}
                                 handleFormChange={this.handleFormChange} />)
                 case 'upload':
                     // File Upload

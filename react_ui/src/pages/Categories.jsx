@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // Importing Components
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import CategoryTile from '../components/Containers/CategoryTile';
 
 // Importing Styles
 import './Categories.css'
@@ -12,61 +13,44 @@ class Categories extends Component {
     constructor(props){
         super(props);
         this.state = {
-            categories: 'Something I guess',
-            data: true
+            data: null
         }
     }
 
+    componentDidMount() {
+        let url = 'http://localhost:5000/categories/99';
+        fetch(url)
+        .then((response) => {
+            return response.json();
+        }).then((data) => {
+            this.setState({
+                data: data
+            });
+        });
+    }
 
-    // componentDidMount() {
-    //     const handle = this.props.match.params
-    //     const category = handle.category;
-
-    //     let url = 'http://localhost:5000/projects/category/' + category;
-
-    //     if (category === 'recent') {
-    //         url = 'http://localhost:5000/projects/';
-    //     }
-
-    //     fetch(url)
-    //     .then((response) => {
-    //         return response.json();
-    //     }).then((data) => {
-    //         // take last 4 recent files
-    //         let recent = data.slice(0,4);
-    //         console.log(recent);
-    //         this.setState({
-    //             data: recent
-    //         });
-    //     });
-    // }
-
-    // render_model = (object) => {
-    //     return (
-    //         <div className="object_container" key={object.designs[0].file}>
-                
-    //         </div>
-    //     )
-    // }
+    render_model = (object) => {
+        return (
+            <CategoryTile url={object.url_slug} name={object.name} image={object.image} key={object.name}/>
+        )
+    }
 
     render() {
         let objectContainer;
-
         if (this.state.data) {
-            objectContainer= 'Yuuuup Cats'
-            // objectContainer = this.state.data.map(this.render_model);    
+            objectContainer = this.state.data.map(this.render_model);    
         }
 
         return (
-            <div className='Categories'>
+            <div className='categories'>
                 <NavBar/>
-
-                    <div className="Categories_content">
-                       {objectContainer}
+                <div className="categories_content">
+                    <div className="category_title">
+                        All Categories
                     </div>
-
+                    {objectContainer}
+                </div>
                 <Footer/>
-                
             </div>
         );
     }

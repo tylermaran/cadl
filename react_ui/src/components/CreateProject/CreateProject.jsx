@@ -9,6 +9,18 @@ import './CreateProject.css';
 
 const CreateProject = (props) => {
 
+    let categories;
+
+    const mapCategories = (category) => {
+        return(
+            <option value={category.url_slug} key={category.name}>{category.name}</option>
+        )
+    }
+
+    if (props.categories.length > 0) {
+        categories = props.categories.map(mapCategories);    
+    }
+
     return (
         <div className="create_form">
             {/* Create project - title, name, description, etc. */}
@@ -30,11 +42,7 @@ const CreateProject = (props) => {
                 <Form.Group controlId="cat_select">
                     <Form.Label>Project Category</Form.Label>
                     <Form.Control as="select" name="category" value={props.project.category} onChange={(e) => props.handleFormChange(e.target.name, e.target.value)} required>
-                        <option>Laser Cutter</option>
-                        <option>3D Printing</option>
-                        <option>Maslow CNC</option>
-                        <option>Aluminum CNC</option>
-                        <option>PCB Mill</option>
+                        {categories}
                     </Form.Control>
                 </Form.Group>
 

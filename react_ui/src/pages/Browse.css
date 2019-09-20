@@ -1,4 +1,13 @@
 
+.browse_title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+    text-align: left;
+}
+
 @media only screen and (max-width: 600px) {
     .browse_content {
         width: 95%;

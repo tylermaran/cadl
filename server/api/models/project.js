@@ -13,6 +13,9 @@ const projectSchema = mongoose.Schema({
     category: {
         type: String
     },
+    category_slug: {
+        type: String
+    },
     description: {
         type: String
     },

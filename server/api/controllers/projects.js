@@ -1,13 +1,14 @@
 const Project = require('../models/project');
 const mongoose = require('mongoose');
 
-// G1: GET All
+// G1: GET All (Takes limit from req.params)
 exports.get_all_projects = (req, res, next) => {
     const limit = parseInt(req.params.limit);
     Project.find()
         .select()
         .limit(limit)
         .populate('designs')
+        .sort({ _id: -1 })
         .exec()
         .then(result => {
             console.log(result);
@@ -19,6 +20,7 @@ exports.get_all_projects = (req, res, next) => {
             });
         });
 }
+
 
 // G2: GET Project Category
 exports.get_project_category = (req, res, next) => {
@@ -57,20 +59,20 @@ exports.post_new_project = (req, res, next) => {
             });
         } else {
 
-            // TODO: use slug for project name (don't bother for file name)
-            // let slug = req.body.name;
-            // slug = slug.replace(/ /g, '-');
-            // slug = slug.replace(/&/g, 'and');
-            // console.log(slug);
+            let slug = req.body.name;
+            slug = slug.replace(/ /g, '-');
+            slug = slug.replace(/&/g, 'and');
+            console.log(slug);
 
             // Create new club object from body data
             const project = new Project({
                 _id: new mongoose.Types.ObjectId(),
-                // slug: slug,
                 name: req.body.name,
+                url_slug: slug,
                 author: req.body.author,
                 description: req.body.desc,
                 category: req.body.category,
+                category_slug: req.body.category_slug,
                 designs: req.body.designs,
                 profile_image: req.body.profile_image,
                 profile_file: req.body.profile_file

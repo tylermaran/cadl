@@ -12,9 +12,8 @@ class ObjectLoader extends Component {
 	constructor(){
 		super();
 		this.state =({
-			Loaded: 1,
-			Total: 100,
-			size: 0,
+			Loaded: 0,
+			size: 1,
 			complete: false,
 			loader: null
 		})
@@ -199,7 +198,7 @@ class ObjectLoader extends Component {
         (progress) => {
 			// console.log(progress);
 			this.setState({
-				Loaded: progress.loaded,
+				loaded: progress.loaded,
 				size: progress.total
 			});
 		},
@@ -265,7 +264,7 @@ class ObjectLoader extends Component {
 			loaded = ( (this.state.size / 1000000).toFixed(1) + 'mb');
 			
 		} else {
-			loaded = ((this.state.Loaded / this.state.Total).toFixed(2)*100 + '%')
+			loaded = ((this.state.loaded / this.state.size).toFixed(2)*100 + '%')
 		}
 
 		return (

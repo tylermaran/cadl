@@ -1,0 +1,38 @@
+.category_title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .categories_content {
+        width: 95%;
+        height: auto;
+        min-height: 80vh;
+        background-color: white;
+        margin: 20px 0 70px 2.5%;
+        padding: 2.5% 0% 40px 0%;
+        border: 1px solid rgb(180, 180, 180);
+    }
+    .category_title {
+        margin: 10px 0 20px 5%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .categories_content {
+        width: 90%;
+        height: auto;
+        min-height: 80vh;
+        background-color: white;
+        margin: 20px 0 70px 5%;
+        padding: 2.5% 20px 40px 20px;
+        border: 1px solid rgb(180, 180, 180);
+    }
+
+    .category_title {
+        margin: 10px 0 20px 0;
+    }
+}

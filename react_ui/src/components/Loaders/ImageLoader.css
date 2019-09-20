@@ -1,0 +1,16 @@
+.image_loader {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.image {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-position: center;
+    background-size: cover;
+    image-orientation: from-image;
+}
