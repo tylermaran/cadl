@@ -27,33 +27,60 @@ class Landing extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/designs')
+        fetch('http://localhost:5000/projects/4')
         .then((response) => {
             return response.json();
         }).then((data) => {
             // take last 4 recent files
             let recent = data.slice(0,4);
             console.log(recent);
+            // console.log(data);
             this.setState({
-                data: recent
+                projects: recent
             });
         });
+
+        fetch('http://localhost:5000/categories/4')
+        .then((response) => {
+            return response.json();
+        }).then((data) => {
+            // take last 4 recent files
+            // let recent = data.slice(0,4);
+            console.log(data);
+            // console.log(data);
+            this.setState({
+                categories: data
+            });
+        });
+
     }
 
     render_model = (object) => {
         return (
-            <div className="object_container" key={object.file}>
-                <DisplayTile object={ object } control= { this.state.control } />
+            <div className="object_container" key={object.designs[0]}>
+                <DisplayTile object={ object.designs[0] } control= { this.state.control } />
             </div>
+        )
+    }
+
+    render_category = (object) => {
+        return (
+            <CategoryTile url={object.url_slug} name={object.name} image={object.image}/>
         )
     }
 
     render() {
         let objectContainer;
+        let categories;
 
-        if (this.state.data) {
-            objectContainer = this.state.data.map(this.render_model);    
+        if (this.state.projects) {
+            objectContainer = this.state.projects.map(this.render_model);    
         }
+
+        if (this.state.categories) {
+            categories = this.state.categories.map(this.render_category);    
+        }
+
 
         return (
             <div className='landing'>
@@ -80,12 +107,11 @@ class Landing extends Component {
                     <h3 className="sub_title">
                         Categories:
                     </h3> 
-                    <CategoryTile url="Aluminum CNC" name='Laser' image='https://via.placeholder.com/150'/>
-                    <Link to="/projects/Aluminum CNC"><div className="cat cnc">CNC</div></Link>
+                    {/* <Link to="/projects/Aluminum CNC"><div className="cat cnc">CNC</div></Link>
                     <Link to="/projects/3D Printing"><div className="cat tdprint">3D Printing</div></Link>
                     <Link to="/projects/Laser Cutter"><div className="cat laser">Laser</div></Link>
-                    <Link to="/projects/Maslow CNC"><div className="cat maslow">Maslow</div></Link>
-                
+                    <Link to="/projects/Maslow CNC"><div className="cat maslow">Maslow</div></Link> */}
+                    {categories}
                     <div className="landing_link">
                         <Link to='/categories'>
                             Browse all categories                    

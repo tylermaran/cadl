@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 
 // G1: GET All
 exports.get_all_projects = (req, res, next) => {
+    const limit = parseInt(req.params.limit);
     Project.find()
         .select()
+        .limit(limit)
         .populate('designs')
         .exec()
         .then(result => {

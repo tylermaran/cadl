@@ -3,7 +3,7 @@ const router = express.Router();
 const ProjectControler = require('../controllers/projects');
 
 // G1: GET All Projects
-router.get('/', ProjectControler.get_all_projects);
+router.get('/:limit', ProjectControler.get_all_projects);
 
 // G2: GET Project By Category
 router.get('/category/:category', ProjectControler.get_project_category);

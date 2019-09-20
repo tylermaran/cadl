@@ -32,6 +32,7 @@ mongoose.set('useFindAndModify', false)
 const designRoutes = require('./api/routes/designs');
 const projectRoutes = require('./api/routes/projects');
 const fileRoutes = require('./api/routes/fileUpload');
+const categoryRoutes = require('./api/routes/categories');
 
 // running morgan in dev mode
 // app.use(morgan('dev'));
@@ -50,6 +51,7 @@ app.use(bodyParser.json());
 app.use('/designs', designRoutes);
 app.use('/projects', projectRoutes);
 app.use('/files', fileRoutes);
+app.use('/categories', categoryRoutes);
 
 
 app.use('/', (req, res, next) => {

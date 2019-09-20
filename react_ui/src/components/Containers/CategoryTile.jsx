@@ -12,13 +12,11 @@ const CategoryTile = (props) => {
     }
 
     return (
-        <div className="category_tile">
-            <Link to={'/projects/' + props.url}>
-                <div className="cat" style={style}>
-                    {props.name}
-                </div>
-            </Link>
-        </div>
+        <Link to={'/projects/' + props.url}>
+            <div className="cat" style={style}>
+                {props.name}
+            </div>
+        </Link>
     );
 } 
 

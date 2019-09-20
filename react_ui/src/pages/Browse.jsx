@@ -23,7 +23,6 @@ class Browse extends Component {
         }
     }
 
-
     componentDidMount() {
         const handle = this.props.match.params
         const category = handle.category;
