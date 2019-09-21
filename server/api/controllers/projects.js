@@ -62,7 +62,7 @@ exports.post_new_project = (req, res, next) => {
             let slug = req.body.name;
             slug = slug.replace(/ /g, '-');
             slug = slug.replace(/&/g, 'and');
-            console.log(slug);
+            console.log('Slug: ' + slug);
 
             // Create new club object from body data
             const project = new Project({

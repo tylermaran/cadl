@@ -10,6 +10,9 @@ const projectSchema = mongoose.Schema({
     author: {
         type: String
     },
+    url_slug: {
+        type: String
+    },
     category: {
         type: String
     },

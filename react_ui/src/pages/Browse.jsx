@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 
 // Importing Components
-import DisplayTile from '../components/DisplayTile';
+// import DisplayTile from '../components/DisplayTile';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import ResultsTile from '../components/containers/ResultsTile';
 
 // Importing Styles
 import './Browse.css'
@@ -15,60 +16,81 @@ class Browse extends Component {
     constructor(props){
         super(props);
         this.state = {
-            control: {
-                zoom: true,
-                rotate: true,
-                pan: true
-            }
+            results: null,
+            category: null
         }
     }
 
     componentDidMount() {
         const handle = this.props.match.params
-        const category = handle.category;
+        const search_category = handle.category;
 
-        let url = 'http://localhost:5000/projects/category/' + category;
+        let search = 'http://localhost:5000/projects/category/' + search_category;
+        let category = 'http://localhost:5000/categories/detail/' + search_category;
 
         if (category === 'recent') {
-            url = 'http://localhost:5000/projects/';
+            search = 'http://localhost:5000/projects/';
         }
 
-        fetch(url)
+        fetch(search)
+        .then((response) => {
+            return response.json();
+        }).then((data) => {          
+            console.log(data);
+            this.setState({
+                results: data
+            });
+        });
+
+        fetch(category)
         .then((response) => {
             return response.json();
         }).then((data) => {
-            // take last 4 recent files
-            let recent = data.slice(0,4);
-            console.log(recent);
+            console.log(data);
             this.setState({
-                data: recent
-            });
-        });
+                category: data[0]
+            })
+        })
     }
 
     render_model = (object) => {
         return (
-            <div className="object_container" key={object.designs[0].file}>
-                <DisplayTile object={ object.designs[0] } control= { this.state.control } />
-            </div>
+            <ResultsTile object={object} key={object._id}/>
         )
     }
 
     render() {
-        let objectContainer;
+        let objectContainer = (
+            <div>
+                {/* No results for {this.state.category.name} */}
+            </div>
+        );
 
-        if (this.state.data) {
-            objectContainer = this.state.data.map(this.render_model);    
+        let categoryDetail = (
+            <div className="browse_title">
+                Browse:
+            </div>
+        )
+
+        if (this.state.results) {
+            objectContainer = this.state.results.map(this.render_model);    
+        }
+
+        if (this.state.category) {
+            categoryDetail = (
+                <div className="browse_title">
+                    Browse: {this.state.category.name}
+                </div>
+            )
         }
 
         return (
             <div className='Browse'>
                 <NavBar/>
 
+
                 <div className="browse_content">
-                    <div className="browse_title">
-                        Browse:
-                    </div>
+                    {categoryDetail}
                     {objectContainer}
                 </div>
 

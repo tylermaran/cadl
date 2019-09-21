@@ -19,6 +19,26 @@ exports.get_all_categories = (req, res, next) => {
         });
 }
 
+exports.get_detail_category = (req, res, next) => {
+    const category = req.params.category;
+    Category.find({
+        url_slug: category
+    })
+    .select()
+    .limit(1)
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+}
+
+
 // P1: POST New Project
 exports.post_new_category = (req, res, next) => {
     // Preventing Duplicate Clubs - search by name

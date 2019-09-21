@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Importing Components
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import CategoryTile from '../components/Containers/CategoryTile';
+import CategoryTile from '../components/containers/CategoryTile';
 
 // Importing Styles
 import './Categories.css'

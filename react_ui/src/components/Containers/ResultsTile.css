@@ -1,0 +1,32 @@
+.results_tile {
+    width: 90%;
+    height: auto;
+    min-height: 20px;
+    margin: 0 0 0 5%;
+    text-align: left;
+    border: 1px solid rgb(180, 180, 180);
+}
+
+.result_image {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    background-position: center;
+    background-size: cover;
+    vertical-align: top;
+}
+
+.result_detail {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0 0 20px;
+}
+
+.result_name {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.result_author {
+    font-style: italic;
+}
