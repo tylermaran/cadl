@@ -14,7 +14,7 @@ const NavBar = (props) => {
         <div className='navbar'>
 
             <Link className='nav_link' to='/'>Home</Link>
-            {/* <Link className='nav_link' to='/upload'>Upload</Link> */}
+            <Link className='nav_link' to='/projects/recent'>Browse</Link>
             <Link className='nav_link' to='/create'>Create</Link>
 
         </div>

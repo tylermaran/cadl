@@ -17,13 +17,14 @@
 .display_content {
     color: white;
     height: 35px;
-    /* border-bottom-left-radius: 5px; */
-    /* border-bottom-right-radius: 5px; */
-
     padding: 5px 0 0 0;
 
     /* background-color: rgb(139, 139, 255); */
     background-image: url('../images/blueprint.png');
     background-position: center;
     background-size: cover;
+}
+
+.display_link {
+    color: white;
 }

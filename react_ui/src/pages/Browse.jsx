@@ -1,5 +1,6 @@
 // Importing Dependencies
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Importing Components
 // import DisplayTile from '../components/DisplayTile';
@@ -27,9 +28,11 @@ class Browse extends Component {
 
         let search = 'http://localhost:5000/projects/category/' + search_category;
         let category = 'http://localhost:5000/categories/detail/' + search_category;
+        let limit = 99;
+
 
         if (category === 'recent') {
-            search = 'http://localhost:5000/projects/';
+            search = 'http://localhost:5000/projects/' + limit;
         }
 
         fetch(search)
@@ -60,9 +63,10 @@ class Browse extends Component {
     }
 
     render() {
+
         let objectContainer = (
-            <div>
-                {/* No results for {this.state.category.name} */}
+            <div className="no_results">
+                No results found. You can help fix this! <Link to='/create'>Create a new project!</Link>
             </div>
         );
 
@@ -72,14 +76,21 @@ class Browse extends Component {
             </div>
         )
 
-        if (this.state.results) {
+        if (this.state.results && this.state.results.length > 0) {
             objectContainer = this.state.results.map(this.render_model);    
         }
 
         if (this.state.category) {
+            let style = {
+                backgroundImage: 'url(' + this.state.category.image + ')'
+            }
+
             categoryDetail = (
-                <div className="browse_title">
-                    Browse: {this.state.category.name}
+                <div className="category_detail">
+                    <div className="category_image" style={style}></div>
+                    <div className="browse_title">
+                        Browse: {this.state.category.name}
+                    </div>
                 </div>
             )
         }

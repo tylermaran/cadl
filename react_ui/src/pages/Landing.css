@@ -28,6 +28,16 @@
     font-size: 18px;
 }
 
+.no_projects {
+    text-align: center;
+    margin: 50px 0 50px 0;
+}
+
+.no_categories {
+    text-align: center;
+    margin: 50px 0 50px 0;
+}
+
 .cat {
     display: inline-block;
     height: 18vw;

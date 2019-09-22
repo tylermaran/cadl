@@ -46,7 +46,7 @@ class Categories extends Component {
                 <NavBar/>
                 <div className="categories_content">
                     <div className="category_title">
-                        All Categories
+                        All Categories:
                     </div>
                     {objectContainer}
                 </div>

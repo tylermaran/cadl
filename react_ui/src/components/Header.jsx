@@ -39,7 +39,7 @@ const Header = (props) => {
                         LEARN-TO-DESIGN
                     </h3>
                     <p className='home_message_body'>
-                        3D Printers, Laser Cutters, CNC and more! Download a model. Try out community suggestions. Or check out some of the <Link to='/learn'>introductory material here!</Link>
+                        3D Printers, Laser Cutters, CNC and more! Download a model and get started. Or check out some of the <Link to='/learn'>introductory material here!</Link>
                     </p>
                 </div>
 

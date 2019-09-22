@@ -44,10 +44,7 @@ class Landing extends Component {
         .then((response) => {
             return response.json();
         }).then((data) => {
-            // take last 4 recent files
-            // let recent = data.slice(0,4);
             console.log(data);
-            // console.log(data);
             this.setState({
                 categories: data
             });
@@ -58,7 +55,7 @@ class Landing extends Component {
     render_model = (object) => {
         return (
             <div className="object_container" key={object.designs[0]}>
-                <DisplayTile object={ object.designs[0] } control= { this.state.control } />
+                <DisplayTile object={ object } control= { this.state.control } />
             </div>
         )
     }
@@ -70,14 +67,22 @@ class Landing extends Component {
     }
 
     render() {
-        let objectContainer;
-        let categories;
+        let objectContainer = (
+            <div className="no_projects">
+                No projects found. Either everything got deleted, or you're not connected to the internet.
+            </div>
+        );
+        let categories = (
+            <div className="no_categories">
+                No projects found. Either everything got deleted, or you're not connected to the internet.
+            </div>
+        )
 
-        if (this.state.projects) {
+        if (this.state.projects && this.state.projects.length > 0) {
             objectContainer = this.state.projects.map(this.render_model);    
         }
 
-        if (this.state.categories) {
+        if (this.state.categories && this.state.categories.length > 0) {
             categories = this.state.categories.map(this.render_category);    
         }
 
