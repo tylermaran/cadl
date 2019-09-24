@@ -10,10 +10,14 @@ const CategoryDetail = (props) => {
     }
 
     return (
-        <div className='category_overview'>
-            <div className="category_image" style={style}></div>
-            <div className="category_detail">
-                {props.category.description}
+        <div className='category_overview' style={style}>
+            <div className="category_image_text">
+                <div className="category_detail_title">
+                    {props.category.name}
+                </div>
+                <div className="category_detail">
+                    {props.category.description}
+                </div>
             </div>
         </div>
     ) 

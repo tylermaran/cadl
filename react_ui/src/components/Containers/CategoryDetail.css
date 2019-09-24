@@ -1,16 +1,37 @@
-.category_image {
-    height: 50px;
-    width: 100%;
+.category_overview {
+    height: 150px;
+    width: 90%;
+    margin: 0 0 20px 5%;
     background-position: center;
     background-size: cover;
 }
 
-.category_detail {
-    text-align: left;
-    font-size: 14px;
+.category_image_text {
+    color: white;
+    text-shadow: 1px 1px rgb(104, 104, 104);
+    padding: 10px 5px 5px 20px;
 }
 
-.category_overview {
-    width: 90%;
-    margin: 0 0 20px 5%;
+.category_detail_title {
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.category_detail {
+    text-align: left;
+    font-size: 15px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .category_overview {
+      width: 100%;
+      margin: 0 0 20px 0;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+   
 }

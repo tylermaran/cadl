@@ -7,13 +7,13 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 22px;
     font-weight: bold;
-    margin: 10px 0 0px 0;
+    margin: 0;
     text-align: left;
 }
 
 .browse_categories {
     text-align: left;
-    margin: 0 0 20px 0;
+    margin: 0 0 5px 0;
 }
 
 .no_results {

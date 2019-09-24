@@ -97,13 +97,13 @@ class Browse extends Component {
         if (this.state.category && this.state.category === 'recent') {
             categoryDetail = (
                 <div className="browse_header">
-                    <div className="browse_title">
-                        Recent projects:
-                    </div>
                     <div className="browse_categories">
                         <Link to='/categories'>
-                            Browse a specific category
+                            Browse by category...
                         </Link>
+                    </div>
+                    <div className="browse_title">
+                        Recent projects:
                     </div>
                 </div>
             )
@@ -111,13 +111,13 @@ class Browse extends Component {
         if (this.state.category && this.state.category !== 'recent') {
             browse_header = (
                 <div className="browse_header">
+                     <div className="browse_categories">
+                        <Link to='/categories'>
+                            All Categories...
+                        </Link>
+                    </div>
                     <div className="browse_title">
                         Browse: {this.state.category.name}
-                    </div>
-                    <div className="browse_categories">
-                        <Link to='/categories'>
-                            All Categories
-                        </Link>
                     </div>
                 </div> 
             )

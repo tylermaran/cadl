@@ -48,13 +48,13 @@ class Categories extends Component {
                 <div className="categories_content">
 
                     <div className="category_header">
-                        <div className="category_title">
-                            All Categories:
-                        </div>
                         <div className="browse_all">
                             <Link to='/projects/recent'>
-                                All projects >                       
+                                Browse all projects...                       
                             </Link>
+                        </div>
+                        <div className="category_title">
+                            All Categories:
                         </div>
                     </div>
                     
