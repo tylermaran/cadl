@@ -15,23 +15,26 @@
 .category_detail_title {
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
 }
 
 .category_detail {
     text-align: left;
-    font-size: 15px;
+    font-size: 18px;
 }
-
 
 @media only screen and (max-width: 600px) {
   .category_overview {
       width: 100%;
       margin: 0 0 20px 0;
   }
-}
+  
+  .category_detail_title {
+      font-size: 22px;
+  }
 
-@media only screen and (min-width: 600px) {
-   
+  .category_detail {
+      font-size: 14px;
+  }
 }
