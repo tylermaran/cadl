@@ -1,11 +1,19 @@
+.browse_header {
+    padding: 0 5% 0 5%;
+}
 
 .browse_title {
-    text-align: center;
+    text-align: left;
     font-family: 'Courier New', Courier, monospace;
     font-size: 22px;
     font-weight: bold;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 0px 0;
     text-align: left;
+}
+
+.browse_categories {
+    text-align: left;
+    margin: 0 0 20px 0;
 }
 
 .no_results {
@@ -19,7 +27,7 @@
         min-height: 80vh;
         background-color: white;
         margin: 20px 0 70px 2.5%;
-        padding: 2.5% 5% 40px 5%;
+        padding: 2.5% 0% 40px 0%;
         border: 1px solid rgb(180, 180, 180);
     }
 }

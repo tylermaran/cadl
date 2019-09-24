@@ -15,7 +15,14 @@ class ObjectLoader extends Component {
 			Loaded: 0,
 			size: 1,
 			complete: false,
-			loader: null
+			loader: null,
+			fullscreen: false,
+			style: {
+				position: 'relative',
+				height: '100%',
+				width: '100%',
+				margin: '0',
+			}
 		})
 	}
 
@@ -253,10 +260,44 @@ class ObjectLoader extends Component {
 		this.renderer.setSize(width, height);
 		this.camera.aspect = width / height;
 
-		// Note that after making changes to most of camera properties you have to call
+		// After making changes to most of camera properties you have to call
 		// .updateProjectionMatrix for the changes to take effect.
         this.camera.updateProjectionMatrix();
 	};
+
+	handleFullscreen = () => {
+		console.log('Handle fullscreen');
+		if (this.state.fullscreen) {
+			let temp = {
+				position: 'relative',
+				height: '100%',
+				width: '100%',
+				margin: '0'
+			}
+			this.setState({
+				style: temp,
+				fullscreen: false
+			}, () => {
+				this.handleWindowResize();
+			})
+		} else {
+			let temp = {
+				position: 'fixed',
+				height: '100%',
+				width: '100%',
+				margin: '0',
+				top: '0',
+				left: '0',
+				zIndex: '99'
+			}
+			this.setState({
+				style: temp,
+				fullscreen: true
+			}, () => {
+				this.handleWindowResize();
+			})
+		}
+	}
 
 	render() {
 		let loaded;
@@ -269,8 +310,12 @@ class ObjectLoader extends Component {
 
 		return (
             <>
-				<div className='SetObject' ref={ref => (this.el = ref)}>
-					<div className="SetObject_loader">{loaded}</div>
+				<div className='SetObject' ref={ref => (this.el = ref)} style={this.state.style}>
+					<div className="loading_progress">{loaded}</div>
+					<div className="fullscreen" 
+						onClick={() => this.handleFullscreen()}
+						onTouchStart={() => this.handleFullscreen()}
+					></div>
 				</div>
             </>
 		);

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import ResultsTile from '../components/containers/ResultsTile';
+import CategoryDetail from '../components/containers/CategoryDetail';
 
 // Importing Styles
 import './Browse.css'
@@ -23,37 +24,63 @@ class Browse extends Component {
     }
 
     componentDidMount() {
+        this.update_results();
+    }
+
+    componentDidUpdate(newProps) {
+        if (this.props.match.params !== newProps.match.params) {
+            this.update_results();
+        }
+    }
+
+
+    update_results = () => {
         const handle = this.props.match.params
         const search_category = handle.category;
 
         let search = 'http://localhost:5000/projects/category/' + search_category;
         let category = 'http://localhost:5000/categories/detail/' + search_category;
-        let limit = 99;
+        let limit = '99';
 
 
-        if (category === 'recent') {
+        if (search_category === 'recent') {
             search = 'http://localhost:5000/projects/' + limit;
-        }
 
-        fetch(search)
-        .then((response) => {
-            return response.json();
-        }).then((data) => {          
-            console.log(data);
-            this.setState({
-                results: data
+            // Fetch search results
+            fetch(search)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {          
+                console.log(data);
+                this.setState({
+                    results: data,
+                    category: 'recent'
+                });
             });
-        });
+        } 
+        else {
+            // Fetch search results
+            fetch(search)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {          
+                console.log(data);
+                this.setState({
+                    results: data
+                });
+            });
 
-        fetch(category)
-        .then((response) => {
-            return response.json();
-        }).then((data) => {
-            console.log(data);
-            this.setState({
-                category: data[0]
+            // Fetch category
+            fetch(category)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                console.log(data);
+                this.setState({
+                    category: data[0]
+                })
             })
-        })
+        }
     }
 
     render_model = (object) => {
@@ -64,43 +91,56 @@ class Browse extends Component {
 
     render() {
 
+        let categoryDetail;
+        let browse_header;
+
+        if (this.state.category && this.state.category === 'recent') {
+            categoryDetail = (
+                <div className="browse_header">
+                    <div className="browse_title">
+                        Recent projects:
+                    </div>
+                    <div className="browse_categories">
+                        <Link to='/categories'>
+                            Browse a specific category
+                        </Link>
+                    </div>
+                </div>
+            )
+        }
+        if (this.state.category && this.state.category !== 'recent') {
+            browse_header = (
+                <div className="browse_header">
+                    <div className="browse_title">
+                        Browse: {this.state.category.name}
+                    </div>
+                    <div className="browse_categories">
+                        <Link to='/categories'>
+                            All Categories
+                        </Link>
+                    </div>
+                </div> 
+            )
+            categoryDetail = <CategoryDetail category = {this.state.category}/>
+        }
+    
+
         let objectContainer = (
             <div className="no_results">
                 No results found. You can help fix this! <Link to='/create'>Create a new project!</Link>
             </div>
         );
 
-        let categoryDetail = (
-            <div className="browse_title">
-                Browse:
-            </div>
-        )
-
         if (this.state.results && this.state.results.length > 0) {
             objectContainer = this.state.results.map(this.render_model);    
-        }
-
-        if (this.state.category) {
-            let style = {
-                backgroundImage: 'url(' + this.state.category.image + ')'
-            }
-
-            categoryDetail = (
-                <div className="category_detail">
-                    <div className="category_image" style={style}></div>
-                    <div className="browse_title">
-                        Browse: {this.state.category.name}
-                    </div>
-                </div>
-            )
         }
 
         return (
             <div className='Browse'>
                 <NavBar/>
 
-
                 <div className="browse_content">
+                    {browse_header}
                     {categoryDetail}
                     {objectContainer}
                 </div>

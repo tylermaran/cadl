@@ -1,5 +1,6 @@
 // Importing Dependencies
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Importing Components
 import NavBar from '../components/NavBar';
@@ -35,6 +36,7 @@ class Create extends Component {
             upload_count: 0,
             upload_progress: [],
             upload_complete: false,
+            redirect: false,
             file_label: 'Choose a file...'
         }
     }
@@ -240,8 +242,13 @@ class Create extends Component {
             this.updateProgress(json.message, json.result.name);
             this.setState({
                 upload_complete: true
+            }, () => {
+                setTimeout(() => {
+                    this.setState({
+                        redirect: true
+                    })
+                }, 2000)
             })
-            // Settimeout then redirect to new page
         });
     }
 
@@ -304,6 +311,7 @@ class Create extends Component {
                 <div className="create_content">
                     {/* Switch between project name / file upload / confirm */}
                     {current_view}
+                    {this.state.redirect? <Redirect to='/projects/recent'/>: <></>}
                 </div>
                 <Footer/>
             </div>

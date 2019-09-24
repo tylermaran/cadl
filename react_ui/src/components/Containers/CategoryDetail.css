@@ -1,0 +1,16 @@
+.category_image {
+    height: 50px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.category_detail {
+    text-align: left;
+    font-size: 14px;
+}
+
+.category_overview {
+    width: 90%;
+    margin: 0 0 20px 5%;
+}

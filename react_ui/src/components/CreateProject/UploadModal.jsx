@@ -18,13 +18,6 @@ const UploadModal  = (props) => {
         )
     }
 
-    setTimeout(() => {
-        loading = (
-            <div>Hmm, either big file, or something isnt working..</div>
-        )
-
-    }, 20000)
-
     return (
         <div className="upload_modal">
             <div className="loading_title">

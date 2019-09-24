@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // Importing Components
-import DisplayTile from '../components/DisplayTile';
+import DisplayTile from '../components/containers/DisplayTile';
 import CategoryTile from '../components/containers/CategoryTile';
 import NavBar from '../components/NavBar';
 import Header from '../components/Header';

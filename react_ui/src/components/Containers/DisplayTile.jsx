@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Importing Components
-import ObjectLoader from '../components/Loaders/ObjectLoader';
+import ObjectLoader from '../Loaders/ObjectLoader';
 
 // Importing Styles
 import './DisplayTile.css';

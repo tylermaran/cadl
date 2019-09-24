@@ -45,6 +45,30 @@ exports.get_project_category = (req, res, next) => {
 }
 
 
+// G3: GET Specific Project
+exports.get_individual_project = (req, res, next) => {
+    const category = req.params.category;
+    const project = req.params.project;
+    console.log(category, project);
+
+    Project.find({
+        url_slug: project,
+        category_slug: category
+    })
+    .select()
+    .populate('designs')
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+}
+
 // P1: POST New Project
 exports.post_new_project = (req, res, next) => {
     // Preventing Duplicate Clubs - search by name
@@ -59,20 +83,25 @@ exports.post_new_project = (req, res, next) => {
             });
         } else {
 
-            let slug = req.body.name;
-            slug = slug.replace(/ /g, '-');
-            slug = slug.replace(/&/g, 'and');
-            console.log('Slug: ' + slug);
+            let url_slug = req.body.name;
+            url_slug = url_slug.replace(/ /g, '-');
+            url_slug = url_slug.replace(/&/g, 'and');
+            console.log('url_Slug: ' + url_slug);
+
+            let category_slug = req.body.category;
+            category_slug = category_slug.replace(/ /g, '-');
+            category_slug = category_slug.replace(/&/g, 'and');
+            console.log('Category slug: ' + category_slug);
 
             // Create new club object from body data
             const project = new Project({
                 _id: new mongoose.Types.ObjectId(),
                 name: req.body.name,
-                url_slug: slug,
+                url_slug: url_slug,
                 author: req.body.author,
                 description: req.body.desc,
                 category: req.body.category,
-                category_slug: req.body.category_slug,
+                category_slug: category_slug,
                 designs: req.body.designs,
                 profile_image: req.body.profile_image,
                 profile_file: req.body.profile_file

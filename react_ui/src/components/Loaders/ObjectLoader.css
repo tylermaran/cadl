@@ -1,15 +1,33 @@
-.SetObject {
+/* .SetObject {
     position: relative;
     height: 100%;
     width: 100%;
     margin: 0;
-}
+} */
 
-.SetObject_loader {
+.loading_progress {
     position: absolute;
     bottom: 0px;
     right: 10px;
     color: white;
     font-weight: 400;
     font-size: 16px;
+}
+
+.fullscreen {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    background-image: url('../../images/fullscreen.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.fullscreen:hover {
+    height: 25px;
+    width: 25px;
+    transition: .3s;
+    cursor: pointer;
 }
