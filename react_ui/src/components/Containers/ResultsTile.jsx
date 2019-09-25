@@ -22,7 +22,7 @@ const ResultsTile = (props) => {
                         <div className="result_name">{props.object.name}</div>
                     </Link>
                     <div className="result_author">Author: {props.object.author}</div>
-                    <div className="result_files">Files: {props.object.files}</div>
+                    <div className="result_files">Files: {props.object.designs.length}</div>
                 </div>
                 
             </div>

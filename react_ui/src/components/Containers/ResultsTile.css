@@ -1,25 +1,25 @@
 .results_tile {
-    width: 90%;
+    display: inline-block;
+    width: 250px;
     height: auto;
-    min-height: 20px;
-    margin: 0 0 0 5%;
+    margin: 2%;
     text-align: left;
     border: 1px solid rgb(180, 180, 180);
+    overflow: hidden;
+    vertical-align: top;
 }
 
 .result_image {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
+    height: 250px;
+    width: 100%;
     background-position: center;
     background-size: cover;
-    vertical-align: top;
 }
 
 .result_detail {
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 10px;
+    font-size: 14px;
+
 }
 
 .result_name {
