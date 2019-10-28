@@ -1,41 +1,41 @@
 .category_header {
-    padding: 0 5% 0 5%;
+	padding: 0 5% 0 5%;
 }
 
 .category_title {
-    text-align: left;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 22px;
-    font-weight: bold;
-    margin: 0;
-    text-align: left;
+	text-align: left;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 22px;
+	font-weight: bold;
+	margin: 0;
+	text-align: left;
 }
 
 .browse_all {
-    text-align: left;
-    margin: 0 0 5px 0;
+	text-align: left;
+	margin: 0 0 5px 0;
 }
 
 @media only screen and (max-width: 600px) {
-    .categories_content {
-        width: 95%;
-        height: auto;
-        min-height: 80vh;
-        background-color: white;
-        margin: 20px 0 70px 2.5%;
-        padding: 2.5% 0% 40px 0%;
-        border: 1px solid rgb(180, 180, 180);
-    }
+	.categories_content {
+		width: 95%;
+		height: auto;
+		min-height: 80vh;
+		background-color: white;
+		margin: 20px 0 70px 2.5%;
+		padding: 2.5% 0% 40px 0%;
+		border: 1px solid rgb(180, 180, 180);
+	}
 }
 
 @media only screen and (min-width: 600px) {
-    .categories_content {
-        width: 80%;
-        height: auto;
-        min-height: 80vh;
-        background-color: white;
-        margin: 20px 0 70px 10%;
-        padding: 2.5% 20px 40px 20px;
-        border: 1px solid rgb(180, 180, 180);
-    }
+	.categories_content {
+		width: 80%;
+		height: auto;
+		min-height: 80vh;
+		background-color: white;
+		margin: 20px 0 70px 10%;
+		padding: 2.5% 20px 40px 20px;
+		border: 1px solid rgb(180, 180, 180);
+	}
 }

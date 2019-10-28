@@ -1,9 +1,7 @@
-/* .SetObject {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-} */
+.SetObject {
+    height: auto;
+    width: auto;
+}
 
 .loading_progress {
     position: absolute;

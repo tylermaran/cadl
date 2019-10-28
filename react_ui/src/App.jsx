@@ -1,4 +1,4 @@
-// Importing Dependencies 
+// Importing Dependencies
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ import Browse from './pages/Browse';
 import Categories from './pages/Categories';
 import Project from './pages/Project';
 
-
 // Importing Styling
 import './App.css';
 import Create from './pages/Create';
@@ -21,14 +20,14 @@ function App() {
 		<div className="App">
 			<Router>
 				<Switch>
-					<Route exact path='/' component = { Landing } />
-					<Route exact path='/create' component = { Create } />
-					<Route exact path='/upload' component = { Upload } />
-					<Route exact path='/testing' component = { Testing } />
-					<Route path='/projects/:category' component = { Browse }/>
-					<Route path='/:category/:project' component = { Project } />
-					<Route exact path='/categories' component = {Categories}/>					
-					<Route component = {NoMatch} />
+					<Route exact path="/" component={Landing} />
+					<Route exact path="/create" component={Create} />
+					<Route exact path="/upload" component={Upload} />
+					<Route exact path="/testing" component={Testing} />
+					<Route path="/projects/:category" component={Browse} />
+					<Route path="/:category/:project" component={Project} />
+					<Route exact path="/categories" component={Categories} />
+					<Route component={NoMatch} />
 				</Switch>
 			</Router>
 		</div>

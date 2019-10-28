@@ -1,18 +1,18 @@
 html {
-  -webkit-text-size-adjust: none;
-  touch-action: manipulation;
+	-webkit-text-size-adjust: none;
+	touch-action: manipulation;
 }
 
 body {
-  background-color: rgb(230, 230, 230);
+	background-color: rgb(230, 230, 230);
 }
 
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 h1 {
-  font-weight: inherit;
-  font-size: inherit;
-  font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	font-family: inherit;
 }
