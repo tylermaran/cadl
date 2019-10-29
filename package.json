@@ -1,33 +1,35 @@
 {
-  "name": "cadl",
-  "version": "1.0.0",
-  "description": "A CAD Library using THREE.JS visualization",
-  "main": "index.js",
-  "scripts": {
-    "test": "test",
-    "client": "cd react_ui && npm run start",
-    "server": "cd server && nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tylermaran/cadl.git"
-  },
-  "keywords": [
-    "cadl",
-    "threejs",
-    "stl",
-    "dxf",
-    "gcode",
-    "cad"
-  ],
-  "author": "themanmaran",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tylermaran/cadl/issues"
-  },
-  "homepage": "https://github.com/tylermaran/cadl#readme",
-  "dependencies": {
-    "concurrently": "^4.1.2"
-  }
+	"name": "cadl",
+	"version": "1.0.0",
+	"description": "A CAD Library using THREE.JS visualization",
+	"main": "index.js",
+	"scripts": {
+		"test": "test",
+		"client": "cd client && npm run start",
+		"client_prod": "cd client && npm run prod",
+		"server": "cd server && nodemon server.js",
+		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+		"prod": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client_prod\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tylermaran/cadl.git"
+	},
+	"keywords": [
+		"cadl",
+		"threejs",
+		"stl",
+		"dxf",
+		"gcode",
+		"cad"
+	],
+	"author": "themanmaran",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/tylermaran/cadl/issues"
+	},
+	"homepage": "https://github.com/tylermaran/cadl#readme",
+	"dependencies": {
+		"concurrently": "^4.1.2"
+	}
 }

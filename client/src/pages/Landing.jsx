@@ -126,19 +126,30 @@ class Landing extends Component {
 				<div className="content">
 					<div className="about">
 						<p>
-							Lorem ipsum dolor, sit amet consectetur adipisicing
-							elit. Deleniti provident doloremque architecto
-							voluptatibus ratione ea reiciendis suscipit harum
-							consequuntur, quasi dolore laudantium,
-							necessitatibus soluta eum? Debitis dolorem rem
-							repellendus excepturi!
+							CADL is designed as an open source library for CAD
+							files. Users can style and edit their 3D models in
+							browser, create instructions, and share their
+							designs.
 						</p>
+						<ul className="about_bullets">
+							<li>
+								CADL uses three.js and a custom built file
+								switcher to interpret and render a large variety
+								of filetypes. (Currently supporting: .STL, .SVG,
+								GCODE, .FBX, .DXF)
+							</li>
+							<li>
+								GUI allows users to scale/position/color models,
+								as well as lighting, skybox, and environment
+								effects.
+							</li>
+						</ul>
 						<p>
 							<a
 								href="https://github.com/tylermaran/cadl"
 								target="blank"
 							>
-								Check it out on gitub I guess
+								Check out the project on GitHub!
 							</a>
 						</p>
 					</div>

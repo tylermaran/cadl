@@ -43,6 +43,11 @@
 	cursor: pointer;
 }
 
+.about {
+	text-align: left;
+	padding: 0 5% 0 5%;
+}
+/* 
 .tdprint {
 	background-image: url('../images/3dprint.png');
 }
@@ -57,7 +62,7 @@
 
 .maslow {
 	background-image: url('../images/maslow.png');
-}
+} */
 
 @media only screen and (max-width: 699px) {
 	.content {
