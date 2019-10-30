@@ -1,38 +1,37 @@
 .display_tile {
-    height: auto;
-    width: 100%;
-    overflow: hidden;
-    vertical-align: top;
-    
-    -webkit-box-shadow: 2.5px 2.5px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2.5px 2.5px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 2.5px 2.5px 10px 0px rgba(0,0,0,0.75);
+	height: auto;
+	width: 100%;
+	overflow: hidden;
+	vertical-align: top;
 
+	-webkit-box-shadow: 2.5px 2.5px 10px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 2.5px 2.5px 10px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 2.5px 2.5px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .display_object_holder {
-    height: 25vw;
-    width: 100%;
-    overflow: hidden;
+	height: 25vw;
+	width: 100%;
+	overflow: hidden;
 }
 
 .display_content {
-    color: white;
-    height: 35px;
-    padding: 5px 0 0 0;
+	color: white;
+	height: 35px;
+	padding: 5px 0 0 0;
 
-    background-image: url('../../images/blueprint.png');
-    background-position: center;
-    background-size: cover;
+	background-image: url('../../images/blueprint.png');
+	background-position: center;
+	background-size: cover;
 }
 
 .display_link {
-    color: white;
+	color: white;
 }
 
 @media only screen and (max-width: 699px) {
-    .display_object_holder {
-        height: 50vw;
-        width: 100%;
-    }
-} 
+	.display_object_holder {
+		height: 50vw;
+		width: 100%;
+	}
+}

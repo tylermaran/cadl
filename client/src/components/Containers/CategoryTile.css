@@ -1,45 +1,40 @@
-
 .cat {
-    display: inline-block;
-    height: 18vw;
-    min-height: 150px;
-    width: 18vw;
-    min-width: 150px;
-    margin: 10px;
-    padding: 13vw 0 0 0;
-    border: 1px solid black;
-    vertical-align: top;
-    overflow: hidden;
+	display: inline-block;
+	height: 18vw;
+	min-height: 150px;
+	width: 18vw;
+	min-width: 150px;
+	margin: 10px;
+	padding: 13vw 0 0 0;
+	border: 1px solid black;
+	vertical-align: top;
+	overflow: hidden;
 
-    background-position: center;
-    background-size: cover;
+	background-position: center;
+	background-size: cover;
 
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 25px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px grey;
+	text-align: center;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	text-shadow: 1px 1px grey;
 
-
-    /* prevent the text from being highlighted */
-    -webkit-user-select: none; /* Chrome all / Safari all */
-    -moz-user-select: none;    /* Firefox all             */
-    -ms-user-select: none;     /* IE 10+                  */
-     user-select: none;        /* Likely future           */
+	/* prevent the text from being highlighted */
+	-webkit-user-select: none; /* Chrome all / Safari all */
+	-moz-user-select: none; /* Firefox all             */
+	-ms-user-select: none; /* IE 10+                  */
+	user-select: none; /* Likely future           */
 }
 
-
 @media only screen and (max-width: 600px) {
+	.cat {
+		width: 40vw;
+		min-width: 0;
+		min-height: 0;
+		height: 40vw;
+		padding: 30vw 0 0 0;
 
-    .cat {
-        width: 40vw;
-        min-width: 0;
-        min-height: 0;
-        height: 40vw;
-        padding: 30vw 0 0 0;
-
-        font-size: 20px;
-    }
-
+		font-size: 20px;
+	}
 }

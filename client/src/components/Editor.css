@@ -1,83 +1,78 @@
 .edit_button {
-    width: 80px;
-    height: 50px;
-    font-size: 16px;
-    background-color: rgb(81, 81, 255);
-    color: white;
-    border: none;
-    margin: 3px;
-    user-select: none;
+	width: 80px;
+	height: 50px;
+	font-size: 16px;
+	background-color: rgb(81, 81, 255);
+	color: white;
+	border: none;
+	margin: 3px;
+	user-select: none;
 }
 
 .edit_button:active {
-    background-color: rgb(32, 32, 129);
+	background-color: rgb(32, 32, 129);
 }
 
 .rotate {
-    display: inline-block;
-    width: 30%;
+	display: inline-block;
+	width: 30%;
 }
 
 .pan {
-    display: inline-block;
-    width: 30%;
+	display: inline-block;
+	width: 30%;
 }
 
 .control_board {
-    background-color: white;
-    min-height: 300px;
+	background-color: white;
+	min-height: 300px;
 }
 
-
 @media only screen and (max-width: 599px) {
-    .edit_button {
-        width: 60px;
-        height: 40px;
-    }
+	.edit_button {
+		width: 60px;
+		height: 40px;
+	}
 }
 
 @media only screen and (max-width: 600px) {
-        
-    .editor_container {
-        display: inline-block;
-        height: 300px;
-        width: 100%;
-        margin: 0px;
-    }
+	.editor_container {
+		display: inline-block;
+		height: 300px;
+		width: 100%;
+		margin: 0px;
+	}
 
-    .rotate {
-        display: inline-block;
-        width: 50%;
-    }
-    
-    .pan {
-        display: inline-block;
-        width: 50%;
-    }
+	.rotate {
+		display: inline-block;
+		width: 50%;
+	}
 
-    .unit_text {
-        display: inline-block;
-        width: 50%;
-    }
-    .unit_button {
-        display: inline-block;
-        width: 50%;
-    }
-} 
+	.pan {
+		display: inline-block;
+		width: 50%;
+	}
 
+	.unit_text {
+		display: inline-block;
+		width: 50%;
+	}
+	.unit_button {
+		display: inline-block;
+		width: 50%;
+	}
+}
 
 @media only screen and (min-width: 601px) {
-        
-    .editor_container {
-        display: inline-block;
-        height: 350px;
-        width: 60%;
-        margin: 10px;
-    }
+	.editor_container {
+		display: inline-block;
+		height: 350px;
+		width: 60%;
+		margin: 10px;
+	}
 
-    .control_board {
-        width: 60%;
-        margin: 0 0 0 20%;
-    }
-    
+	.control_board {
+		width: 60%;
+		margin: 0 0 0 20%;
+	}
 }

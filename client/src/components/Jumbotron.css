@@ -1,37 +1,32 @@
-
 .jumbotron {
-    border-radius: 0;
-    /* background-image: url('../images/banner.jpg'); */
-    background-image: url('../images/blueprint.png');
-    color: white;
-    
+	border-radius: 0;
+	background-image: url('../images/banner.jpg');
+	color: white;
 }
 
 .main_title {
-    font-family: 'Courier New', Courier, monospace;
-    /* font-weight: bold; */
-    font-size: 40px;
-}   
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 40px;
+}
 
 @media only screen and (max-width: 600px) {
-    .jumbotron {
-        height: 200px;
-        width: 100%;
-        margin: 0;
-        padding: 20px 10px 0 10px;
-        background-position: cover;
-        background-position: bottom center;
-   }
+	.jumbotron {
+		height: 200px;
+		width: 100%;
+		margin: 0;
+		padding: 20px 10px 0 10px;
+		background-position: cover;
+		background-position: bottom center;
+	}
 }
 
 @media only screen and (min-width: 601px) {
-    .jumbotron {
-        height: 250px;
-        margin: 0;
-        padding: 40px 0 0 0;
-        width: 100%;
-        background-position: center;
-        background-size: cover;
-
-    }
-} 
+	.jumbotron {
+		height: 250px;
+		margin: 0;
+		padding: 40px 0 0 0;
+		width: 100%;
+		background-position: center;
+		background-size: cover;
+	}
+}

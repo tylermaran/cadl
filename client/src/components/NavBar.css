@@ -1,11 +1,11 @@
 .navbar {
-    height: auto;
-    padding: 10px;
-    background-color: white;
+	height: auto;
+	padding: 10px;
+	background-color: white;
 }
 
 .nav_link {
-    display: inline-block;
-    width: 80px;
-    text-align: center;
+	display: inline-block;
+	width: 80px;
+	text-align: center;
 }

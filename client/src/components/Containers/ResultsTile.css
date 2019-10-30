@@ -1,41 +1,37 @@
 .results_tile {
-    display: inline-block;
-    width: 250px;
-    height: auto;
-    margin: 2%;
-    text-align: left;
-    border: 1px solid rgb(180, 180, 180);
-    overflow: hidden;
-    vertical-align: top;
+	display: inline-block;
+	width: 250px;
+	height: auto;
+	margin: 2%;
+	text-align: left;
+	border: 1px solid rgb(180, 180, 180);
+	overflow: hidden;
+	vertical-align: top;
 }
 
 .result_image {
-    height: 250px;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
+	height: 250px;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
 }
 
 .result_detail {
-    padding: 0 0 0 10px;
-    font-size: 14px;
-
+	padding: 0 0 0 10px;
+	font-size: 14px;
 }
 
 .result_name {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
 }
 
 .result_author {
-    font-style: italic;
+	font-style: italic;
 }
 
-
 @media only screen and (max-width: 600px) {
-  
 }
 
 @media only screen and (min-width: 601px) {
-    
 }
