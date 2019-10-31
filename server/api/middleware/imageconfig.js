@@ -2,7 +2,6 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const s3 = require('./awsconfig');
 
-
 // const fileFilter = (req, file, cb) => {
 //   // accept an incoming file
 //   if (file.mimetype === 'model/stl') {
@@ -14,24 +13,23 @@ const s3 = require('./awsconfig');
 // };
 
 const upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'cadltesting',
-        metadata: function (req, file, cb) {
-            cb(null, {
-                fieldName: file.fieldname
-            });
-        },
-        key: function (req, file, cb) {
-            cb(null, Date.now().toString())
-        }
-    }),
-    // fileFilter: fileFilter,
-    limits: {
-        fileSize: 1024 * 1024 * 50
-    }
-})
-
+	storage: multerS3({
+		s3: s3,
+		bucket: 'cadltesting',
+		metadata: function(req, file, cb) {
+			cb(null, {
+				fieldName: file.fieldname,
+			});
+		},
+		key: function(req, file, cb) {
+			cb(null, Date.now().toString());
+		},
+	}),
+	// fileFilter: fileFilter,
+	limits: {
+		fileSize: 1024 * 1024 * 50,
+	},
+});
 
 // const upload = multer({
 //     storage: multerS3({
