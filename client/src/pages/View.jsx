@@ -43,7 +43,7 @@ class Testing extends Component {
 	handleInput = e => {
 		if (e.target.files.length > 1) {
 			// TODO - add multiplle file input
-			alert("Hold up, we're not doing multiple files yet");
+			alert("Hold up, one file at a time");
 			return;
 		}
 		// TODO - figure out why this FileReader thing works
@@ -81,7 +81,7 @@ class Testing extends Component {
 		return (
 			<div className="testing">
 				<NavBar />
-				<h2>Testing janky code</h2>
+				<h2>View Object</h2>
 				<input
 					type="file"
 					name="object"
@@ -91,9 +91,6 @@ class Testing extends Component {
 				/>
 
 				<div className="testing_object">{this.state.loader}</div>
-				<div className="confirm_upload">
-					<button type="button">Confirm Upload</button>
-				</div>
 			</div>
 		);
 	}
