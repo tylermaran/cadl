@@ -85,10 +85,11 @@ class Testing extends Component {
 				<input
 					type="file"
 					name="object"
-					id="whatever"
+					id="input_files"
 					multiple
 					onInput={e => this.handleInput(e)}
 				/>
+                <label htmlFor="input_files" id="input_files_button"><div className="file_icon"></div>Upload</label>
 
 				<div className="testing_object">{this.state.loader}</div>
 			</div>
