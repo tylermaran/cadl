@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 
 // Importing Components
 import NavBar from '../components/NavBar';
-// import ObjectLoader from '../components/ObjectLoader';
 import Editor from '../components/Editor';
 
 // Importing Styles
-import './Testing.css';
+import './View.css';
 
 class Testing extends Component {
 	constructor() {
@@ -43,7 +42,7 @@ class Testing extends Component {
 	handleInput = e => {
 		if (e.target.files.length > 1) {
 			// TODO - add multiplle file input
-			alert("Hold up, one file at a time");
+			alert('Hold up, one file at a time');
 			return;
 		}
 		// TODO - figure out why this FileReader thing works
@@ -89,7 +88,9 @@ class Testing extends Component {
 					multiple
 					onInput={e => this.handleInput(e)}
 				/>
-                <label htmlFor="input_files" id="input_files_button"><div className="file_icon"></div>Upload</label>
+				<label htmlFor="input_files" id="input_files_button">
+					<div className="file_icon"></div>Upload
+				</label>
 
 				<div className="testing_object">{this.state.loader}</div>
 			</div>
