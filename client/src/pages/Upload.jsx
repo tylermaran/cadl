@@ -37,7 +37,7 @@ const Upload = props => {
 			// }
 		};
 
-		fetch('http://localhost:5000/files', options)
+		fetch(process.env.REACT_APP_API_URL + '/files', options)
 			.then(response => {
 				return response.json();
 			})
@@ -61,7 +61,7 @@ const Upload = props => {
 			},
 		};
 
-		fetch('http://localhost:5000/designs', {
+		fetch(process.env.REACT_APP_API_URL + '/designs', {
 			method: 'POST',
 			body: JSON.stringify(body),
 			headers: {

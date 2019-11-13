@@ -23,7 +23,7 @@ class Browse extends Component {
 		const project_name = handle.project;
 
 		let project =
-			'http://localhost:5000/projects/' +
+		process.env.REACT_APP_API_URL + '/projects/' +
 			project_category +
 			'/' +
 			project_name;

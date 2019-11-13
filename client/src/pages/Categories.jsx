@@ -19,7 +19,7 @@ class Categories extends Component {
 	}
 
 	componentDidMount() {
-		let url = 'http://localhost:5000/categories/99';
+		let url = process.env.REACT_APP_API_URL + '/categories/99';
 		fetch(url)
 			.then(response => {
 				return response.json();

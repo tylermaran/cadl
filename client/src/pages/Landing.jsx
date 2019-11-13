@@ -27,7 +27,7 @@ class Landing extends Component {
 	}
 
 	componentDidMount() {
-		fetch('http://localhost:5000/projects/4')
+		fetch(process.env.REACT_APP_API_URL + '/projects/4')
 			.then(response => {
 				return response.json();
 			})
@@ -41,7 +41,7 @@ class Landing extends Component {
 				});
 			});
 
-		fetch('http://localhost:5000/categories/4')
+		fetch(process.env.REACT_APP_API_URL + '/categories/4')
 			.then(response => {
 				return response.json();
 			})

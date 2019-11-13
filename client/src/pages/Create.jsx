@@ -41,7 +41,7 @@ class Create extends Component {
 	}
 
 	componentDidMount() {
-		let url = 'http://localhost:5000/categories/99';
+		let url = process.env.REACT_APP_API_URL + '/categories/99';
 		fetch(url)
 			.then(response => {
 				return response.json();
@@ -152,7 +152,7 @@ class Create extends Component {
 			body: formData,
 		};
 
-		fetch('http://localhost:5000/files', options)
+		fetch(process.env.REACT_APP_API_URL + '/files', options)
 			.then(response => {
 				return response.json();
 			})
@@ -189,7 +189,7 @@ class Create extends Component {
 		//     note: string
 		// }
 
-		fetch('http://localhost:5000/designs', {
+		fetch(process.env.REACT_APP_API_URL + '/designs', {
 			method: 'POST',
 			body: JSON.stringify(file),
 			headers: {
@@ -228,7 +228,7 @@ class Create extends Component {
 		let body = this.state.project;
 		console.log('body:', body);
 
-		fetch('http://localhost:5000/projects', {
+		fetch(process.env.REACT_APP_API_URL + '/projects', {
 			method: 'POST',
 			body: JSON.stringify(body),
 			headers: {

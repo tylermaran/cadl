@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-// require package logging - morgan - used for image uploads
 // const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -23,7 +22,7 @@ app.use(cors(corsOptions));
 console.log('Connecting to API with password: ' + process.env.MONGO_PW);
 mongoose.connect(
 	'mongodb+srv://cadltesting:' +
-		process.env.MONGO_PW +
+	process.env.MONGO_PW +
 		'@cluster0-5puio.mongodb.net/test?retryWrites=true&w=majority',
 	{
 		useNewUrlParser: true,
@@ -37,12 +36,6 @@ const designRoutes = require('./api/routes/designs');
 const projectRoutes = require('./api/routes/projects');
 const fileRoutes = require('./api/routes/fileUpload');
 const categoryRoutes = require('./api/routes/categories');
-
-// running morgan in dev mode
-// app.use(morgan('dev'));
-
-// making a folder publically available
-// app.use('/uploads', express.static('uploads'));
 
 // running bodyparser - apparently no longer necessary in newer version of Express
 app.use(
