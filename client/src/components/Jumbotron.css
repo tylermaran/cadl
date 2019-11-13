@@ -1,14 +1,74 @@
+@font-face {
+	font-family: 'Syncopate-Regular';
+	src: url('../Fonts/Syncopate/Syncopate-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 .jumbotron {
 	border-radius: 0;
-	background-image: url('../images/banner.jpg');
+	padding: 0;
+	/* background-image: url('../images/banner.jpg'); */
+	background: #0f2027; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#2c5364,
+		#203a43,
+		#0f2027
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#2c5364,
+		#203a43,
+		#0f2027
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.grid {
+	height: 100%;
+	padding: 50px 0 0 0;
+
+	background-color: transparent;
+	background-image: linear-gradient(
+			0deg,
+			transparent 24%,
+			rgba(255, 255, 255, 0.05) 25%,
+			rgba(255, 255, 255, 0.05) 26%,
+			transparent 27%,
+			transparent 74%,
+			rgba(255, 255, 255, 0.05) 75%,
+			rgba(255, 255, 255, 0.05) 76%,
+			transparent 77%,
+			transparent
+		),
+		linear-gradient(
+			90deg,
+			transparent 24%,
+			rgba(255, 255, 255, 0.05) 25%,
+			rgba(255, 255, 255, 0.05) 26%,
+			transparent 27%,
+			transparent 74%,
+			rgba(255, 255, 255, 0.05) 75%,
+			rgba(255, 255, 255, 0.05) 76%,
+			transparent 77%,
+			transparent
+		);
+	height: 100%;
+	background-size: 50px 50px;
 }
 
 .main_title {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    color: black;
-    text-shadow: 1px 1px rgb(132, 132, 132);
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+	font-family: 'Syncopate-Regular';
+	font-weight: bold;
+	color: #cef0ff;
+    margin: 0 0 0 50%;
+    transform: translate(-50%, 0);
+	vertical-align: middle;
+	text-shadow: 2px 2px #0f2027, 2.1px 2.1px rgb(140, 140, 255), 4px 4px #0f2027, 4.1px 4.1px rgb(140, 140, 255);
 	font-size: 50px;
+    font-style: italic;
 }
 
 @media only screen and (max-width: 600px) {
@@ -16,19 +76,35 @@
 		height: 200px;
 		width: 100%;
 		margin: 0;
-		padding: 20px 10px 0 10px;
 		background-position: cover;
 		background-position: bottom center;
-	}
+    }
+    
+    .main_title {
+        font-size: 30px;
+        margin-top: 35px;
+        z-index: 99;
+    }
+
+    .grid {
+        padding: 40px 0 0 0;
+    }
 }
 
 @media only screen and (min-width: 601px) {
 	.jumbotron {
 		height: 250px;
 		margin: 0;
-		padding: 70px 0 0 0;
 		width: 100%;
 		background-position: center;
 		background-size: cover;
-	}
+    }
+    .main_title {
+        font-size: 50px;
+        margin-top: 20px;
+    }
+
+    .grid {
+        padding: 70px 0 0 0;
+    }
 }

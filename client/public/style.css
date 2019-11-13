@@ -1,4 +1,4 @@
-#ns_header {
+/* #ns_header {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     width: 80%;
@@ -93,4 +93,4 @@
     50%      { -ms-transform: rotateY(180deg) rotateZ(90deg); transform: rotateY(180deg) rotateZ(90deg); }
     66%      { -ms-transform: rotateY(90deg) rotateX(90deg); transform: rotateY(90deg) rotateX(90deg); }
     83%      { -ms-transform: rotateX(90deg); transform: rotateX(90deg); }
-}
+} */

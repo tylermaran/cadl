@@ -1,25 +1,31 @@
 {
-	"name": "api",
-	"version": "1.0.0",
-	"description": "node api for cadl",
-	"main": "server.js",
-	"scripts": {
-		"test": "test",
-		"dev": "nodemon server.js",
-		"start": "node server.js"
-	},
-	"author": "themanmaran",
-	"license": "ISC",
-	"dependencies": {
-		"aws-sdk": "^2.520.0",
-		"body-parser": "^1.19.0",
-		"cors": "^2.8.5",
-		"dotenv": "^8.1.0",
-		"express": "^4.17.1",
-		"mongoose": "^5.7.5",
-		"multer": "^1.4.2",
-		"multer-s3": "^2.9.0",
-		"node-fetch": "^2.6.0",
-		"nodemon": "^1.19.1"
-	}
+    "name": "api",
+    "version": "1.0.0",
+    "description": "node api for cadl",
+    "main": "server.js",
+    "scripts": {
+        "test": "test",
+        "dev": "nodemon server.js",
+        "start": "node server.js"
+    },
+    "author": "themanmaran",
+    "license": "ISC",
+    "dependencies": {
+        "aws-sdk": "^2.520.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.1.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.7.5",
+        "multer": "^1.4.2",
+        "multer-s3": "^2.9.0",
+        "node-fetch": "^2.6.0",
+        "nodemon": "^1.19.1"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    }
 }
