@@ -11,8 +11,8 @@ const Jumbotron = props => {
 	return (
 		<div className="jumbotron">
 			<div className="grid">
-					<Cube />
-					<h1 className="main_title">CAD LIBRARY</h1>
+				<Cube />
+				<h1 className="main_title">CAD LIBRARY</h1>
 			</div>
 		</div>
 	)

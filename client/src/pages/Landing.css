@@ -5,7 +5,7 @@
 .content {
 	border: 1px solid rgb(180, 180, 180);
 	background-color: white;
-	border-top: 5px solid rgb(65, 65, 255);
+	border-top: 5px solid #2c5364;
 }
 
 .object_container {
