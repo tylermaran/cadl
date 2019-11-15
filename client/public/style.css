@@ -1,4 +1,4 @@
-/* #ns_header {
+#ns_header {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     width: 80%;
@@ -17,11 +17,17 @@
 }
 
 #ns_p {
-    width: 80%;
-    margin: 0 0 0 10%;
+    
+    margin: 50px 0 0 20px;
+    text-align: center;
 }
 
-#stage {
+#ns_link {
+    text-align: center;
+    margin: 100px 0 80px 0;
+}
+
+#ns_stage {
     margin: 50px 0 0 50%;
     transform: translate(-50%, 0);
 }
@@ -30,40 +36,37 @@
     position: absolute;
     width: 120px;
     height: 120px;
-    border: 1px solid #ccc;
-    background: rgba(255,255,255,0.8);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
-    text-align: center;
-    line-height: 120px;
-    font-size: 100px;
+    border: 1px solid #0f2027;
+    background: #2c5364da;
+    box-shadow: inset 0 0 20px #0f2027; 
 }
 
-.ns_spinner .face1 { 
+.ns_spinner .ns_face1 { 
     -webkit-transform: translateZ(60px);
     -ms-transform: translateZ(60px);
     transform: translateZ(60px);
 }
-.ns_spinner .face2 { 
+.ns_spinner .ns_face2 { 
     -webkit-transform: rotateY(90deg) translateZ(60px); 
     -ms-transform: rotateY(90deg) translateZ(60px); 
     transform: rotateY(90deg) translateZ(60px); 
 }
-.ns_spinner .face3 { 
+.ns_spinner .ns_face3 { 
     -webkit-transform: rotateY(90deg) rotateX(90deg) translateZ(60px); 
     -ms-transform: rotateY(90deg) rotateX(90deg) translateZ(60px); 
     transform: rotateY(90deg) rotateX(90deg) translateZ(60px); 
 }
-.ns_spinner .face4 { 
+.ns_spinner .ns_face4 { 
     -webkit-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px); 
     -ms-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px); 
     transform: rotateY(180deg) rotateZ(90deg) translateZ(60px); 
 }
-.ns_spinner .face5 { 
+.ns_spinner .ns_face5 { 
     -webkit-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px); 
     -ms-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px); 
     transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px); 
 }
-.ns_spinner .face6 { 
+.ns_spinner .ns_face6 { 
     -webkit-transform: rotateX(-90deg) translateZ(60px); 
     -ms-transform: rotateX(-90deg) translateZ(60px); 
     transform: rotateX(-90deg) translateZ(60px); 
@@ -93,4 +96,21 @@
     50%      { -ms-transform: rotateY(180deg) rotateZ(90deg); transform: rotateY(180deg) rotateZ(90deg); }
     66%      { -ms-transform: rotateY(90deg) rotateX(90deg); transform: rotateY(90deg) rotateX(90deg); }
     83%      { -ms-transform: rotateX(90deg); transform: rotateX(90deg); }
-} */
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    #ns_header {
+        font-size: 30px;
+    }
+
+    #ns_subheader {
+        font-size: 20px;
+    }
+
+    #ns_link {
+        margin: 60px 0 80px 0;
+    }
+
+}
