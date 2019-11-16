@@ -19,14 +19,13 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // Connect to Mongodb
-console.log('Connecting to API with password: ' + process.env.MONGO_PW);
 mongoose.connect(
 	'mongodb+srv://cadltesting:' +
 	process.env.MONGO_PW +
 		'@cluster0-5puio.mongodb.net/test?retryWrites=true&w=majority',
 	{
 		useNewUrlParser: true,
-		useUnifiedTopology: true
+		// useUnifiedTopology: true
 	}
 );
 mongoose.set('useFindAndModify', false);

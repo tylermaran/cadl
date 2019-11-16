@@ -124,6 +124,8 @@ class Landing extends Component {
 
 				{/* Site Details */}
 				<div className="content">
+					<h3 className="sub_title">About CADL:</h3>
+
 					<div className="about">
 						<p>
 							CADL is designed as an open source library for CAD
