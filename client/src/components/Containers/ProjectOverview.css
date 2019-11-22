@@ -1,0 +1,12 @@
+.display_object_holder {
+	height: 25vw;
+	width: 100%;
+	overflow: hidden;
+}
+
+@media only screen and (max-width: 699px) {
+	.display_object_holder {
+		height: 50vw;
+		width: 100%;
+	}
+}

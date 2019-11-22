@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Spinner from '../components/animation/Spinner';
+import ProjectOverview from '../components/Containers/ProjectOverview';
 
 // Importing Styles
 import './Project.css';
@@ -56,7 +57,8 @@ class Browse extends Component {
 			<div className="Project">
 				<NavBar />
 
-				<div className="browse_content">{project}</div>
+				<div className="browse_content"><ProjectOverview /></div>
+				
 
 				<Footer />
 			</div>
