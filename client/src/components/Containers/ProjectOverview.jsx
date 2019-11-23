@@ -11,6 +11,8 @@ import './ProjectOverview.css';
 const ProjectOverview = props => {
 	return (
 		<div className="project_overview">
+			<div className="project_name"></div>
+			<dis className="project_category"></dis>
 			<div className="display_object_holder">
 				<ObjectLoader
 					object={props.object.designs[0]}
