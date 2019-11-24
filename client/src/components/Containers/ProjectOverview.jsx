@@ -9,6 +9,7 @@ import ObjectLoader from '../Loaders/ObjectLoader';
 import './ProjectOverview.css';
 
 const ProjectOverview = props => {
+	console.log(props);
 	return (
 		<div className="project_overview">
 			<div className="project_name"></div>
