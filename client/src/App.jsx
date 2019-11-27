@@ -11,6 +11,7 @@ import NoMatch from './pages/NoMatch';
 import Browse from './pages/Browse';
 import Categories from './pages/Categories';
 import Project from './pages/Project';
+import SignUp from './pages/SignUp';
 
 // Importing Styling
 import './App.css';
@@ -29,6 +30,7 @@ function App() {
 					<Route exact path="/upload" component={Upload} />
 					<Route exact path="/view" component={View} />
 					<Route exact path="/testing" component={Testing} />
+					<Route exact path="/signup" component={SignUp}/>
 					<Route path="/projects/:category" component={Browse} />
 					<Route path="/:category/:project" component={Project} />
 					<Route exact path="/categories" component={Categories} />
