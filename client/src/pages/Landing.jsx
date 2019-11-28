@@ -35,7 +35,6 @@ class Landing extends Component {
 				// take last 4 recent files
 				let recent = data.slice(0, 4);
 				console.log(recent);
-				// console.log(data);
 				this.setState({
 					projects: recent,
 				});
