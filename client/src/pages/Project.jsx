@@ -14,7 +14,7 @@ class Browse extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			project: null,
+			results: null,
 		};
 	}
 
@@ -46,8 +46,7 @@ class Browse extends Component {
 
 		if (this.state.results) {
 			if (this.state.results.length > 0) {
-				let data = this.state.results[0];
-				project = <div>{data.name}</div>;
+				project = <ProjectOverview project={this.state.results}/>;
 			} else {
 				project = <div>Hmmm, doesn't look like this file exists</div>;
 			}
@@ -57,7 +56,9 @@ class Browse extends Component {
 			<div className="Project">
 				<NavBar />
 
-				<div className="browse_content"><ProjectOverview /></div>
+				<div className="browse_content">
+					{project}
+				</div>
 				
 
 				<Footer />

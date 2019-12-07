@@ -1,24 +1,26 @@
 // Importing Dependencies
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+// import { Link } from 'react-router-dom';
 
 // Importing Components
-import ObjectLoader from '../Loaders/ObjectLoader';
+import ObjectLoader from '../Loaders/ObjectLoader'
 
 // Importing Styles
-import './ProjectOverview.css';
+import './ProjectOverview.css'
 
 const ProjectOverview = props => {
-	console.log(props);
-	return (
-		<div className="project_overview">
-			<div className="project_name"></div>
-			<div className="project_category"></div>
-			<div className="display_object_holder">
-				Hey
-			</div>
-		</div>
-	);
-};
+    let project
+    if (props.project != null) {
+        console.log(props.project[0])
+        project = props.project[0]
+    }
+    return (
+        <div className="project_overview">
+            <div className="ov_project_name">{project.name}</div>
+            <div className="ov_project_category">Category: {project.category}</div>
+            <div className="ov_display_object_holder"></div>
+        </div>
+    )
+}
 
-export default ProjectOverview;
+export default ProjectOverview
