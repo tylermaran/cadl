@@ -11,9 +11,10 @@
 	font-size: 1.15rem;
 }
 
-.display_object_holder {
-	height: 25vw;
-	width: 100%;
+.ov_display_object_holder {
+	height: 40vh;
+	width: 80%;
+	margin: 0 0 0 10%;
 	overflow: hidden;
 }
 
