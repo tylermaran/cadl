@@ -1,6 +1,4 @@
-.browse_header {
-	padding: 0 5% 0 5%;
-}
+
 
 .browse_title {
 	text-align: left;
@@ -27,19 +25,19 @@
 		min-height: 80vh;
 		background-color: white;
 		margin: 20px 0 70px 2.5%;
-		padding: 2.5% 0% 40px 0%;
+		padding: 2.5% 10px 40px 10px;
 		border: 1px solid rgb(180, 180, 180);
 	}
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 601px) {
 	.browse_content {
 		width: 80%;
 		height: auto;
 		min-height: 80vh;
 		background-color: white;
 		margin: 20px 0 70px 10%;
-		padding: 2.5% 20px 40px 20px;
+		padding: 2.5% 5% 40px 5%;
 		border: 1px solid rgb(180, 180, 180);
 	}
 }

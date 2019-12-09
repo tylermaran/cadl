@@ -23,7 +23,7 @@
 
 .landing_link {
 	text-align: right;
-	margin: -10px 15px 10px 0px;
+	margin: 10px 15px 10px 0px;
 	font-size: 18px;
 }
 
@@ -72,6 +72,19 @@
 	.object_container {
 		width: 80%;
 	}
+
+	
+.sub_title {
+	font-size: 18px;
+	margin: 10px 0 5px 10px;
+
+}
+
+
+.landing_link {
+	margin: 10px 15px 10px 0px;
+	font-size: 18px;
+}
 }
 
 @media only screen and (min-width: 700px) {

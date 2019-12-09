@@ -1,26 +1,79 @@
+.ov_browse {
+    text-align: left;
+}
+
 .ov_project_name {
-	font-size: 1.75rem;
-	font-family: 'Courier New', Courier, monospace;
-	font-weight: bold;
-	text-align: left;
+    font-size: 1.75rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: left;
 }
 
 .ov_project_category {
-	text-align: left;
-	font-weight: 300;
-	font-size: 1.15rem;
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    font-weight: 300;
+    font-size: 1.15rem;
 }
 
+.ov_project_author {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    font-weight: 300;
+    font-size: 1.15rem;
+}
+
+.ov_project_description {
+    text-align: left;
+}
+
+.ov_design_view {
+    width: 80%;
+    margin: 0 0 0 10%;
+}
 .ov_display_object_holder {
-	height: 40vh;
-	width: 80%;
-	margin: 0 0 0 10%;
-	overflow: hidden;
+    height: 40vh;
+    width: 100%;
+    overflow: hidden;
 }
 
-@media only screen and (max-width: 699px) {
-	.display_object_holder {
-		height: 50vw;
-		width: 100%;
-	}
+.ov_design_name,
+.ov_design_note {
+    text-align: left;
+}
+
+.ov_file_list {
+    text-align: left;
+}
+.ov_file_title {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+    .ov_project_name {
+        font-size: 1.25rem;
+    }
+
+    .ov_project_category,
+    .ov_project_author {
+        font-size: 1rem;
+    }
+
+    .ov_design_view {
+        width: 90%;
+        margin: 0 0 0 5%;
+    }
+    .ov_display_object_holder {
+        height: 40vh;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+@media only screen and (min-width: 601px) {
+    .ov_display_object_holder {
+        height: 50vw;
+        width: 100%;
+    }
 }
