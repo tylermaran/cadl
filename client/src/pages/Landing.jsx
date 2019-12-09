@@ -108,7 +108,7 @@ class Landing extends Component {
 
                 {/* Recent Uploads */}
                 <div className="content">
-                    <h3 className="sub_title">Most Recent:</h3>
+                    <h3 className="sub_title">Explore Recent Projects:</h3>
 
                     {objectContainer}
 

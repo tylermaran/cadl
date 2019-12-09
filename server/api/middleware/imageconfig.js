@@ -18,11 +18,13 @@ const upload = multer({
 		bucket: 'cadltesting',
 		metadata: function(req, file, cb) {
 			cb(null, {
-				fieldName: file.fieldname,
+				fieldName: file.originalname,
 			});
 		},
 		key: function(req, file, cb) {
-			cb(null, Date.now().toString());
+			console.log(file)
+			let filetype = file.originalname.split('.').pop();
+			cb(null, file.originalname + '_' + Date.now().toString() + '.' + filetype);
 		},
 	}),
 	// fileFilter: fileFilter,

@@ -15,7 +15,7 @@ const Header = props => {
 
 			<div className="home_content_box">
 				<div className="home_message">
-					<h3 className="home_message_title">FREE-TO-DOWNLOAD</h3>
+					<h3 className="home_message_title">OPEN-SOURCE-DESIGNS</h3>
 					<p className="home_message_body">
 						Check out all the awesome projects that are shared with
 						the NoiseBridge community. Feel free to download,

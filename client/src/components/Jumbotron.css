@@ -70,6 +70,19 @@
     font-style: italic;
 }
 
+
+.main_subtitle {
+    width: 100%;
+	font-family: 'Syncopate-Regular';
+	font-weight: bold;
+	color: #cef0ff;
+    margin: 0 0 0 50%;
+    transform: translate(-50%, 0);
+	vertical-align: middle;
+	font-size: 20px;
+    font-style: italic;
+}
+
 @media only screen and (max-width: 600px) {
 	.jumbotron {
 		height: 200px;

@@ -73,7 +73,7 @@
 }
 @media only screen and (min-width: 601px) {
     .ov_display_object_holder {
-        height: 50vw;
+        height: 40vh;
         width: 100%;
     }
 }
