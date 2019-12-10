@@ -77,6 +77,18 @@ class Testing extends Component {
 		reader.readAsDataURL(e.target.files[0]);
 	};
 
+	handleScreenshot = () => {
+		console.log('Screenshot')
+		let elements = document.getElementsByTagName('canvas');
+
+		for (let i = 0; i < elements.length; i++) {
+			console.log(elements[i].toDataURL())
+			
+		}
+
+		console.log(elements);
+	}
+
 	render() {
 		return (
 			<div className="testing">
@@ -94,6 +106,9 @@ class Testing extends Component {
 				<div className="confirm_upload">
 					<button type="button">Confirm Upload</button>
 				</div>
+				<button className="screenshot" onClick={() => this.handleScreenshot()}>
+					Screenshot
+				</button>
 			</div>
 		);
 	}

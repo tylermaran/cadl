@@ -81,7 +81,7 @@ class Create extends Component {
 				object_color: '0x4287f5', // Hex code value
 				background_color: '#404040',
 			};
-			this.note = ''; // String
+			this.note = 'a pretty cool model'; // String
 		}
 
 		// File loader returns an object >.< make it into an array
@@ -90,8 +90,7 @@ class Create extends Component {
 		});
 
 		for (let i = 0; i < upload_array.length; i++) {
-			let ext = upload_array[i].name.split('.');
-			ext = ext[ext.length - 1].toLowerCase();
+			let ext = upload_array[i].name.split('.').pop().toLowerCase();
 
 			let file_data = upload_array[i];
 
@@ -129,9 +128,27 @@ class Create extends Component {
 		});
 	};
 
+	handleScreenshot = () => {
+		console.log('Screenshot')
+		let elements = document.getElementsByTagName('canvas');
+
+		for (let i = 0; i < elements.length; i++) {
+			// console.log(elements[i].toDataURL())
+			let image = elements[i].toDataURL('image/png', 0.5);
+			let temp = this.state.file_array[i];
+			temp.screenshot = image;
+			this.setState({
+				file_array: temp
+			}, () => {
+				console.log('Screenshot added to file');
+				console.log(this.state.file_array);
+			})
+		}
+    }
+
 	// For each file in state:
 	// Upload File to AWS and return file path
-	// Create Design objecct for each file
+	// Create Design object for each file
 	// Append Design ID to Project and create project
 	handleConfirm = () => {
 		console.log('Upload files to AWS');
@@ -173,21 +190,6 @@ class Create extends Component {
 	// POST to create design in DB
 	upload_design = file => {
 		console.log(file);
-
-		// { Package body structure
-		//     name: String,
-		//     file: AWS Link,
-		//     ext: string (to lowercase),
-		//     category: String,
-		//     config: {
-		//         mm: boolean,
-		//         rotate: [0, 0, 0],
-		//         translate: [0, 0, 0],
-		//         center: [0, 0],
-		//         object_color: string (hexidecimal)
-		//     },
-		//     note: string
-		// }
 
 		fetch(process.env.REACT_APP_API_URL + '/designs', {
 			method: 'POST',
@@ -305,6 +307,7 @@ class Create extends Component {
 							project={this.state.project}
 							files={this.state.file_array}
 							handleConfirm={this.handleConfirm}
+							handleScreenshot={this.handleScreenshot}
 						/>
 					);
 				case 'loading':
