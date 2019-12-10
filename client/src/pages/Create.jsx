@@ -136,8 +136,8 @@ class Create extends Component {
 		for (let i = 0; i < elements.length; i++) {
 			// console.log(elements[i].toDataURL())
 			let image = elements[i].toDataURL('image/png', 0.5);
-			let temp = this.state.file_array[i];
-			temp.screenshot = image;
+			let temp = this.state.file_array;
+			temp[i].screenshot = image;
 			this.setState({
 				file_array: temp
 			}, () => {

@@ -1,11 +1,22 @@
 .navbar {
-	height: auto;
-	padding: 10px;
-	background-color: white;
+	height: 70px;
+	padding: 20px;
+	background-color: #2e4a57;
+	border-bottom: 2px solid black;
+	color: white;
+	overflow: hidden;
 }
+
 
 .nav_link {
 	display: inline-block;
-	width: 80px;
+	width: auto;
 	text-align: center;
+	color: white;
+	white-space: nowrap;
+}
+
+.nav_link:hover {
+	color: white;
+	font-size: 1.1rem;
 }

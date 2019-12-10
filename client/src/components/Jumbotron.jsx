@@ -12,8 +12,8 @@ const Jumbotron = props => {
 		<div className="jumbotron">
 			<div className="grid">
 				<Cube />
-				<h1 className="main_title">CAD LIBRARY</h1>
-				<h2 className="main_subtitle">An open-source repo for CAD designs</h2>
+				<h1 className="main_title noselect">CAD LIBRARY</h1>
+				<h2 className="main_subtitle noselect">An open-source repo for CAD designs</h2>
 			</div>
 		</div>
 	)

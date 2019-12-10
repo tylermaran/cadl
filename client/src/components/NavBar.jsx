@@ -18,7 +18,7 @@ const NavBar = props => {
 				Categories
 			</Link>
 			<Link className="nav_link" to="/create">
-				Create
+				Upload Project
 			</Link>
 		</div>
 	);
