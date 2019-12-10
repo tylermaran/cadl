@@ -27,7 +27,7 @@ class Landing extends Component {
     }
 
     componentDidMount() {
-        console.log(process.env.REACT_APP_API_URL)
+        document.title = 'CAD Library'
         fetch(process.env.REACT_APP_API_URL + '/projects/4')
             .then(response => {
                 return response.json()

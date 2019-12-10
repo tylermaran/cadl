@@ -10,108 +10,114 @@ import Editor from '../components/Editor';
 import './Testing.css';
 
 class Testing extends Component {
-	constructor() {
-		super();
-		this.state = {
-			source: null,
-			loader: null,
-		};
-	}
+    constructor() {
+        super();
+        this.state = {
+            source: null,
+            loader: null,
+        };
+    }
 
-	testing = {
-		file: '',
-		ext: 'stl',
-		name: 'Demo',
-		category: 'Example',
-		file_size: 0,
-		config: {
-			rotate: [0, 0, 0],
-			mm: true,
-			translate: [0, 0, 0],
-			center: [0, 0],
-			object_color: '0x5eeb34',
-			background_color: '#404040',
-		},
-	};
+    testing = {
+        file: '',
+        ext: 'stl',
+        name: 'Demo',
+        category: 'Example',
+        file_size: 0,
+        config: {
+            rotate: [0, 0, 0],
+            mm: true,
+            translate: [0, 0, 0],
+            center: [0, 0],
+            object_color: '0x5eeb34',
+            background_color: '#404040',
+        },
+    };
 
-	control = {
-		zoom: true,
-		rotate: true,
-		pan: true,
-	};
+    control = {
+        zoom: true,
+        rotate: true,
+        pan: true,
+    };
 
-	handleInput = e => {
-		if (e.target.files.length > 1) {
-			// TODO - add multiplle file input
-			alert("Hold up, we're not doing multiple files yet");
-			return;
-		}
-		// TODO - figure out why this FileReader thing works
-		let reader = new FileReader();
+    componentDidMount() {
+        document.title = 'Testing';
+    }
 
-		reader.onload = result => {
-			console.log(result);
+    handleInput = e => {
+        if (e.target.files.length > 1) {
+            // TODO - add multiplle file input
+            alert("Hold up, we're not doing multiple files yet");
+            return;
+        }
+        // TODO - figure out why this FileReader thing works
+        let reader = new FileReader();
 
-			this.testing.file_size = result.total;
-			console.log(this.testing.file_size);
+        reader.onload = result => {
+            console.log(result);
 
-			this.setState(
-				{
-					source: result.target.result,
-				},
-				() => {
-					this.testing.file = this.state.source;
-					this.setState({
-						loader: (
-							<Editor
-								object={this.testing}
-								control={this.control}
-							/>
-						),
-					});
-				}
-			);
-		};
+            this.testing.file_size = result.total;
+            console.log(this.testing.file_size);
 
-		// Read as data url apparently works
-		reader.readAsDataURL(e.target.files[0]);
-	};
+            this.setState(
+                {
+                    source: result.target.result,
+                },
+                () => {
+                    this.testing.file = this.state.source;
+                    this.setState({
+                        loader: (
+                            <Editor
+                                object={this.testing}
+                                control={this.control}
+                            />
+                        ),
+                    });
+                }
+            );
+        };
 
-	handleScreenshot = () => {
-		console.log('Screenshot')
-		let elements = document.getElementsByTagName('canvas');
+        // Read as data url apparently works
+        reader.readAsDataURL(e.target.files[0]);
+    };
 
-		for (let i = 0; i < elements.length; i++) {
-			console.log(elements[i].toDataURL())
-			
-		}
+    handleScreenshot = () => {
+        console.log('Screenshot');
+        let elements = document.getElementsByTagName('canvas');
 
-		console.log(elements);
-	}
+        for (let i = 0; i < elements.length; i++) {
+            console.log(elements[i].toDataURL());
+        }
 
-	render() {
-		return (
-			<div className="testing">
-				<NavBar />
-				<h2>Testing janky code</h2>
-				<input
-					type="file"
-					name="object"
-					id="whatever"
-					multiple
-					onInput={e => this.handleInput(e)}
-				/>
+        console.log(elements);
+    };
 
-				<div className="testing_object">{this.state.loader}</div>
-				<div className="confirm_upload">
-					<button type="button">Confirm Upload</button>
-				</div>
-				<button className="screenshot" onClick={() => this.handleScreenshot()}>
-					Screenshot
-				</button>
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="testing">
+                <NavBar />
+                <h2>Testing janky code</h2>
+                <input
+                    type="file"
+                    name="object"
+                    id="whatever"
+                    multiple
+                    onInput={e => this.handleInput(e)}
+                />
+
+                <div className="testing_object">{this.state.loader}</div>
+                <div className="confirm_upload">
+                    <button type="button">Confirm Upload</button>
+                </div>
+                <button
+                    className="screenshot"
+                    onClick={() => this.handleScreenshot()}
+                >
+                    Screenshot
+                </button>
+            </div>
+        );
+    }
 }
 
 export default Testing;

@@ -41,6 +41,7 @@ class Create extends Component {
 	}
 
 	componentDidMount() {
+		document.title = 'Create Project';
 		let url = process.env.REACT_APP_API_URL + '/categories/99';
 		fetch(url)
 			.then(response => {
