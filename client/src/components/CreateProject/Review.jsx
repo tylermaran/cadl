@@ -32,6 +32,7 @@ class Review extends Component {
     }
 
     handleInput = file => {
+        console.log('file for handle input')
         console.log(file);
 
         let temp_file = {
@@ -40,16 +41,9 @@ class Review extends Component {
             name: file.name,
             category: file.category,
             file_size: 0,
-            config: {
-                rotate: [0, 0, 0],
-                mm: true,
-                translate: [0, 0, 0],
-                center: [0, 0],
-                object_color: '0x5eeb34',
-                background_color: '#404040',
-            },
-            note: 'This is a cool model',
-            author: 'TheManMaran',
+            config: file.config,
+            note: file.note,
+            author: file.author,
         };
 
         const control = {

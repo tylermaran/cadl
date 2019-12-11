@@ -76,13 +76,14 @@ class Create extends Component {
             this.category = category; // string
             this.config = {
                 mm: true, // boolean
-                rotate: [0, 0, 0], // [x, y, z]
+                rotate: [-90, 0, 0], // [x, y, z]
                 translate: [0, 0, 0], // [x, y, z]
                 center: [0, 0], // [x, y]
                 object_color: '0x4287f5', // Hex code value
                 background_color: '#404040',
             };
-            this.note = 'a pretty cool model'; // String
+			this.note = 'a pretty cool model'; // String
+			this.author = 'themanmaran'
         }
 
         // File loader returns an object >.< make it into an array
@@ -132,15 +133,61 @@ class Create extends Component {
         });
     };
 
+    dataURItoBlob = dataURI => {
+        // convert base64/URLEncoded data component to raw binary data held in a string
+        let byteString;
+        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+            byteString = atob(dataURI.split(',')[1]);
+        else byteString = unescape(dataURI.split(',')[1]);
+
+        // separate out the mime component
+        let mimeString = dataURI
+            .split(',')[0]
+            .split(':')[1]
+            .split(';')[0];
+
+        // write the bytes of the string to a typed array
+        let ia = new Uint8Array(byteString.length);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        return new Blob([ia], { type: mimeString });
+    };
+
+    blobToFile(theBlob, fileName) {
+        //A Blob() is almost a File() - it's just missing the two properties below which we will add
+        theBlob.lastModifiedDate = new Date();
+        theBlob.name = fileName;
+        return theBlob;
+    }
+
     handleScreenshot = () => {
         console.log('Screenshot');
         let elements = document.getElementsByTagName('canvas');
 
         for (let i = 0; i < elements.length; i++) {
-            // console.log(elements[i].toDataURL())
-            let image = elements[i].toDataURL('image/png', 0.5);
+            // get image from HTML Canvas (.75 for quality adjustment)
+            let image = elements[i].toDataURL('image/png', 0.75);
+
+            // convert screenshot to blob
+            let image_blob = this.dataURItoBlob(image);
+
+            // convert that blob to a file
+            let image_file = new File(
+                [image_blob],
+                this.state.file_array[i].name.substring(
+                    0,
+                    this.state.file_array[i].name.indexOf('.')
+                ) + '_screenshot.png',
+                { lastModified: new Date() }
+            );
+            // let image_file = this.blobToFile(image_blob, this.state.file_array[i].name + '_screenshot');
+
+            // Add image blob to temp state
             let temp = this.state.file_array;
-            temp[i].screenshot = image;
+            temp[i].screenshot = image_file;
+
             this.setState(
                 {
                     file_array: temp,
@@ -176,8 +223,8 @@ class Create extends Component {
         let options = {
             method: 'POST',
             body: formData,
-		};
-		
+        };
+
         fetch(process.env.REACT_APP_API_URL + '/files', options)
             .then(response => {
                 return response.json();
@@ -191,8 +238,10 @@ class Create extends Component {
                     aws_data.file.originalname
                 );
 
-                file.file = aws_data.file.location;
-
+				file.file = aws_data.file.file[0].location;
+				file.screenshot = aws_data.file.screenshot[0].location;
+				console.log('Files sent to /design');
+				console.log(file)
                 this.upload_design(file);
             });
     };

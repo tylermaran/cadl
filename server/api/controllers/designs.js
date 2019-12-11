@@ -21,6 +21,7 @@ exports.get_all_designs = (req, res, next) => {
 
 // P1: POST New Design
 exports.post_new_design = (req, res, next) => {
+	console.log('Model posted to Designgs:')
 	console.log(req.body);
 	// Preventing Duplicate Clubs - search by name
 	Design.findOne({
@@ -49,14 +50,15 @@ exports.post_new_design = (req, res, next) => {
 					category: req.body.category,
 					config: {
 						mm: req.body.mm,
-						rotate: req.body.rotate,
-						translate: req.body.translate,
-						center: req.body.center,
-						object_color: req.body.object_color,
-						background_color: req.body.background_color,
+						rotate: req.body.config.rotate,
+						translate: req.body.config.translate,
+						center: req.body.config.center,
+						object_color: req.body.config.object_color,
+						background_color: req.body.config.background_color,
 					},
 					note: req.body.note,
 					author: req.body.author,
+					screenshot: req.body.screenshot
 				});
 
 				// Save new club to DB

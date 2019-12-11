@@ -1,9 +1,14 @@
 const upload = require('../middleware/imageconfig');
-const singleUpload = upload.single('file');
-
+// const singleUpload = upload.single('file');
+const multiUpload = upload.fields([{
+	name: 'file', maxCount: 1
+  }, {
+	name: 'screenshot', maxCount: 1
+  }])
 // P1: POST New FIle
 exports.post_new_file = (req, res, next) => {
-	singleUpload(req, res, function(err, some) {
+
+	multiUpload(req, res, function(err, some) {		
 		// Catch most errors
 		if (err) {
 			console.log(err);
@@ -24,14 +29,12 @@ exports.post_new_file = (req, res, next) => {
 				})
 			);
 		}
-
-		console.log(req.file);
 		// Success Case - Find Club by ID and update image field
 		// Create new Image entry in DB
-
+		console.log(req);	
 		res.status(200).json({
 			message: 'File upload success',
-			file: req.file,
+			file: req.files,
 		});
 	});
 };

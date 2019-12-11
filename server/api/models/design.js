@@ -52,6 +52,9 @@ const designSchema = mongoose.Schema({
 	author: {
 		type: String,
 	},
+	screenshot: {
+		type: String
+	}
 });
 
 module.exports = mongoose.model('Design', designSchema);

@@ -22,9 +22,11 @@ const upload = multer({
 			});
 		},
 		key: function(req, file, cb) {
+			console.log('File from imageconfig');
 			console.log(file)
+			let fileName = file.originalname.substring(0, file.originalname.indexOf('.'));
 			let filetype = file.originalname.split('.').pop();
-			cb(null, file.originalname + '_' + Date.now().toString() + '.' + filetype);
+			cb(null, fileName + '_' + Date.now().toString() + '.' + filetype);
 		},
 	}),
 	// fileFilter: fileFilter,

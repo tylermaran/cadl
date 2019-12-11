@@ -23,6 +23,7 @@ class ObjectLoader extends Component {
                 width: '100%',
                 margin: '0',
             },
+            translate_Y: 0
         };
     }
 
@@ -71,7 +72,7 @@ class ObjectLoader extends Component {
         // TODO: Set camera position based on object size
         this.camera.position.z = 5;
         this.camera.position.x = -3;
-        this.camera.position.y = 2;
+        this.camera.position.y = 4;
 
         // Add a Grid (default to inches)
         const size = 20;
@@ -141,7 +142,13 @@ class ObjectLoader extends Component {
         this.state.loader.load(
             this.props.object.file,
             geometry => {
-                // console.log(geometry);
+                geometry.center();
+                let translate_Y = (geometry.boundingBox.size().z / 2) * 0.0393701;
+                this.setState({
+                    translate_Y: translate_Y
+                });
+                console.log('TranslateZ = ', translate_Y);
+
                 let finished = performance.now();
 
                 //
@@ -248,11 +255,13 @@ class ObjectLoader extends Component {
             this.mesh.scale.set(1, 1, 1);
         }
 
+
         // Set translate
         this.mesh.position.set(
             this.props.object.config.translate[0],
-            this.props.object.config.translate[1],
-            this.props.object.config.translate[2]
+            this.state.translate_Y,
+            this.props.object.config.translate[2],
+            
         );
 
         // Set Rotate
