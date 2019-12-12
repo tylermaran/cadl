@@ -49,7 +49,7 @@ exports.post_new_design = (req, res, next) => {
 					ext: req.body.ext,
 					category: req.body.category,
 					config: {
-						mm: req.body.mm,
+						mm: req.body.config.mm,
 						rotate: req.body.config.rotate,
 						translate: req.body.config.translate,
 						center: req.body.config.center,

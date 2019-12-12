@@ -82,8 +82,8 @@ class Create extends Component {
                 object_color: '0x4287f5', // Hex code value
                 background_color: '#404040',
             };
-			this.note = 'a pretty cool model'; // String
-			this.author = 'themanmaran'
+            this.note = 'a pretty cool model'; // String
+            this.author = 'themanmaran';
         }
 
         // File loader returns an object >.< make it into an array
@@ -220,12 +220,15 @@ class Create extends Component {
         formData.append('file', file.file);
         formData.append('screenshot', file.screenshot);
 
-        let options = {
+        // let options = {
+        //     method: 'POST',
+        //     body: formData
+        // };
+
+        fetch(process.env.REACT_APP_API_URL + '/files', {
             method: 'POST',
             body: formData,
-        };
-
-        fetch(process.env.REACT_APP_API_URL + '/files', options)
+        })
             .then(response => {
                 return response.json();
             })
@@ -238,11 +241,14 @@ class Create extends Component {
                     aws_data.file.originalname
                 );
 
-				file.file = aws_data.file.file[0].location;
-				file.screenshot = aws_data.file.screenshot[0].location;
-				console.log('Files sent to /design');
-				console.log(file)
+                file.file = aws_data.file.file[0].location;
+                file.screenshot = aws_data.file.screenshot[0].location;
+                console.log('Files sent to /design');
+                console.log(file);
                 this.upload_design(file);
+            })
+            .catch(err => {
+                console.log(err);
             });
     };
 

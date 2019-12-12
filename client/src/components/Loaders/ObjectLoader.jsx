@@ -23,7 +23,7 @@ class ObjectLoader extends Component {
                 width: '100%',
                 margin: '0',
             },
-            translate_Y: 0
+            translate_Y: 0,
         };
     }
 
@@ -143,9 +143,10 @@ class ObjectLoader extends Component {
             this.props.object.file,
             geometry => {
                 geometry.center();
-                let translate_Y = (geometry.boundingBox.size().z / 2) * 0.0393701;
+                let translate_Y =
+                    (geometry.boundingBox.size().z / 2) * 0.0393701;
                 this.setState({
-                    translate_Y: translate_Y
+                    translate_Y: translate_Y,
                 });
                 console.log('TranslateZ = ', translate_Y);
 
@@ -255,13 +256,11 @@ class ObjectLoader extends Component {
             this.mesh.scale.set(1, 1, 1);
         }
 
-
         // Set translate
         this.mesh.position.set(
             this.props.object.config.translate[0],
             this.state.translate_Y,
-            this.props.object.config.translate[2],
-            
+            this.props.object.config.translate[2]
         );
 
         // Set Rotate

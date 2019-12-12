@@ -153,6 +153,7 @@ class Landing extends Component {
                                 as well as lighting, skybox, and environment
                                 effects.
                             </li>
+                            <li>You can check out the API as well at: <a href="https://api.cadl.io/">api.cadl.io</a></li>
                         </ul>
                         <p>
                             <a
