@@ -75,5 +75,3 @@ GET Specific Project: `api/project/project_name`
 GET Specific Design: `api/designs/design_name`
 
 GET Specific Category: `api/category/category_name`
-
-test
