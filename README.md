@@ -1,6 +1,14 @@
-## CADL - An open source CAD Library with 3D rendering  
+## 2022 Update: 
+CADL is now pretty much dead. I may pick it back up at some point, but ideally as a self hostable 3D asset library. 
+
+Happy to collab if anyone wants to work on this with me. Just shoot me an email. 
+
+
+# CADL - An open source CAD Library with 3D rendering  
 
 Designed and built to host a variety of CAD files at NoiseBridge Hackerspace, CADL is an open source tool for anyone who wants to visualize and share a variety of CAD projects.
+
+![cadl](https://tylermaran.s3.us-east-2.amazonaws.com/cadl.png)
 
 ## Installing and running
 This is a monorepo structure using the 'concurrently' package to manage a Node API and React front end. 
